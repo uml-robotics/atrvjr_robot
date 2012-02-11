@@ -194,6 +194,8 @@ void ATRVJRNode::publishOdometry() {
     if (!initialized) {
         initialized = true;
         first_bearing = true_bearing;
+        x_odo = 0;
+        y_odo = 0;
         a_odo = 0*true_bearing;
     } else {
         float bearing = true_bearing - first_bearing;

@@ -193,6 +193,8 @@ void B21Node::publishOdometry() {
     if (!initialized) {
         initialized = true;
         first_bearing = true_bearing;
+	x_odo = 0;
+	y_odo = 0;
         a_odo = 0*true_bearing;
     } else {
         float bearing = true_bearing - first_bearing;
@@ -213,7 +215,7 @@ void B21Node::publishOdometry() {
     last_bearing = true_bearing - first_bearing;
 
     //since all odometry is 6DOF we'll need a quaternion created from yaw
-    geometry_msgs::Quaternion odom_quat = tf::createQuaternionMsgFromYaw(-first_bearing);
+    geometry_msgs::Quaternion odom_quat = tf::createQuaternionMsgFromYaw(last_bearing);
 
     //first, we'll publish the transform over tf
     geometry_msgs::TransformStamped odom_trans;
@@ -228,6 +230,17 @@ void B21Node::publishOdometry() {
     //send the transform
     broadcaster.sendTransform(odom_trans);
 
+    geometry_msgs::TransformStamped laser_trans;
+    laser_trans.header.stamp = ros::Time::now();
+    laser_trans.header.frame_id = "base";
+    laser_trans.child_frame_id = "laser";
+
+    laser_trans.transform.translation.z = 0.035;
+    geometry_msgs::Quaternion laser_quat = tf::createQuaternionMsgFromYaw(0);
+    laser_trans.transform.rotation = laser_quat;
+    //send the transform
+    broadcaster.sendTransform(laser_trans);
+    
     //next, we'll publish the odometry message over ROS
     nav_msgs::Odometry odom;
     odom.header.stamp = ros::Time::now();
