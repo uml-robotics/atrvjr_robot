@@ -30,9 +30,9 @@
 // Odometery Constants
 // ===================
 // Arbitrary units per meter
-#define ODO_DISTANCE_CONVERSION 103000
+#define ODO_DISTANCE_CONVERSION 90810
 // Arbitrary units per radian
-#define ODO_ANGLE_CONVERSION 35000
+#define ODO_ANGLE_CONVERSION 37000
 
 // Sonar Constants
 // ===============
@@ -45,9 +45,9 @@
 
 #define BODY_INDEX 0
 #define BASE_INDEX 1
-const int SONARS_PER_BANK[] = {4, 4, 4, 4, 4, 4,
-                               3, 3, 3, 3, 3, 3, 3, 3
-                              };
+
+#warning Sonar, bumper and IR configurations are not updated for use with ATRVJR
+const int SONARS_PER_BANK[] = {5, 8, 5, 8 };
 const int SONAR_RING_BANK_BOUND[] = {0, 6, 14};
 #define SONAR_MAX_PER_BANK 16
 
@@ -59,10 +59,8 @@ const float SONAR_RING_HEIGHT[] = {0.055, -0.06};
 
 // Digital IO constants
 // ====================
-#define HEADING_HOME_ADDRESS 0x31
 #define HOME_BEARING -32500
 
-#define BUMPER_ADDRESS 0x40
 #define BUMPER_COUNT 14
 #define BUMPER_ADDRESS_STYLE 0
 #define BUMPER_BIT_STYLE 1
