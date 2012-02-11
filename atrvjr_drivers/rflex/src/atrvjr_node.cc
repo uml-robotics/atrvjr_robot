@@ -220,7 +220,7 @@ void ATRVJRNode::publishOdometry() {
     geometry_msgs::TransformStamped odom_trans;
     odom_trans.header.stamp = ros::Time::now();
     odom_trans.header.frame_id = "odom";
-    odom_trans.child_frame_id = "base";
+    odom_trans.child_frame_id = "base_link";
 
     odom_trans.transform.translation.x = x_odo;
     odom_trans.transform.translation.y = y_odo;
@@ -235,12 +235,13 @@ void ATRVJRNode::publishOdometry() {
     odom.header.frame_id = "odom";
 
     //set the position
+    // Rotate the position, as it is ortoghonal to that of player
     odom.pose.pose.position.x = x_odo;
     odom.pose.pose.position.y = y_odo;
     odom.pose.pose.orientation = odom_quat;
 
     //set the velocity
-    odom.child_frame_id = "base";
+    odom.child_frame_id = "base_link";
     float tvel = driver.getTranslationalVelocity();
     odom.twist.twist.linear.x = tvel*cos(a_odo);
     odom.twist.twist.linear.y = tvel*sin(a_odo);
@@ -264,7 +265,7 @@ void ATRVJRNode::publishOdometry() {
 void ATRVJRNode::publishSonar() {
     sensor_msgs::PointCloud cloud;
     cloud.header.stamp = ros::Time::now();
-    cloud.header.frame_id = "base";
+    cloud.header.frame_id = "base_link";
 
     if (isSonarOn) {
         driver.getBaseSonarPoints(&cloud);
@@ -285,7 +286,7 @@ void ATRVJRNode::publishBumps() {
     sensor_msgs::PointCloud cloud1, cloud2;
     cloud1.header.stamp = ros::Time::now();
     cloud2.header.stamp = ros::Time::now();
-    cloud1.header.frame_id = "base";
+    cloud1.header.frame_id = "base_link";
     cloud2.header.frame_id = "body";
     int bumps = driver.getBaseBumps(&cloud1) +
                 driver.getBodyBumps(&cloud2);
