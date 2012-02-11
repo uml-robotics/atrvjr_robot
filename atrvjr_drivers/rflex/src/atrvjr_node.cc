@@ -214,7 +214,7 @@ void ATRVJRNode::publishOdometry() {
     last_bearing = true_bearing - first_bearing;
 
     //since all odometry is 6DOF we'll need a quaternion created from yaw
-    geometry_msgs::Quaternion odom_quat = tf::createQuaternionMsgFromYaw(-first_bearing);
+    geometry_msgs::Quaternion odom_quat = tf::createQuaternionMsgFromYaw(last_bearing);
 
     //first, we'll publish the transform over tf
     geometry_msgs::TransformStamped odom_trans;
