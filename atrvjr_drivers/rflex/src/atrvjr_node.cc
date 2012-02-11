@@ -235,7 +235,6 @@ void ATRVJRNode::publishOdometry() {
     odom.header.frame_id = "odom";
 
     //set the position
-    // Rotate the position, as it is ortoghonal to that of player
     odom.pose.pose.position.x = x_odo;
     odom.pose.pose.position.y = y_odo;
     odom.pose.pose.orientation = odom_quat;
