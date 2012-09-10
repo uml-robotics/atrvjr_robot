@@ -34,6 +34,7 @@
 #include <unistd.h>
 #include <string.h> // memcpy
 #include <fcntl.h>
+#include <rflex/rflex-player.hh>
 
 //finds the sign of a value
 static long sgn( long val ) {
@@ -85,8 +86,12 @@ RFLEX::RFLEX() {
 
 int RFLEX::initialize(const char* device_name) {
     // Open the port
-    fd = open(device_name, O_RDWR | O_NONBLOCK);
-    if (fd == -1) {
+
+	// rflex_open_connection does initialization and the code below duplicates
+	// it. This is not nice and needs to be cleaned when possible.
+	// The function was copied from original player driver to fix control lag
+	// issue we had on ATRVjr.
+    if (rflex_open_connection(device_name, &fd) < 0) {
         fprintf(stderr,"Could not open serial port %s\n", device_name );
         return -1;
     }
