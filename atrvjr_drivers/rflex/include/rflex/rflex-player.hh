@@ -6,9 +6,24 @@
 #ifndef RFLEX_PLAYER_HH_
 #define RFLEX_PLAYER_HH_
 
-#include <rflex/rflex-info.h>
+#include <rflex/rflex_info.h>
 #include <fcntl.h>
 #include <termios.h>
+
+#define MAX_NAME_LENGTH                256
+
+enum PARITY_TYPE   { N, E, O };
+
+typedef struct {
+  char                       ttyport[MAX_NAME_LENGTH];
+  int                        baud;
+  enum PARITY_TYPE           parity;
+  int                        fd;
+  int                        databits;
+  int                        stopbits;
+  int                        hwf;
+  int                        swf;
+} RFLEX_Device;
 
 // From rflex-io.cc
 int iParity(enum PARITY_TYPE par) {
