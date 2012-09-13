@@ -1,0 +1,8 @@
+<launch>
+
+ <!--Pan-tilt unit -->
+  <node pkg="ptu46" type="ptu46" name="ptu46" output="screen">
+    <param name ="port" value="/dev/ttyR2"/>
+  </node>
+
+</launch>

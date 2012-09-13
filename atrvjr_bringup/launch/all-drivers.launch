@@ -1,0 +1,10 @@
+<!-- Core robot nodes -->
+
+<launch>
+
+  <include file="$(find atrvjr_bringup)/launch/rflex.launch"/>
+  <!--<include file="$(find atrvjr_bringup)/launch/ptu.launch"/>-->
+  <include file="$(find atrvjr_bringup)/launch/sick.launch"/>
+  <include file="$(find atrvjr_bringup)/launch/urg.launch"/>
+
+</launch>

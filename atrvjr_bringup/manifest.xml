@@ -1,0 +1,16 @@
+<package>
+  <description brief="atrvjr_bringup">
+
+    Bringup launch files and scripts needed to get ATRVjr running.
+
+  </description>
+  <author>mobility</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/atrvjr_launch</url>
+
+  <depend package="rflex"/>
+
+</package>
+
+

@@ -1,0 +1,10 @@
+<launch>
+
+<!-- Rflex -->
+  <node pkg="rflex" type="atrvjr" name="atrvjr" output="screen">
+    <param name="port" value="/dev/ttyR1"/>
+    <remap from="/atrvjr/odom" to="/odom"/>
+    <remap from="/atrvjr/cmd_vel" to="/cmd_vel"/>
+  </node>
+
+</launch>

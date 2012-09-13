@@ -1,0 +1,30 @@
+# Build files
+msg_gen/
+srv_gen/
+**/src/*/msg/
+**/src/*/srv/
+build/
+doc/
+bin/
+lib/
+cmake_install.cmake
+
+# Dynamic reconfigure
+docs/
+*.cfgc
+**/cfg/cpp/
+**/src/*/cfg/
+
+# Eclipse project
+.project
+.cproject
+.pydevproject
+
+# Python
+*.pyc
+*.pkl
+
+
+# Temporary files
+*.swp
+*~
