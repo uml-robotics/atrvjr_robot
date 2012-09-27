@@ -1,5 +1,5 @@
 <stack>
-  <description brief="atrvjr_robot"
+  <description brief="atrvjr_robot">
     
     This stack contains ATRVjr-specific components that are used in bringing up a robot.
 
@@ -9,6 +9,6 @@
   <review status="unreviewed" notes=""/>
   <url></url>
 
-  <depend stack="atrvjr_common"/>
   <depend stack="atrvjr_apps"/>
+
 </stack>
