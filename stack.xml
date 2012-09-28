@@ -10,5 +10,6 @@
   <url></url>
 
   <depend stack="atrvjr_apps"/>
+  <depend stack="robot_apps"/>
 
 </stack>
