@@ -317,9 +317,9 @@ int main(int argc, char** argv) {
     ros::Rate loop_rate(hz);
 
     while (ros::ok()) {
-        node.spinOnce();
         // Process a round of subscription messages
         ros::spinOnce();
+        node.spinOnce();
         // This will adjust as needed per iteration
         loop_rate.sleep();
     }
