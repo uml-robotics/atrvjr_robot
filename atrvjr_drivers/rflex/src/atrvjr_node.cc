@@ -124,6 +124,7 @@ ATRVJRNode::~ATRVJRNode() {
 void ATRVJRNode::NewCommand(const geometry_msgs::Twist::ConstPtr& msg) {
     cmdTranslation = msg->linear.x;
     cmdRotation = msg->angular.z;
+    driver.setMovement(cmdTranslation, cmdRotation, acceleration);
 }
 
 /// cmd_acceleration callback
@@ -134,13 +135,14 @@ void ATRVJRNode::SetAcceleration (const std_msgs::Float32::ConstPtr& msg) {
 /// cmd_sonar_power callback
 void ATRVJRNode::ToggleSonarPower(const std_msgs::Bool::ConstPtr& msg) {
     isSonarOn=msg->data;
-    sonar_dirty = true;
+    driver.setSonarPower(isSonarOn);
+    driver.sendSystemStatusCommand();
 }
 
 /// cmd_brake_power callback
 void ATRVJRNode::ToggleBrakePower(const std_msgs::Bool::ConstPtr& msg) {
     isBrakeOn = msg->data;
-    brake_dirty = true;
+    driver.setBrakePower(isBrakeOn);
 }
 
 void ATRVJRNode::spinOnce() {
@@ -150,20 +152,6 @@ void ATRVJRNode::spinOnce() {
         updateTimer = 0;
     }
     updateTimer++;
-
-    if (cmdTranslation != 0 || cmdRotation != 0)
-        driver.setMovement(cmdTranslation, cmdRotation, acceleration);
-
-    if (sonar_dirty) {
-        driver.setSonarPower(isSonarOn);
-        sonar_dirty = false;
-        driver.sendSystemStatusCommand();
-    }
-    if (brake_dirty) {
-        driver.setBrakePower(isBrakeOn);
-        brake_dirty = false;
-        updateTimer = 99;
-    }
 
     std_msgs::Bool bmsg;
     bmsg.data = isSonarOn;
@@ -317,9 +305,9 @@ int main(int argc, char** argv) {
     ros::Rate loop_rate(hz);
 
     while (ros::ok()) {
+        node.spinOnce();
         // Process a round of subscription messages
         ros::spinOnce();
-        node.spinOnce();
         // This will adjust as needed per iteration
         loop_rate.sleep();
     }
