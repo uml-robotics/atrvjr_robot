@@ -46,11 +46,10 @@ class ATRVJRNode {
         ros::Publisher bump_pub; ///< Bump Publisher (bumps)
         tf::TransformBroadcaster broadcaster; ///< Transform Broadcaster (for odom)
 
-        bool isSonarOn, isBrakeOn;
+        bool isSonarOn;
         float acceleration;
         float last_distance, last_bearing;
         float x_odo, y_odo, a_odo;
-        float cmdTranslation, cmdRotation;
         bool brake_dirty, sonar_dirty;
         bool initialized;
         float first_bearing;
@@ -77,10 +76,9 @@ class ATRVJRNode {
 };
 
 ATRVJRNode::ATRVJRNode() : n ("~") {
-    isSonarOn = isBrakeOn = false;
+    isSonarOn = false;
     brake_dirty = sonar_dirty = false;
     sonar_just_on = false;
-    cmdTranslation = cmdRotation = 0.0;
     updateTimer = 99;
     initialized = false;
     prev_bumps = 0;
@@ -122,9 +120,7 @@ ATRVJRNode::~ATRVJRNode() {
 
 /// cmd_vel callback
 void ATRVJRNode::NewCommand(const geometry_msgs::Twist::ConstPtr& msg) {
-    cmdTranslation = msg->linear.x;
-    cmdRotation = msg->angular.z;
-    driver.setMovement(cmdTranslation, cmdRotation, acceleration);
+    driver.setMovement(msg->linear.x, msg->angular.z, acceleration);
 }
 
 /// cmd_acceleration callback
@@ -141,8 +137,7 @@ void ATRVJRNode::ToggleSonarPower(const std_msgs::Bool::ConstPtr& msg) {
 
 /// cmd_brake_power callback
 void ATRVJRNode::ToggleBrakePower(const std_msgs::Bool::ConstPtr& msg) {
-    isBrakeOn = msg->data;
-    driver.setBrakePower(isBrakeOn);
+    driver.setBrakePower(msg->data);
 }
 
 void ATRVJRNode::spinOnce() {
