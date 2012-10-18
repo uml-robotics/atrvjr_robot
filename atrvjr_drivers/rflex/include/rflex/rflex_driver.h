@@ -3,6 +3,7 @@
 
 #include <rflex/rflex_info.h>
 #include <pthread.h>
+#include <boost/function.hpp>
 
 /**
  * \brief RFLEX Driver to handle input and output to RFlex devices.
@@ -31,6 +32,25 @@
  *  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
  */
+
+class SimpleSignal{
+    public:
+        SimpleSignal():callback(NULL){}
+
+        void set(boost::function<void()> callback){
+            this->callback = callback;
+        }
+
+        void envoke(){
+            if (callback !=NULL){
+                callback();
+            }
+        }
+
+    private:
+        boost::function<void()> callback;
+};
+
 class RFLEX {
     public:
         RFLEX();
@@ -96,6 +116,12 @@ class RFLEX {
         /** Sends a system status command to the device.
          * Updates the brake and battery status. */
         void sendSystemStatusCommand();
+
+
+        /// Signals
+        SimpleSignal systemStatusUpdateSignal;
+        SimpleSignal motorUpdateSignal;
+        SimpleSignal sonarUpdateSignal;
 
     protected:
 
