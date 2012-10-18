@@ -10,6 +10,8 @@
 #include <nav_msgs/Odometry.h>
 #include <angles/angles.h>
 
+#include <boost/bind.hpp>
+
 /**
  *  \brief ATRV-JR Node for ROS
  *  By Mikhail Medvedev 02/2012
@@ -61,6 +63,11 @@ class ATRVJRNode {
         void publishSonar();
         void publishBumps();
 
+        void RFLEXSystemStatusUpdateCb();
+        void RFLEXMotorUpdateCb();
+        void RFLEXSonarUpdateCb();
+        void RFLEXBumpsUpdateCb();
+
     public:
         ros::NodeHandle n;
         ATRVJRNode();
@@ -97,7 +104,39 @@ ATRVJRNode::ATRVJRNode() : n ("~") {
     plugged_pub = n.advertise<std_msgs::Bool>("plugged_in", 1);
     joint_pub = n.advertise<sensor_msgs::JointState>("state", 1);
     bump_pub = n.advertise<sensor_msgs::PointCloud>("bump", 5);
+
+    driver.systemStatusUpdateSignal.set(boost::bind(&ATRVJRNode::RFLEXSystemStatusUpdateCb, this));
+    driver.motorUpdateSignal.set(boost::bind(&ATRVJRNode::RFLEXMotorUpdateCb, this));
+    driver.sonarUpdateSignal.set(boost::bind(&ATRVJRNode::RFLEXSonarUpdateCb, this));
+    driver.sonarUpdateSignal.set(boost::bind(&ATRVJRNode::RFLEXBumpsUpdateCb, this));
 }
+
+void ATRVJRNode::RFLEXSystemStatusUpdateCb(){
+    std_msgs::Bool bmsg;
+    bmsg.data = isSonarOn;
+    sonar_power_pub.publish(bmsg);
+    bmsg.data = driver.getBrakePower();
+    brake_power_pub.publish(bmsg);
+    bmsg.data = driver.isPluggedIn();
+    plugged_pub.publish(bmsg);
+
+    std_msgs::Float32 vmsg;
+    vmsg.data = driver.getVoltage();
+    voltage_pub.publish(vmsg);
+}
+
+void ATRVJRNode::RFLEXMotorUpdateCb(){
+    publishOdometry();
+}
+
+void ATRVJRNode::RFLEXSonarUpdateCb(){
+    publishSonar();
+}
+
+void ATRVJRNode::RFLEXBumpsUpdateCb(){
+    publishBumps();
+}
+
 
 int ATRVJRNode::initialize(const char* port) {
     int ret = driver.initialize(port);

@@ -108,6 +108,7 @@ class ATRVJR : public RFLEX {
         bool found_distance;
         int home_bearing; ///< Last home bearing (arbitrary units)
         int** bumps;
+        SimpleSignal bumpsUpdateSignal;
 
         // Not allowed to use these
         ATRVJR(const ATRVJR &atrvjr); 				///< Private constructor - Don't use
