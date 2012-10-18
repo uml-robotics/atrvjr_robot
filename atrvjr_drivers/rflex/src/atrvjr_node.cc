@@ -52,10 +52,8 @@ class ATRVJRNode {
         float acceleration;
         float last_distance, last_bearing;
         float x_odo, y_odo, a_odo;
-        bool brake_dirty, sonar_dirty;
         bool initialized;
         float first_bearing;
-        int updateTimer;
         int prev_bumps;
         bool sonar_just_on;
 
@@ -73,7 +71,7 @@ class ATRVJRNode {
         ATRVJRNode();
         ~ATRVJRNode();
         int initialize(const char* port);
-        void spinOnce();
+        void requestRFLEXStatus();
 
         // Message Listeners
         void NewCommand      (const geometry_msgs::Twist::ConstPtr& msg);
@@ -84,9 +82,7 @@ class ATRVJRNode {
 
 ATRVJRNode::ATRVJRNode() : n ("~") {
     isSonarOn = false;
-    brake_dirty = sonar_dirty = false;
     sonar_just_on = false;
-    updateTimer = 99;
     initialized = false;
     prev_bumps = 0;
     subs[0] = n.subscribe<geometry_msgs::Twist>("cmd_vel", 1,   &ATRVJRNode::NewCommand, this);
@@ -108,7 +104,7 @@ ATRVJRNode::ATRVJRNode() : n ("~") {
     driver.systemStatusUpdateSignal.set(boost::bind(&ATRVJRNode::RFLEXSystemStatusUpdateCb, this));
     driver.motorUpdateSignal.set(boost::bind(&ATRVJRNode::RFLEXMotorUpdateCb, this));
     driver.sonarUpdateSignal.set(boost::bind(&ATRVJRNode::RFLEXSonarUpdateCb, this));
-    driver.sonarUpdateSignal.set(boost::bind(&ATRVJRNode::RFLEXBumpsUpdateCb, this));
+    driver.bumpsUpdateSignal.set(boost::bind(&ATRVJRNode::RFLEXBumpsUpdateCb, this));
 }
 
 void ATRVJRNode::RFLEXSystemStatusUpdateCb(){
@@ -179,28 +175,8 @@ void ATRVJRNode::ToggleBrakePower(const std_msgs::Bool::ConstPtr& msg) {
     driver.setBrakePower(msg->data);
 }
 
-void ATRVJRNode::spinOnce() {
-    // Sending the status command too often overwhelms the driver
-    if (updateTimer>=100) {
-        driver.sendSystemStatusCommand();
-        updateTimer = 0;
-    }
-    updateTimer++;
-
-    std_msgs::Bool bmsg;
-    bmsg.data = isSonarOn;
-    sonar_power_pub.publish(bmsg);
-    bmsg.data = driver.getBrakePower();
-    brake_power_pub.publish(bmsg);
-    bmsg.data = driver.isPluggedIn();
-    plugged_pub.publish(bmsg);
-    std_msgs::Float32 vmsg;
-    vmsg.data = driver.getVoltage();
-    voltage_pub.publish(vmsg);
-
-    publishOdometry();
-    publishSonar();
-    publishBumps();
+void ATRVJRNode::requestRFLEXStatus() {
+    driver.sendSystemStatusCommand();
 }
 
 /** Integrates over the lastest raw odometry readings from
@@ -334,15 +310,18 @@ int main(int argc, char** argv) {
     ROS_INFO("Connected!");
 
 
+
+    // Use async spinner to process all callbacks quickly
+    ros::AsyncSpinner spinner(1);
+    spinner.start();
+
+    // Use custom loop to envoke rflex status (odometry)
     int hz;
     node.n.param("rate", hz, 10);
     ros::Rate loop_rate(hz);
-
     while (ros::ok()) {
-        node.spinOnce();
-        // Process a round of subscription messages
-        ros::spinOnce();
-        // This will adjust as needed per iteration
+        // Requesting status command too often overwhelms the driver
+        node.requestRFLEXStatus();
         loop_rate.sleep();
     }
 

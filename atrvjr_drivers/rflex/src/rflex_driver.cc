@@ -68,7 +68,8 @@ static void putInt32( unsigned long l, unsigned char *bytes ) {
     memcpy( bytes, &conv, 4 );
 }
 
-RFLEX::RFLEX() {
+RFLEX::RFLEX()
+{
     distance = bearing = transVelocity = rotVelocity = 0;
     voltage = 0;
     offset = 0;
