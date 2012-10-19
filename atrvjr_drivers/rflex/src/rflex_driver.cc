@@ -427,7 +427,7 @@ void RFLEX::parseSysReport( const unsigned char* buffer ) {
         voltage=getInt32(&(buffer[10]));
         brake=buffer[14];
 
-        systemStatusUpdateSignal.envoke();
+        systemStatusUpdateSignal.invoke();
         break;
 
     default:
@@ -450,7 +450,7 @@ void RFLEX::parseSonarReport( const unsigned char* buffer ) {
             sonar_ranges[sid] = getInt16( &(buffer[14+count*3+1]) );
             count++;
         }
-        sonarUpdateSignal.envoke();
+        sonarUpdateSignal.invoke();
         break;
     default:
         break;

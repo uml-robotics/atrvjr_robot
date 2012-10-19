@@ -220,7 +220,7 @@ void ATRVJR::processDioEvent(unsigned char address, unsigned short data) {
             index++;
         }
         bumps[index][rot] = data;
-        bumpsUpdateSignal.envoke();
+        bumpsUpdateSignal.invoke();
     } else {
         printf("ATRVJR DIO: address 0x%02x (%d) value 0x%02x (%d)\n", address, address, data, data);
     }

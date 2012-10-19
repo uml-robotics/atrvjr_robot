@@ -41,7 +41,7 @@ class SimpleSignal{
             this->callback = callback;
         }
 
-        void envoke(){
+        void invoke(){
             if (callback !=NULL){
                 callback();
             }
