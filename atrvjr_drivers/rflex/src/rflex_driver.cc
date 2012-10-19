@@ -273,10 +273,12 @@ void RFLEX::parseMotReport( const unsigned char* buffer ) {
             bearing = getInt32(&(buffer[15]));
             rotVelocity = getInt32(&(buffer[19]));
             odomReady = odomReady | 2;
+
+            // Signal for odom update, only invoke once when full velocity received.
+            motorUpdateSignal.invoke();
         }
         acc       = getInt32(&(buffer[23]));
         trq       = getInt32(&(buffer[27]));
-        motorUpdateSignal.envoke();
         break;
     default:
         break;
