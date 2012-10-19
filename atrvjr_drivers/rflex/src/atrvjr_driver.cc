@@ -31,21 +31,21 @@
 
 ATRVJR::ATRVJR() {
     found_distance = false;
-    bumps = new int*[2];
-
-    for (int index=0;index<2;index++) {
-        bumps[index] = new int[BUMPERS_PER[index]];
-        for (int i=0;i<BUMPERS_PER[index];i++) {
-            bumps[index][i] =0;
-        }
-    }
+//    bumps = new int*[2];
+//
+//    for (int index=0;index<2;index++) {
+//        bumps[index] = new int[BUMPERS_PER[index]];
+//        for (int i=0;i<BUMPERS_PER[index];i++) {
+//            bumps[index][i] =0;
+//        }
+//    }
 
 }
 
 ATRVJR::~ATRVJR() {
-    delete bumps[0];
-    delete bumps[1];
-    delete bumps;
+//    delete bumps[0];
+//    delete bumps[1];
+//    delete bumps;
 }
 
 float ATRVJR::getDistance() {
@@ -84,36 +84,21 @@ bool ATRVJR::isPluggedIn() const {
         return false;
 }
 
-int ATRVJR::getNumBodySonars() const {
-    return SONARS_PER_RING[BODY_INDEX];
-}
-
 int ATRVJR::getNumBaseSonars() const {
     return SONARS_PER_RING[BASE_INDEX];
-}
-
-void ATRVJR::getBodySonarReadings(float* readings) const {
-    getSonarReadings(BODY_INDEX, readings);
 }
 
 void ATRVJR::getBaseSonarReadings(float* readings) const {
     getSonarReadings(BASE_INDEX, readings);
 }
 
-void ATRVJR::getBodySonarPoints(sensor_msgs::PointCloud* cloud) const {
-    getSonarPoints(BODY_INDEX, cloud);
-}
 void ATRVJR::getBaseSonarPoints(sensor_msgs::PointCloud* cloud) const {
     getSonarPoints(BASE_INDEX, cloud);
 }
 
-int ATRVJR::getBodyBumps(sensor_msgs::PointCloud* cloud) const {
-    return getBumps(BODY_INDEX, cloud);
-}
-
-int ATRVJR::getBaseBumps(sensor_msgs::PointCloud* cloud) const {
-    return getBumps(BASE_INDEX, cloud);
-}
+//int ATRVJR::getBaseBumps(sensor_msgs::PointCloud* cloud) const {
+//    return getBumps(BASE_INDEX, cloud);
+//}
 
 void ATRVJR::setSonarPower(bool on) {
     unsigned long echo, ping, set, val;
@@ -171,56 +156,56 @@ void ATRVJR::getSonarPoints(const int ringi, sensor_msgs::PointCloud* cloud) con
     }
 }
 
-int ATRVJR::getBumps(const int index, sensor_msgs::PointCloud* cloud) const {
-    int c = 0;
-    double wedge = 2 * M_PI / BUMPERS_PER[index];
-    double d = SONAR_RING_DIAMETER[index]*1.1;
-    int total = 0;
-    for (int i=0;i<BUMPERS_PER[index];i++) {
-        int value = bumps[index][i];
-        for (int j=0;j<4;j++) {
-            int mask = 1 << j;
-            if ((value & mask) > 0) {
-                total++;
-            }
-        }
-    }
-
-    cloud->points.resize(total);
-    if (total==0)
-        return 0;
-    for (int i=0;i<BUMPERS_PER[index];i++) {
-        int value = bumps[index][i];
-        double angle = wedge * (2.5 - i);
-        for (int j=0;j<4;j++) {
-            int mask = 1 << j;
-            if ((value & mask) > 0) {
-                double aoff = BUMPER_ANGLE_OFFSET[j]*wedge/3;
-                cloud->points[c].x = cos(angle-aoff)*d;
-                cloud->points[c].y = sin(angle-aoff)*d;
-                cloud->points[c].z = BUMPER_HEIGHT_OFFSET[index][j];
-                c++;
-            }
-        }
-    }
-    return total;
-
-}
+//int ATRVJR::getBumps(const int index, sensor_msgs::PointCloud* cloud) const {
+//    int c = 0;
+//    double wedge = 2 * M_PI / BUMPERS_PER[index];
+//    double d = SONAR_RING_DIAMETER[index]*1.1;
+//    int total = 0;
+//    for (int i=0;i<BUMPERS_PER[index];i++) {
+//        int value = bumps[index][i];
+//        for (int j=0;j<4;j++) {
+//            int mask = 1 << j;
+//            if ((value & mask) > 0) {
+//                total++;
+//            }
+//        }
+//    }
+//
+//    cloud->points.resize(total);
+//    if (total==0)
+//        return 0;
+//    for (int i=0;i<BUMPERS_PER[index];i++) {
+//        int value = bumps[index][i];
+//        double angle = wedge * (2.5 - i);
+//        for (int j=0;j<4;j++) {
+//            int mask = 1 << j;
+//            if ((value & mask) > 0) {
+//                double aoff = BUMPER_ANGLE_OFFSET[j]*wedge/3;
+//                cloud->points[c].x = cos(angle-aoff)*d;
+//                cloud->points[c].y = sin(angle-aoff)*d;
+//                cloud->points[c].z = BUMPER_HEIGHT_OFFSET[index][j];
+//                c++;
+//            }
+//        }
+//    }
+//    return total;
+//
+//}
 
 void ATRVJR::processDioEvent(unsigned char address, unsigned short data) {
 
     if (address == HEADING_HOME_ADDRESS) {
         home_bearing = bearing;
         printf("ATRVJR Home %f \n", home_bearing / (float) ODO_ANGLE_CONVERSION);
-    }// check if the dio packet came from a bumper packet
-    else if ((address >= BUMPER_ADDRESS) && (address < (BUMPER_ADDRESS+BUMPER_COUNT))) {
-        int index =0, rot = address - BUMPER_ADDRESS;
-        if (rot > BUMPERS_PER[index]) {
-            rot -= BUMPERS_PER[index];
-            index++;
-        }
-        bumps[index][rot] = data;
-        bumpsUpdateSignal.invoke();
+//    }// check if the dio packet came from a bumper packet
+//    else if ((address >= BUMPER_ADDRESS) && (address < (BUMPER_ADDRESS+BUMPER_COUNT))) {
+//        int index =0, rot = address - BUMPER_ADDRESS;
+//        if (rot > BUMPERS_PER[index]) {
+//            rot -= BUMPERS_PER[index];
+//            index++;
+//        }
+//        bumps[index][rot] = data;
+//        bumpsUpdateSignal.invoke();
     } else {
         printf("ATRVJR DIO: address 0x%02x (%d) value 0x%02x (%d)\n", address, address, data, data);
     }

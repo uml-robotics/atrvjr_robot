@@ -38,14 +38,13 @@ class ATRVJRNode {
 
         ros::Subscriber subs[4];			///< Subscriber handles (cmd_vel, cmd_accel, cmd_sonar_power, cmd_brake_power)
         ros::Publisher base_sonar_pub;		///< Sonar Publisher for Base Sonars (sonar_cloud_base)
-        ros::Publisher body_sonar_pub;		///< Sonar Publisher for Body Sonars (sonar_cloud_body)
         ros::Publisher voltage_pub;			///< Voltage Publisher (voltage)
         ros::Publisher brake_power_pub;		///< Brake Power Publisher (brake_power)
         ros::Publisher sonar_power_pub;		///< Sonar Power Publisher (sonar_power)
         ros::Publisher odom_pub;			///< Odometry Publisher (odom)
         ros::Publisher plugged_pub;			///< Plugged In Publisher (plugged_in)
         ros::Publisher joint_pub; ///< Joint State Publisher (state)
-        ros::Publisher bump_pub; ///< Bump Publisher (bumps)
+//        ros::Publisher bump_pub; ///< Bump Publisher (bumps)
         tf::TransformBroadcaster broadcaster; ///< Transform Broadcaster (for odom)
 
         bool isSonarOn;
@@ -55,16 +54,15 @@ class ATRVJRNode {
         bool initialized;
         float first_bearing;
         int prev_bumps;
-        bool sonar_just_on;
 
         void publishOdometry();
         void publishSonar();
-        void publishBumps();
+//        void publishBumps();
 
         void RFLEXSystemStatusUpdateCb();
         void RFLEXMotorUpdateCb();
         void RFLEXSonarUpdateCb();
-        void RFLEXBumpsUpdateCb();
+//        void RFLEXBumpsUpdateCb();
 
     public:
         ros::NodeHandle n;
@@ -82,7 +80,6 @@ class ATRVJRNode {
 
 ATRVJRNode::ATRVJRNode() : n ("~") {
     isSonarOn = false;
-    sonar_just_on = false;
     initialized = false;
     prev_bumps = 0;
     subs[0] = n.subscribe<geometry_msgs::Twist>("cmd_vel", 1,   &ATRVJRNode::NewCommand, this);
@@ -92,19 +89,18 @@ ATRVJRNode::ATRVJRNode() : n ("~") {
     acceleration = 0.7;
 
     base_sonar_pub = n.advertise<sensor_msgs::PointCloud>("sonar_cloud_base", 50);
-    body_sonar_pub = n.advertise<sensor_msgs::PointCloud>("sonar_cloud_body", 50);
     sonar_power_pub = n.advertise<std_msgs::Bool>("sonar_power", 1);
     brake_power_pub = n.advertise<std_msgs::Bool>("brake_power", 1);
     voltage_pub = n.advertise<std_msgs::Float32>("voltage", 1);
     odom_pub = n.advertise<nav_msgs::Odometry>("odom", 50);
     plugged_pub = n.advertise<std_msgs::Bool>("plugged_in", 1);
     joint_pub = n.advertise<sensor_msgs::JointState>("state", 1);
-    bump_pub = n.advertise<sensor_msgs::PointCloud>("bump", 5);
+//    bump_pub = n.advertise<sensor_msgs::PointCloud>("bump", 5);
 
     driver.systemStatusUpdateSignal.set(boost::bind(&ATRVJRNode::RFLEXSystemStatusUpdateCb, this));
     driver.motorUpdateSignal.set(boost::bind(&ATRVJRNode::RFLEXMotorUpdateCb, this));
     driver.sonarUpdateSignal.set(boost::bind(&ATRVJRNode::RFLEXSonarUpdateCb, this));
-    driver.bumpsUpdateSignal.set(boost::bind(&ATRVJRNode::RFLEXBumpsUpdateCb, this));
+//    driver.bumpsUpdateSignal.set(boost::bind(&ATRVJRNode::RFLEXBumpsUpdateCb, this));
 }
 
 void ATRVJRNode::RFLEXSystemStatusUpdateCb(){
@@ -129,9 +125,9 @@ void ATRVJRNode::RFLEXSonarUpdateCb(){
     publishSonar();
 }
 
-void ATRVJRNode::RFLEXBumpsUpdateCb(){
-    publishBumps();
-}
+//void ATRVJRNode::RFLEXBumpsUpdateCb(){
+//    publishBumps();
+//}
 
 
 int ATRVJRNode::initialize(const char* port) {
@@ -266,36 +262,21 @@ void ATRVJRNode::publishSonar() {
     cloud.header.stamp = ros::Time::now();
     cloud.header.frame_id = "base_link";
 
-    if (isSonarOn) {
-        driver.getBaseSonarPoints(&cloud);
-        base_sonar_pub.publish(cloud);
-
-        driver.getBodySonarPoints(&cloud);
-        cloud.header.frame_id = "body";
-        body_sonar_pub.publish(cloud);
-
-    } else if (sonar_just_on) {
-        base_sonar_pub.publish(cloud);
-        cloud.header.frame_id = "body";
-        body_sonar_pub.publish(cloud);
-    }
+    driver.getBaseSonarPoints(&cloud);
+    base_sonar_pub.publish(cloud);
 }
 
-void ATRVJRNode::publishBumps() {
-    sensor_msgs::PointCloud cloud1, cloud2;
-    cloud1.header.stamp = ros::Time::now();
-    cloud2.header.stamp = ros::Time::now();
-    cloud1.header.frame_id = "base_link";
-    cloud2.header.frame_id = "body";
-    int bumps = driver.getBaseBumps(&cloud1) +
-                driver.getBodyBumps(&cloud2);
-
-    if (bumps>0 || prev_bumps>0) {
-        bump_pub.publish(cloud1);
-        bump_pub.publish(cloud2);
-    }
-    prev_bumps = bumps;
-}
+//void ATRVJRNode::publishBumps() {
+//    sensor_msgs::PointCloud cloud;
+//    cloud.header.stamp = ros::Time::now();
+//    cloud.header.frame_id = "base_link";
+//    int bumps = driver.getBaseBumps(&cloud);
+//
+//    if (bumps>0 || prev_bumps>0) {
+//        bump_pub.publish(cloud);
+//    }
+//    prev_bumps = bumps;
+//}
 
 int main(int argc, char** argv) {
     ros::init(argc, argv, "atrvjr");

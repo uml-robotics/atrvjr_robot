@@ -44,33 +44,19 @@ class ATRVJR : public RFLEX {
         int getNumBodySonars() const;
         int getNumBaseSonars() const;
 
-        /** Get readings from the sonar on the body of the ATRVJR
-         * in meters
-         * \param readings Data structure into which the sonar readings are saved */
-        void getBodySonarReadings(float* readings) const;
-        /** Get readings from the sonar on the base of the ATRVJR
+       /** Get readings from the sonar on the base of the ATRVJR
          * in meters
          * \param readings Data structure into which the sonar readings are saved */
         void getBaseSonarReadings(float* readings) const;
-
-        /** Gets a point cloud for sonar readings from body
-         * \param cloud Data structure into which the sonar readings are saved */
-        void getBodySonarPoints(sensor_msgs::PointCloud* cloud) const;
 
         /** Gets a point cloud for sonar readings from base
          * \param cloud Data structure into which the sonar readings are saved */
         void getBaseSonarPoints(sensor_msgs::PointCloud* cloud) const;
 
-        /** Gets a point cloud for the bump sensors on the body
-         * \param cloud Data structure into which the bump readings are saved
-         * \return number of active bump sensors
-         */
-        int getBodyBumps(sensor_msgs::PointCloud* cloud) const;
-
         /** Gets a point cloud for the bump sensors on the base
          * \param cloud Data structure into which the bump readings are saved
          * \return number of active bump sensors */
-        int getBaseBumps(sensor_msgs::PointCloud* cloud) const;
+//        int getBaseBumps(sensor_msgs::PointCloud* cloud) const;
 
         /** Sets the motion of the robot
          * \param tvel Translational velocity (in m/s)
@@ -90,7 +76,7 @@ class ATRVJR : public RFLEX {
             return odomReady==3;
         }
 
-        SimpleSignal bumpsUpdateSignal;
+//        SimpleSignal bumpsUpdateSignal;
     private:
         /**\param ringi BODY_INDEX or BASE_INDEX
          * \param readings Data structure into which the sonar readings are saved */
@@ -103,12 +89,12 @@ class ATRVJR : public RFLEX {
            \param cloud Data structure into which the bump sensors are saved
            \return number of active bump sensors
         */
-        int getBumps(const int index, sensor_msgs::PointCloud* cloud) const;
+//        int getBumps(const int index, sensor_msgs::PointCloud* cloud) const;
 
         int first_distance;
         bool found_distance;
         int home_bearing; ///< Last home bearing (arbitrary units)
-        int** bumps;
+//        int** bumps;
 
         // Not allowed to use these
         ATRVJR(const ATRVJR &atrvjr); 				///< Private constructor - Don't use
