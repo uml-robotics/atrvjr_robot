@@ -12,6 +12,10 @@
 
 #include <boost/bind.hpp>
 
+// Dynamic reconfigure
+#include <dynamic_reconfigure/server.h>
+#include <rflex/AtrvjrParamsConfig.h>
+
 /**
  *  \brief ATRV-JR Node for ROS
  *  By Mikhail Medvedev 02/2012
@@ -64,6 +68,10 @@ class ATRVJRNode {
         void RFLEXSonarUpdateCb();
 //        void RFLEXBumpsUpdateCb();
 
+        // Dynamic reconfigure
+        dynamic_reconfigure::Server<rflex::AtrvjrParamsConfig> reconfigure_srv_;
+        void reconfigureCb(rflex::AtrvjrParamsConfig& config, uint32_t level);
+
     public:
         ros::NodeHandle n;
         ATRVJRNode();
@@ -79,6 +87,17 @@ class ATRVJRNode {
 };
 
 ATRVJRNode::ATRVJRNode() : n ("~") {
+
+    int param;
+    n.param("odo_distance_conversion",param, 93810);
+    driver.setOdoDistanceConversion(param);
+    n.param("odo_angle_conversion",param, 38500);
+    driver.setOdoAngleConversion(param);
+
+    // Setup dynamic reconfigure
+    reconfigure_srv_.setCallback(boost::bind(&ATRVJRNode::reconfigureCb, this, _1, _2));
+
+
     isSonarOn = false;
     initialized = false;
     prev_bumps = 0;
@@ -101,6 +120,12 @@ ATRVJRNode::ATRVJRNode() : n ("~") {
     driver.motorUpdateSignal.set(boost::bind(&ATRVJRNode::RFLEXMotorUpdateCb, this));
     driver.sonarUpdateSignal.set(boost::bind(&ATRVJRNode::RFLEXSonarUpdateCb, this));
 //    driver.bumpsUpdateSignal.set(boost::bind(&ATRVJRNode::RFLEXBumpsUpdateCb, this));
+}
+
+void ATRVJRNode::reconfigureCb(rflex::AtrvjrParamsConfig& config,
+        uint32_t level) {
+    driver.setOdoDistanceConversion(config.odo_distance_conversion);
+    driver.setOdoAngleConversion(config.odo_angle_conversion);
 }
 
 void ATRVJRNode::RFLEXSystemStatusUpdateCb(){

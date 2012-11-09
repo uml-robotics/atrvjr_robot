@@ -3,6 +3,8 @@ msg_gen/
 srv_gen/
 **/src/*/msg/
 **/src/*/srv/
+**/**/**/cpp/
+**/**/src/rflex/
 build/
 doc/
 bin/
@@ -19,6 +21,7 @@ docs/
 .project
 .cproject
 .pydevproject
+.settings
 
 # Python
 *.pyc

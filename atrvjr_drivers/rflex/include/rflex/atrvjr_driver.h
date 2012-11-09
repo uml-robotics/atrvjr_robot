@@ -76,6 +76,9 @@ class ATRVJR : public RFLEX {
             return odomReady==3;
         }
 
+        void setOdoAngleConversion(int);
+        void setOdoDistanceConversion(int);
+
 //        SimpleSignal bumpsUpdateSignal;
     private:
         /**\param ringi BODY_INDEX or BASE_INDEX
@@ -94,6 +97,10 @@ class ATRVJR : public RFLEX {
         int first_distance;
         bool found_distance;
         int home_bearing; ///< Last home bearing (arbitrary units)
+
+        // Odometery Settings
+        int odo_distance_conversion_; ///< Arbitrary units per meter
+        int odo_angle_conversion_; ///< Arbitrary units per radian
 //        int** bumps;
 
         // Not allowed to use these

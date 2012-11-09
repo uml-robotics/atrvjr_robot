@@ -27,14 +27,6 @@
 #ifndef ATRVJR_CONFIG_H
 #define ATRVJR_CONFIG_H
 
-// Odometery Constants
-// ===================
-// Arbitrary units per meter
-//#define ODO_DISTANCE_CONVERSION 90810
-#define ODO_DISTANCE_CONVERSION 93810
-// Arbitrary units per radian
-#define ODO_ANGLE_CONVERSION 38500
-
 // Sonar Constants
 // ===============
 // Arbitrary units per meter (for sonar)
