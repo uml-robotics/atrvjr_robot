@@ -51,6 +51,95 @@ class SimpleSignal{
         boost::function<void()> callback;
 };
 
+/**
+ * Holds low-level configuration parameters for RFLEX.
+ * These used to be constant definitions in rflex_info.h
+ */
+class RFLEXConfig {
+private:
+    unsigned long odo_distance_conversion;
+    unsigned long odo_angle_conversion;
+
+    double trans_acc;///< In m/s/s
+    double rot_acc;///< In m/s/s
+    double trans_torque; ///< In N*m
+    double rot_torque; ///< In N*m
+
+public:
+    int home_bearing;
+
+public:
+    RFLEXConfig() :
+            odo_distance_conversion(93810), //
+            odo_angle_conversion(38500), //
+            trans_acc(0.7), //
+            rot_acc(2.6), //
+            trans_torque(0.3), //
+            rot_torque(0.9), //
+            home_bearing(-32500)
+    {
+    }
+
+    /**
+     * Convert the real translational value into RFLEX units.
+     * @param value
+     */
+    unsigned long realTrans2driver(double value) const {
+        return value * odo_distance_conversion;
+    }
+    double driverTrans2real(int value) const{
+        return value / (float) odo_distance_conversion;
+    }
+
+    /**
+     * Convert the real angular value into RFLEX units.
+     * @param value
+     */
+    unsigned long realAngle2driver(double value) const {
+        return value * odo_angle_conversion;
+    }
+    double driverAngle2real(int value) const{
+        return value / (float) odo_angle_conversion;
+    }
+
+    unsigned long getAdjustedTransAcc(){
+        return realTrans2driver(trans_acc);
+    }
+    unsigned long getAdjustedRotAcc(){
+        return realAngle2driver(rot_acc);
+    }
+    unsigned long getAdjustedTransTorque(){
+        return realTrans2driver(trans_torque);
+    }
+    unsigned long getAdjustedRotTorque(){
+        return realAngle2driver(rot_torque);
+    }
+
+    void setOdoAngleConversion(unsigned long odoAngleConversion) {
+        odo_angle_conversion = odoAngleConversion;
+    }
+
+    void setOdoDistanceConversion(unsigned long odoDistanceConversion) {
+        odo_distance_conversion = odoDistanceConversion;
+    }
+
+    void setRotAcc(double rotAcc) {
+        rot_acc = rotAcc;
+    }
+
+    void setRotTorque(double rotTorque) {
+        rot_torque = rotTorque;
+    }
+
+    void setTransAcc(double transAcc) {
+        trans_acc = transAcc;
+    }
+
+    void setTransTorque(double transTorque) {
+        trans_torque = transTorque;
+    }
+};
+
 class RFLEX {
     public:
         RFLEX();
@@ -107,30 +196,30 @@ class RFLEX {
         }
 
         /** Sets the velocity
-         * \param transVelocity Translational velocity in arbitrary units
-         * \param rotVelocity Rotational velocity in arbitrary units
-         * \param acceleration Acceleration (also in arbitrary units) */
-        void setVelocity(const long transVelocity, const long rotVelocity,
-                         const long acceleration);
+         * \param transVelocity Translational velocity in m/s
+         * \param rotVelocity Rotational velocity in rad/s
+         */
+        void setVelocity(const float transVelocity, const float rotVelocity);
 
         /** Sends a system status command to the device.
          * Updates the brake and battery status. */
         void sendSystemStatusCommand();
 
+        double getDistance();///< Translational odometry, m.
+        double getBearing();///< Rotational odometry, rad.
+        double getTransVelocity();///< Translational velocity, m/s.
+        double getRotVelocity();///< Rotational velocity, rad/s.
 
         /// Signals
         SimpleSignal systemStatusUpdateSignal;
         SimpleSignal motorUpdateSignal;
         SimpleSignal sonarUpdateSignal;
 
+        RFLEXConfig config;
+
     protected:
 
         virtual void processDioEvent(unsigned char address, unsigned short data);
-
-        int distance;			///< Raw translational odometry
-        int bearing;			///< Raw rotational odometry
-        int transVelocity;		///< Raw translational velocity
-        int rotVelocity;		///< Raw rotational velocity
 
         int sonar_ranges[SONAR_MAX_COUNT];	///< Raw Sonar readings (including unconnected ports)
         long voltage;	///< Raw voltage reading
@@ -147,6 +236,15 @@ class RFLEX {
         int odomReady;
 
     private:
+
+        int distance;			///< Raw translational odometry
+        int bearing;			///< Raw rotational odometry
+        int transVelocity;		///< Raw translational velocity
+        int rotVelocity;		///< Raw rotational velocity
+
+        int first_distance;     ///< Raw odometry reading at start time
+        bool found_distance;    ///< True when the first_distance was initialized
+
         void parsePacket(const unsigned char* buffer);
         void parseMotReport(const unsigned char* buffer);
         void parseDioReport(const unsigned char* buffer);
@@ -154,6 +252,7 @@ class RFLEX {
         void parseSysReport(const unsigned char* buffer);
         void parseSonarReport(const unsigned char* buffer);
         void parseJoyReport(const unsigned char* buffer);
+
 
         // IO Stuff
         int fd;				///< File descriptor for serial port

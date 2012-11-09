@@ -52,7 +52,6 @@ class ATRVJRNode {
         tf::TransformBroadcaster broadcaster; ///< Transform Broadcaster (for odom)
 
         bool isSonarOn;
-        double acceleration;
         float last_distance, last_bearing;
         float x_odo, y_odo, a_odo;
         bool initialized;
@@ -90,11 +89,18 @@ ATRVJRNode::ATRVJRNode() : n ("~") {
 
     int param;
     n.param("odo_distance_conversion", param, 93810);
-    driver.setOdoDistanceConversion(param);
+    driver.config.setOdoDistanceConversion(param);
     n.param("odo_angle_conversion", param, 38500);
-    driver.setOdoAngleConversion(param);
-    n.param("acceleration", acceleration, 0.7);
-
+    driver.config.setOdoAngleConversion(param);
+    double d_param;
+    n.param("trans_acceleration", d_param, 0.7);
+    driver.config.setTransAcc(d_param);
+    n.param("trans_torque", d_param, 0.3);
+    driver.config.setTransTorque(d_param);
+    n.param("rot_acceleration", d_param, 2.6);
+    driver.config.setRotAcc(d_param);
+    n.param("rot_torque", d_param, 0.9);
+    driver.config.setRotTorque(d_param);
 
     // Setup dynamic reconfigure
     reconfigure_srv_.setCallback(boost::bind(&ATRVJRNode::reconfigureCb, this, _1, _2));
@@ -125,9 +131,12 @@ ATRVJRNode::ATRVJRNode() : n ("~") {
 
 void ATRVJRNode::reconfigureCb(rflex::AtrvjrParamsConfig& config,
         uint32_t level) {
-    driver.setOdoDistanceConversion(config.odo_distance_conversion);
-    driver.setOdoAngleConversion(config.odo_angle_conversion);
-    acceleration = config.acceleration;
+    driver.config.setOdoDistanceConversion(config.odo_distance_conversion);
+    driver.config.setOdoAngleConversion(config.odo_angle_conversion);
+    driver.config.setTransAcc(config.trans_acceleration);
+    driver.config.setTransTorque(config.trans_torque);
+    driver.config.setRotAcc(config.rot_acceleration);
+    driver.config.setRotTorque(config.rot_torque);
 }
 
 void ATRVJRNode::RFLEXSystemStatusUpdateCb(){
@@ -178,12 +187,12 @@ ATRVJRNode::~ATRVJRNode() {
 
 /// cmd_vel callback
 void ATRVJRNode::NewCommand(const geometry_msgs::Twist::ConstPtr& msg) {
-    driver.setMovement(msg->linear.x, msg->angular.z, acceleration);
+    driver.setVelocity(msg->linear.x, msg->angular.z);
 }
 
 /// cmd_acceleration callback
 void ATRVJRNode::SetAcceleration (const std_msgs::Float32::ConstPtr& msg) {
-    acceleration = msg->data;
+    driver.config.setTransAcc(msg->data);
 }
 
 /// cmd_sonar_power callback
@@ -264,10 +273,10 @@ void ATRVJRNode::publishOdometry() {
 
     //set the velocity
     odom.child_frame_id = "base_link";
-    float tvel = driver.getTranslationalVelocity();
+    float tvel = driver.getTransVelocity();
     odom.twist.twist.linear.x = tvel*cos(a_odo);
     odom.twist.twist.linear.y = tvel*sin(a_odo);
-    odom.twist.twist.angular.z = driver.getRotationalVelocity();
+    odom.twist.twist.angular.z = driver.getRotVelocity();
 
     //publish the message
     odom_pub.publish(odom);

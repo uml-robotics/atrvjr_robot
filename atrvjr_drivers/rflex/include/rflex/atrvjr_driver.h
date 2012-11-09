@@ -35,10 +35,6 @@ class ATRVJR : public RFLEX {
         ATRVJR();
         virtual ~ATRVJR();
         void setSonarPower(bool);
-        float getDistance();
-        float getBearing();
-        float getTranslationalVelocity() const;
-        float getRotationalVelocity() const;
         float getVoltage() const;
         bool isPluggedIn() const;
         int getNumBodySonars() const;
@@ -58,12 +54,6 @@ class ATRVJR : public RFLEX {
          * \return number of active bump sensors */
 //        int getBaseBumps(sensor_msgs::PointCloud* cloud) const;
 
-        /** Sets the motion of the robot
-         * \param tvel Translational velocity (in m/s)
-         * \param rvel Rotational velocity (in radian/s)
-         * \param acceleration Translational acceleration (in m/s/s) */
-        void setMovement(float tvel, float rvel, float acceleration);
-
         /** Processes the DIO packets - called from RFflex Driver
          * \param address origin
          * \param data values */
@@ -75,9 +65,6 @@ class ATRVJR : public RFLEX {
         bool isOdomReady() const {
             return odomReady==3;
         }
-
-        void setOdoAngleConversion(int);
-        void setOdoDistanceConversion(int);
 
 //        SimpleSignal bumpsUpdateSignal;
     private:
@@ -94,13 +81,8 @@ class ATRVJR : public RFLEX {
         */
 //        int getBumps(const int index, sensor_msgs::PointCloud* cloud) const;
 
-        int first_distance;
-        bool found_distance;
-        int home_bearing; ///< Last home bearing (arbitrary units)
+//        int home_bearing; ///< Last home bearing (arbitrary units)
 
-        // Odometery Settings
-        int odo_distance_conversion_; ///< Arbitrary units per meter
-        int odo_angle_conversion_; ///< Arbitrary units per radian
 //        int** bumps;
 
         // Not allowed to use these

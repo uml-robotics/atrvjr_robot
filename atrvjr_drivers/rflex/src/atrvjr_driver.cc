@@ -29,11 +29,11 @@
 #include <math.h>
 #include <cstdio>
 
-ATRVJR::ATRVJR():
-    odo_distance_conversion_(93810),
-    odo_angle_conversion_(38500)
+ATRVJR::ATRVJR()
+//:
+//    odo_distance_conversion_(93810),
+//    odo_angle_conversion_(38500)
 {
-    found_distance = false;
 //    bumps = new int*[2];
 //
 //    for (int index=0;index<2;index++) {
@@ -49,27 +49,6 @@ ATRVJR::~ATRVJR() {
 //    delete bumps[0];
 //    delete bumps[1];
 //    delete bumps;
-}
-
-float ATRVJR::getDistance() {
-    if (!found_distance && isOdomReady()) {
-        first_distance = distance;
-        found_distance = true;
-    }
-
-    return (distance-first_distance) / (float) odo_distance_conversion_;
-}
-
-float ATRVJR::getBearing() {
-    return (bearing-HOME_BEARING) / (float) odo_angle_conversion_;
-}
-
-float ATRVJR::getTranslationalVelocity() const {
-    return transVelocity / (float) odo_distance_conversion_;
-}
-
-float ATRVJR::getRotationalVelocity() const {
-    return rotVelocity / (float) odo_angle_conversion_;
 }
 
 float ATRVJR::getVoltage() const {
@@ -114,14 +93,6 @@ void ATRVJR::setSonarPower(bool on) {
         echo = ping = set = val = 0;
     }
     configureSonar(echo, ping, set, val);
-}
-
-
-void ATRVJR::setMovement( float tvel, float rvel,
-                       float acceleration ) {
-    setVelocity(tvel * odo_distance_conversion_,
-                rvel * odo_angle_conversion_,
-                acceleration * odo_distance_conversion_);
 }
 
 
@@ -198,8 +169,8 @@ void ATRVJR::getSonarPoints(const int ringi, sensor_msgs::PointCloud* cloud) con
 void ATRVJR::processDioEvent(unsigned char address, unsigned short data) {
 
     if (address == HEADING_HOME_ADDRESS) {
-        home_bearing = bearing;
-        printf("ATRVJR Home %f \n", home_bearing / (float) odo_angle_conversion_);
+//        home_bearing = bearing;
+//        printf("ATRVJR Home %f \n", config.driverAngle2real(home_bearing));
 //    }// check if the dio packet came from a bumper packet
 //    else if ((address >= BUMPER_ADDRESS) && (address < (BUMPER_ADDRESS+BUMPER_COUNT))) {
 //        int index =0, rot = address - BUMPER_ADDRESS;
@@ -212,14 +183,4 @@ void ATRVJR::processDioEvent(unsigned char address, unsigned short data) {
     } else {
         printf("ATRVJR DIO: address 0x%02x (%d) value 0x%02x (%d)\n", address, address, data, data);
     }
-}
-
-
-void ATRVJR::setOdoAngleConversion(int odo_angle_conversion) {
-    odo_angle_conversion_ = odo_angle_conversion;
-}
-
-
-void ATRVJR::setOdoDistanceConversion(int odo_distance_conversion) {
-    odo_distance_conversion_ = odo_distance_conversion;
 }

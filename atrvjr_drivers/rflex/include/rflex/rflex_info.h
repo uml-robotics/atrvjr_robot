@@ -40,10 +40,6 @@ static const int PACKET_DATA_START_BYTE = 6;
 #define MAX_COMMAND_LENGTH             256
 #define BUFFER_SIZE 1024
 
-#define STD_TRANS_TORQUE    30000
-#define STD_ROT_ACC         100000
-#define STD_ROT_TORQUE      35000
-
 #define SYS_PORT                 1
 #define MOT_PORT                 2
 #define JSTK_PORT                3

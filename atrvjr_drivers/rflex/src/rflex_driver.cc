@@ -68,7 +68,8 @@ static void putInt32( unsigned long l, unsigned char *bytes ) {
     memcpy( bytes, &conv, 4 );
 }
 
-RFLEX::RFLEX()
+RFLEX::RFLEX():
+        found_distance(false)
 {
     distance = bearing = transVelocity = rotVelocity = 0;
     voltage = 0;
@@ -210,9 +211,9 @@ void RFLEX::setOdometryPeriod( const long period ) {
     sendCommand(MOT_PORT, 0, MOT_SYSTEM_REPORT_REQ, 8, data );
 }
 
-void RFLEX::setVelocity( const long tvel, const long rvel, const long acceleration) {
-    long utvel =labs(tvel);
-    long urvel =labs(rvel);
+void RFLEX::setVelocity( const float tvel, const float rvel) {
+    long utvel =labs(config.realTrans2driver(tvel));
+    long urvel =labs(config.realAngle2driver(rvel));
     unsigned char data[MAX_COMMAND_LENGTH];
     // ** workaround for stupid hardware bug, cause unknown, but this works
     // ** with minimal detriment to control
@@ -236,8 +237,8 @@ void RFLEX::setVelocity( const long tvel, const long rvel, const long accelerati
 
     putInt8( 0,                 &(data[0]) );       /* forward motion */
     putInt32( utvel,            &(data[1]) );       /* abs trans velocity*/
-    putInt32( acceleration,     &(data[5]) );       /* trans acc */
-    putInt32( STD_TRANS_TORQUE, &(data[9]) );       /* trans torque */
+    putInt32( config.getAdjustedTransAcc(),   &(data[5]) );     /* trans acceleration */
+    putInt32( config.getAdjustedTransTorque(),&(data[9]) );     /* trans torque */
     putInt8( sgn(tvel),         &(data[13]) );      /* trans direction */
 
     sendCommand(MOT_PORT, 0, MOT_AXIS_SET_DIR, 14, data );
@@ -245,8 +246,8 @@ void RFLEX::setVelocity( const long tvel, const long rvel, const long accelerati
     putInt8( 1,                 &(data[0]) );       /* rotational motion */
     putInt32( urvel,            &(data[1]) );       /* abs rot velocity  */
     /* 0.275 rad/sec * 10000 */
-    putInt32( STD_ROT_ACC,      &(data[5]) );       /* rot acc */
-    putInt32( STD_ROT_TORQUE,   &(data[9]) );       /* rot torque */
+    putInt32( config.getAdjustedRotAcc(),      &(data[5]) );    /* rot acc */
+    putInt32( config.getAdjustedRotTorque(),   &(data[9]) );    /* rot torque */
     putInt8( sgn(rvel),         &(data[13]) );      /* rot direction */
 
     sendCommand(MOT_PORT, 0, MOT_AXIS_SET_DIR, 14, data );
@@ -708,3 +709,23 @@ unsigned char RFLEX::computeCRC(const unsigned char *buffer, const int n) {
     return crc;
 }
 
+double RFLEX::getDistance() {
+    if (!found_distance && odomReady == 3) {
+        first_distance = distance;
+        found_distance = true;
+    }
+
+    return config.driverTrans2real(distance - first_distance);
+}
+
+double RFLEX::getBearing() {
+    return config.driverAngle2real(bearing - config.home_bearing);
+}
+
+double RFLEX::getTransVelocity() {
+    return config.driverTrans2real(transVelocity);
+}
+
+double RFLEX::getRotVelocity() {
+   return config.driverAngle2real(rotVelocity);
+}

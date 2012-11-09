@@ -51,7 +51,6 @@ const float SONAR_RING_HEIGHT[] = {0.4};
 
 // Digital IO constants
 // ====================
-#define HOME_BEARING -32500
 
 //#define BUMPER_COUNT 14
 //#define BUMPER_ADDRESS_STYLE 0
