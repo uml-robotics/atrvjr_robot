@@ -52,7 +52,7 @@ class ATRVJRNode {
         tf::TransformBroadcaster broadcaster; ///< Transform Broadcaster (for odom)
 
         bool isSonarOn;
-        float acceleration;
+        double acceleration;
         float last_distance, last_bearing;
         float x_odo, y_odo, a_odo;
         bool initialized;
@@ -89,10 +89,12 @@ class ATRVJRNode {
 ATRVJRNode::ATRVJRNode() : n ("~") {
 
     int param;
-    n.param("odo_distance_conversion",param, 93810);
+    n.param("odo_distance_conversion", param, 93810);
     driver.setOdoDistanceConversion(param);
-    n.param("odo_angle_conversion",param, 38500);
+    n.param("odo_angle_conversion", param, 38500);
     driver.setOdoAngleConversion(param);
+    n.param("acceleration", acceleration, 0.7);
+
 
     // Setup dynamic reconfigure
     reconfigure_srv_.setCallback(boost::bind(&ATRVJRNode::reconfigureCb, this, _1, _2));
@@ -105,7 +107,6 @@ ATRVJRNode::ATRVJRNode() : n ("~") {
     subs[1] = n.subscribe<std_msgs::Float32>("cmd_accel", 1,     &ATRVJRNode::SetAcceleration, this);
     subs[2] = n.subscribe<std_msgs::Bool>("cmd_sonar_power", 1, &ATRVJRNode::ToggleSonarPower, this);
     subs[3] = n.subscribe<std_msgs::Bool>("cmd_brake_power", 1, &ATRVJRNode::ToggleBrakePower, this);
-    acceleration = 0.7;
 
     base_sonar_pub = n.advertise<sensor_msgs::PointCloud>("sonar_cloud_base", 50);
     sonar_power_pub = n.advertise<std_msgs::Bool>("sonar_power", 1);
@@ -126,6 +127,7 @@ void ATRVJRNode::reconfigureCb(rflex::AtrvjrParamsConfig& config,
         uint32_t level) {
     driver.setOdoDistanceConversion(config.odo_distance_conversion);
     driver.setOdoAngleConversion(config.odo_angle_conversion);
+    acceleration = config.acceleration;
 }
 
 void ATRVJRNode::RFLEXSystemStatusUpdateCb(){
