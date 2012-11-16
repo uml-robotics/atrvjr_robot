@@ -5,6 +5,10 @@
     <param name="port" value="/dev/ttyR1"/>
     <remap from="/atrvjr/odom" to="/odom"/>
     <remap from="/atrvjr/cmd_vel" to="/cmd_vel"/>
+
+    <!-- Low-level configuration, use caution -->
+    <param name="odo_distance_conversion" value="90000"/>
+    <param name="odo_angle_conversion" value="36000"/>
   </node>
 
 </launch>
