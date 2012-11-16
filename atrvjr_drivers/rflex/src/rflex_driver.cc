@@ -37,7 +37,7 @@
 #include <rflex/rflex-player.hh>
 
 //finds the sign of a value
-static long sgn( long val ) {
+static long sgn( double val ) {
     if (val < 0)
         return 0;
     else
