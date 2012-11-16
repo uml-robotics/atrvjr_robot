@@ -35,8 +35,6 @@ class ATRVJR : public RFLEX {
         ATRVJR();
         virtual ~ATRVJR();
         void setSonarPower(bool);
-        double getVoltage() const;
-        bool isPluggedIn() const;
         int getNumBodySonars() const;
         int getNumBaseSonars() const;
 

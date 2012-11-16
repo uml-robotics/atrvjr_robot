@@ -30,9 +30,6 @@
 #include <cstdio>
 
 ATRVJR::ATRVJR()
-//:
-//    odo_distance_conversion_(93810),
-//    odo_angle_conversion_(38500)
 {
 //    bumps = new int*[2];
 //
@@ -51,20 +48,6 @@ ATRVJR::~ATRVJR() {
 //    delete bumps;
 }
 
-double ATRVJR::getVoltage() const {
-    if (voltage==0.0)
-        return 0.0;
-    else
-        return voltage/100.0 + POWER_OFFSET;
-}
-
-bool ATRVJR::isPluggedIn() const {
-    double v = getVoltage();
-    if (v>PLUGGED_THRESHOLD)
-        return true;
-    else
-        return false;
-}
 
 int ATRVJR::getNumBaseSonars() const {
     return SONARS_PER_RING[BASE_INDEX];

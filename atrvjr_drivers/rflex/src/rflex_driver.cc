@@ -718,14 +718,29 @@ double RFLEX::getDistance() {
     return config.driverTrans2real(distance - first_distance);
 }
 
-double RFLEX::getBearing() {
+double RFLEX::getBearing() const {
     return config.driverAngle2real(bearing - config.home_bearing);
 }
 
-double RFLEX::getTransVelocity() {
+double RFLEX::getTransVelocity() const{
     return config.driverTrans2real(transVelocity);
 }
 
-double RFLEX::getRotVelocity() {
+double RFLEX::getRotVelocity() const {
    return config.driverAngle2real(rotVelocity);
+}
+
+double RFLEX::getVoltage() const{
+    if (voltage == 0.0)
+        return 0.0;
+    else
+        return voltage / 100.0 + config.power_offset;
+}
+
+bool RFLEX::isPluggedIn() const {
+    double v = getVoltage();
+    if (v > config.plugged_threshold)
+        return true;
+    else
+        return false;
 }

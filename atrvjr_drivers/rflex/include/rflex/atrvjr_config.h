@@ -74,8 +74,6 @@ const double SONAR_RING_HEIGHT[] = {0.4};
 //#define USE_JOYSTICK 0
 //#define JOY_POS_RATIO 6
 //#define JOY_ANG_RATIO -0.01
-#define POWER_OFFSET 1.2
-#define PLUGGED_THRESHOLD 29.0
 
 #endif
 

@@ -66,6 +66,8 @@ private:
     double rot_torque; ///< In N*m
 
 public:
+    double power_offset;///< In V
+    double plugged_threshold;///< In V
     int home_bearing;
 
 public:
@@ -76,6 +78,8 @@ public:
             rot_acc(2.6), //
             trans_torque(0.3), //
             rot_torque(0.9), //
+            power_offset(1.2),//
+            plugged_threshold(29),//
             home_bearing(-32500)
     {
     }
@@ -137,6 +141,14 @@ public:
 
     void setTransTorque(double transTorque) {
         trans_torque = transTorque;
+    }
+
+    void setPluggedThreshold(double pluggedThreshold) {
+        plugged_threshold = pluggedThreshold;
+    }
+
+    void setPowerOffset(double powerOffset) {
+        power_offset = powerOffset;
     }
 };
 
@@ -206,9 +218,12 @@ class RFLEX {
         void sendSystemStatusCommand();
 
         double getDistance();///< Translational odometry, m.
-        double getBearing();///< Rotational odometry, rad.
-        double getTransVelocity();///< Translational velocity, m/s.
-        double getRotVelocity();///< Rotational velocity, rad/s.
+        double getBearing() const;///< Rotational odometry, rad.
+        double getTransVelocity() const;///< Translational velocity, m/s.
+        double getRotVelocity() const;///< Rotational velocity, rad/s.
+        double getVoltage() const;
+        bool isPluggedIn() const;
+
 
         /// Signals
         SimpleSignal systemStatusUpdateSignal;

@@ -101,6 +101,8 @@ ATRVJRNode::ATRVJRNode() : n ("~") {
     driver.config.setRotAcc(d_param);
     n.param("rot_torque", d_param, 0.9);
     driver.config.setRotTorque(d_param);
+    n.param("power_offset", driver.config.power_offset, 1.2);
+    n.param("plugged_threshold", driver.config.plugged_threshold, 29.0);
 
     // Setup dynamic reconfigure
     reconfigure_srv_.setCallback(boost::bind(&ATRVJRNode::reconfigureCb, this, _1, _2));
