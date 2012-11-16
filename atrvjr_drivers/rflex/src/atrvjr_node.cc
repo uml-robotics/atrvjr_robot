@@ -37,6 +37,8 @@
  *
  */
 class ATRVJRNode {
+    public:
+        ros::NodeHandle n;
     private:
         ATRVJR driver;
 
@@ -72,7 +74,6 @@ class ATRVJRNode {
         void reconfigureCb(rflex::AtrvjrParamsConfig& config, uint32_t level);
 
     public:
-        ros::NodeHandle n;
         ATRVJRNode();
         ~ATRVJRNode();
         int initialize(const char* port);

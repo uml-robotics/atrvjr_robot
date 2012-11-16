@@ -28,9 +28,13 @@
 #include <rflex/atrvjr_config.h>
 #include <math.h>
 #include <cstdio>
+#include <boost/thread.hpp>
 
-ATRVJR::ATRVJR()
+ATRVJR::ATRVJR():
+   last_velocity_time(ros::Time::now())
 {
+    // Start watchdog thread
+    boost::thread(boost::bind(&ATRVJR::watchdogThread, this));
 //    bumps = new int*[2];
 //
 //    for (int index=0;index<2;index++) {
@@ -165,5 +169,19 @@ void ATRVJR::processDioEvent(unsigned char address, unsigned short data) {
 //        bumpsUpdateSignal.invoke();
     } else {
         printf("ATRVJR DIO: address 0x%02x (%d) value 0x%02x (%d)\n", address, address, data, data);
+    }
+}
+
+void ATRVJR::setVelocity(const double tvel, const double rvel) {
+    last_velocity_time = ros::Time::now();
+    RFLEX::setVelocity(tvel, rvel);
+}
+
+void ATRVJR::watchdogThread() {
+    while (true) {
+        if (ros::Time::now() - last_velocity_time > ros::Duration(0.5)) {
+            RFLEX::setVelocity(0, 0);
+        }
+        usleep(100000);
     }
 }

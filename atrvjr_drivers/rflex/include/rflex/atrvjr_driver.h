@@ -3,6 +3,7 @@
 
 #include <rflex/rflex_driver.h>
 #include <sensor_msgs/PointCloud.h>
+#include <boost/thread.hpp>
 
 /**
  * \brief ATRVJR Driver class
@@ -52,6 +53,12 @@ class ATRVJR : public RFLEX {
          * \return number of active bump sensors */
 //        int getBaseBumps(sensor_msgs::PointCloud* cloud) const;
 
+        /**
+         * Overriding rflex setVelocity to be able to watch when no
+         * velocity command arrives within interval.
+         */
+        void setVelocity( const double tvel, const double rvel);
+
         /** Processes the DIO packets - called from RFflex Driver
          * \param address origin
          * \param data values */
@@ -82,6 +89,9 @@ class ATRVJR : public RFLEX {
 //        int home_bearing; ///< Last home bearing (arbitrary units)
 
 //        int** bumps;
+
+        ros::Time last_velocity_time;
+        void watchdogThread();///< Thread that stops robot if no vel command received
 
         // Not allowed to use these
         ATRVJR(const ATRVJR &atrvjr); 				///< Private constructor - Don't use
