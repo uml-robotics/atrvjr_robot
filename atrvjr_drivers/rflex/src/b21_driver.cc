@@ -47,28 +47,28 @@ B21::~B21() {
     delete bumps;
 }
 
-float B21::getDistance() {
+double B21::getDistance() {
     if (!found_distance && isOdomReady()) {
         first_distance = distance;
         found_distance = true;
     }
 
-    return (distance-first_distance) / (float) ODO_DISTANCE_CONVERSION;
+    return (distance-first_distance) / (double) ODO_DISTANCE_CONVERSION;
 }
 
-float B21::getBearing() {
-    return (bearing-HOME_BEARING) / (float) ODO_ANGLE_CONVERSION;
+double B21::getBearing() {
+    return (bearing-HOME_BEARING) / (double) ODO_ANGLE_CONVERSION;
 }
 
-float B21::getTranslationalVelocity() const {
-    return transVelocity / (float) ODO_DISTANCE_CONVERSION;
+double B21::getTranslationalVelocity() const {
+    return transVelocity / (double) ODO_DISTANCE_CONVERSION;
 }
 
-float B21::getRotationalVelocity() const {
-    return rotVelocity / (float) ODO_ANGLE_CONVERSION;
+double B21::getRotationalVelocity() const {
+    return rotVelocity / (double) ODO_ANGLE_CONVERSION;
 }
 
-float B21::getVoltage() const {
+double B21::getVoltage() const {
     if (voltage==0.0)
         return 0.0;
     else
@@ -76,7 +76,7 @@ float B21::getVoltage() const {
 }
 
 bool B21::isPluggedIn() const {
-    float v = getVoltage();
+    double v = getVoltage();
     if (v>PLUGGED_THRESHOLD)
         return true;
     else
@@ -91,11 +91,11 @@ int B21::getNumBaseSonars() const {
     return SONARS_PER_RING[BASE_INDEX];
 }
 
-void B21::getBodySonarReadings(float* readings) const {
+void B21::getBodySonarReadings(double* readings) const {
     getSonarReadings(BODY_INDEX, readings);
 }
 
-void B21::getBaseSonarReadings(float* readings) const {
+void B21::getBaseSonarReadings(double* readings) const {
     getSonarReadings(BASE_INDEX, readings);
 }
 
@@ -128,22 +128,22 @@ void B21::setSonarPower(bool on) {
 }
 
 
-void B21::setMovement( float tvel, float rvel,
-                       float acceleration ) {
+void B21::setMovement( double tvel, double rvel,
+                       double acceleration ) {
     setVelocity(tvel * ODO_DISTANCE_CONVERSION,
                 rvel * ODO_ANGLE_CONVERSION,
                 acceleration * ODO_DISTANCE_CONVERSION);
 }
 
 
-void B21::getSonarReadings(const int ringi, float* adjusted_ranges) const {
+void B21::getSonarReadings(const int ringi, double* adjusted_ranges) const {
     int i = 0;
     for (int x = SONAR_RING_BANK_BOUND[ringi];x<SONAR_RING_BANK_BOUND[ringi+1];x++) {
         for (int y=0;y<SONARS_PER_BANK[x];y++) {
             int range = sonar_ranges[x*SONAR_MAX_PER_BANK+y];
             if (range > SONAR_MAX_RANGE)
                 range = SONAR_MAX_RANGE;
-            float fRange = range / (float) RANGE_CONVERSION;
+            double fRange = range / (double) RANGE_CONVERSION;
             adjusted_ranges[i] = fRange;
             i++;
         }
@@ -152,12 +152,12 @@ void B21::getSonarReadings(const int ringi, float* adjusted_ranges) const {
 
 void B21::getSonarPoints(const int ringi, sensor_msgs::PointCloud* cloud) const {
     int numSonar = SONARS_PER_RING[ringi];
-    float* readings = new float[numSonar];
+    double* readings = new double[numSonar];
     getSonarReadings(ringi, readings);
     cloud->points.resize(numSonar);
     int c = 0;
     for (int i = 0; i < numSonar; ++i) {
-        if (readings[i] < SONAR_MAX_RANGE/ (float) RANGE_CONVERSION) {
+        if (readings[i] < SONAR_MAX_RANGE/ (double) RANGE_CONVERSION) {
             double angle =  SONAR_RING_START_ANGLE[ringi] + SONAR_RING_ANGLE_INC[ringi]*i;
             angle *= M_PI / 180.0;
 
@@ -210,7 +210,7 @@ void B21::processDioEvent(unsigned char address, unsigned short data) {
 
     if (address == HEADING_HOME_ADDRESS) {
         home_bearing = bearing;
-        printf("B21 Home %f \n", home_bearing / (float) ODO_ANGLE_CONVERSION);
+        printf("B21 Home %f \n", home_bearing / (double) ODO_ANGLE_CONVERSION);
     }// check if the dio packet came from a bumper packet
     else if ((address >= BUMPER_ADDRESS) && (address < (BUMPER_ADDRESS+BUMPER_COUNT))) {
         int index =0, rot = address - BUMPER_ADDRESS;

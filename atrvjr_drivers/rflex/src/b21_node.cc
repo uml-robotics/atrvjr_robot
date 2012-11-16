@@ -46,13 +46,13 @@ class B21Node {
         tf::TransformBroadcaster broadcaster; ///< Transform Broadcaster (for odom)
 
         bool isSonarOn, isBrakeOn;
-        float acceleration;
-        float last_distance, last_bearing;
-        float x_odo, y_odo, a_odo;
-        float cmdTranslation, cmdRotation;
+        double acceleration;
+        double last_distance, last_bearing;
+        double x_odo, y_odo, a_odo;
+        double cmdTranslation, cmdRotation;
         bool brake_dirty, sonar_dirty;
         bool initialized;
-        float first_bearing;
+        double first_bearing;
         int updateTimer;
         int prev_bumps;
         bool sonar_just_on;
@@ -187,8 +187,8 @@ void B21Node::publishOdometry() {
         return;
     }
 
-    float distance = driver.getDistance();
-    float true_bearing = angles::normalize_angle(driver.getBearing());
+    double distance = driver.getDistance();
+    double true_bearing = angles::normalize_angle(driver.getBearing());
 
     if (!initialized) {
         initialized = true;
@@ -197,9 +197,9 @@ void B21Node::publishOdometry() {
 	y_odo = 0;
         a_odo = 0*true_bearing;
     } else {
-        float bearing = true_bearing - first_bearing;
-        float d_dist = distance-last_distance;
-        float d_bearing = bearing - last_bearing;
+        double bearing = true_bearing - first_bearing;
+        double d_dist = distance-last_distance;
+        double d_bearing = bearing - last_bearing;
 
         if (d_dist > 50 || d_dist < -50)
             return;
@@ -253,7 +253,7 @@ void B21Node::publishOdometry() {
 
     //set the velocity
     odom.child_frame_id = "base";
-    float tvel = driver.getTranslationalVelocity();
+    double tvel = driver.getTranslationalVelocity();
     odom.twist.twist.linear.x = tvel*cos(a_odo);
     odom.twist.twist.linear.y = tvel*sin(a_odo);
     odom.twist.twist.angular.z = driver.getRotationalVelocity();

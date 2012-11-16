@@ -35,7 +35,7 @@ class ATRVJR : public RFLEX {
         ATRVJR();
         virtual ~ATRVJR();
         void setSonarPower(bool);
-        float getVoltage() const;
+        double getVoltage() const;
         bool isPluggedIn() const;
         int getNumBodySonars() const;
         int getNumBaseSonars() const;
@@ -43,7 +43,7 @@ class ATRVJR : public RFLEX {
        /** Get readings from the sonar on the base of the ATRVJR
          * in meters
          * \param readings Data structure into which the sonar readings are saved */
-        void getBaseSonarReadings(float* readings) const;
+        void getBaseSonarReadings(double* readings) const;
 
         /** Gets a point cloud for sonar readings from base
          * \param cloud Data structure into which the sonar readings are saved */
@@ -70,7 +70,7 @@ class ATRVJR : public RFLEX {
     private:
         /**\param ringi BODY_INDEX or BASE_INDEX
          * \param readings Data structure into which the sonar readings are saved */
-        void getSonarReadings(const int ringi, float* readings) const;
+        void getSonarReadings(const int ringi, double* readings) const;
         /**\param ringi BODY_INDEX or BASE_INDEX
          * \param cloud Data structure into which the sonar readings are saved */
         void getSonarPoints(const int ringi, sensor_msgs::PointCloud* cloud) const;

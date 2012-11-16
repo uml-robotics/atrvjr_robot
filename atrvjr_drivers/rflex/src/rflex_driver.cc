@@ -211,7 +211,7 @@ void RFLEX::setOdometryPeriod( const long period ) {
     sendCommand(MOT_PORT, 0, MOT_SYSTEM_REPORT_REQ, 8, data );
 }
 
-void RFLEX::setVelocity( const float tvel, const float rvel) {
+void RFLEX::setVelocity( const double tvel, const double rvel) {
     long utvel =labs(config.realTrans2driver(tvel));
     long urvel =labs(config.realAngle2driver(rvel));
     unsigned char data[MAX_COMMAND_LENGTH];

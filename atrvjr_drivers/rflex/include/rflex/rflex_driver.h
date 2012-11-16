@@ -88,7 +88,7 @@ public:
         return value * odo_distance_conversion;
     }
     double driverTrans2real(int value) const{
-        return value / (float) odo_distance_conversion;
+        return value / (double) odo_distance_conversion;
     }
 
     /**
@@ -99,7 +99,7 @@ public:
         return value * odo_angle_conversion;
     }
     double driverAngle2real(int value) const{
-        return value / (float) odo_angle_conversion;
+        return value / (double) odo_angle_conversion;
     }
 
     unsigned long getAdjustedTransAcc(){
@@ -199,7 +199,7 @@ class RFLEX {
          * \param transVelocity Translational velocity in m/s
          * \param rotVelocity Rotational velocity in rad/s
          */
-        void setVelocity(const float transVelocity, const float rotVelocity);
+        void setVelocity(const double transVelocity, const double rotVelocity);
 
         /** Sends a system status command to the device.
          * Updates the brake and battery status. */

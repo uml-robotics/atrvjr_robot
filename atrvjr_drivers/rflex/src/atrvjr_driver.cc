@@ -51,7 +51,7 @@ ATRVJR::~ATRVJR() {
 //    delete bumps;
 }
 
-float ATRVJR::getVoltage() const {
+double ATRVJR::getVoltage() const {
     if (voltage==0.0)
         return 0.0;
     else
@@ -59,7 +59,7 @@ float ATRVJR::getVoltage() const {
 }
 
 bool ATRVJR::isPluggedIn() const {
-    float v = getVoltage();
+    double v = getVoltage();
     if (v>PLUGGED_THRESHOLD)
         return true;
     else
@@ -70,7 +70,7 @@ int ATRVJR::getNumBaseSonars() const {
     return SONARS_PER_RING[BASE_INDEX];
 }
 
-void ATRVJR::getBaseSonarReadings(float* readings) const {
+void ATRVJR::getBaseSonarReadings(double* readings) const {
     getSonarReadings(BASE_INDEX, readings);
 }
 
@@ -96,14 +96,14 @@ void ATRVJR::setSonarPower(bool on) {
 }
 
 
-void ATRVJR::getSonarReadings(const int ringi, float* adjusted_ranges) const {
+void ATRVJR::getSonarReadings(const int ringi, double* adjusted_ranges) const {
     int i = 0;
     for (int x = SONAR_RING_BANK_BOUND[ringi];x<SONAR_RING_BANK_BOUND[ringi+1];x++) {
         for (int y=0;y<SONARS_PER_BANK[x];y++) {
             int range = sonar_ranges[x*SONAR_MAX_PER_BANK+y];
             if (range > SONAR_MAX_RANGE)
                 range = SONAR_MAX_RANGE;
-            float fRange = range / (float) RANGE_CONVERSION;
+            double fRange = range / (double) RANGE_CONVERSION;
             adjusted_ranges[i] = fRange;
             i++;
         }
@@ -112,12 +112,12 @@ void ATRVJR::getSonarReadings(const int ringi, float* adjusted_ranges) const {
 
 void ATRVJR::getSonarPoints(const int ringi, sensor_msgs::PointCloud* cloud) const {
     int numSonar = SONARS_PER_RING[ringi];
-    float* readings = new float[numSonar];
+    double* readings = new double[numSonar];
     getSonarReadings(ringi, readings);
     cloud->points.resize(numSonar);
     int c = 0;
     for (int i = 0; i < numSonar; ++i) {
-        if (readings[i] < SONAR_MAX_RANGE/ (float) RANGE_CONVERSION) {
+        if (readings[i] < SONAR_MAX_RANGE/ (double) RANGE_CONVERSION) {
             double angle =  SONAR_RING_START_ANGLE[ringi] + SONAR_RING_ANGLE_INC[ringi]*i;
             angle *= M_PI / 180.0;
 

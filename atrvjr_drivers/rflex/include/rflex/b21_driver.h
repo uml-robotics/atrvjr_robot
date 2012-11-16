@@ -34,11 +34,11 @@ class B21 : public RFLEX {
         B21();
         virtual ~B21();
         void setSonarPower(bool);
-        float getDistance();
-        float getBearing();
-        float getTranslationalVelocity() const;
-        float getRotationalVelocity() const;
-        float getVoltage() const;
+        double getDistance();
+        double getBearing();
+        double getTranslationalVelocity() const;
+        double getRotationalVelocity() const;
+        double getVoltage() const;
         bool isPluggedIn() const;
         int getNumBodySonars() const;
         int getNumBaseSonars() const;
@@ -46,11 +46,11 @@ class B21 : public RFLEX {
         /** Get readings from the sonar on the body of the B21
          * in meters
          * \param readings Data structure into which the sonar readings are saved */
-        void getBodySonarReadings(float* readings) const;
+        void getBodySonarReadings(double* readings) const;
         /** Get readings from the sonar on the base of the B21
          * in meters
          * \param readings Data structure into which the sonar readings are saved */
-        void getBaseSonarReadings(float* readings) const;
+        void getBaseSonarReadings(double* readings) const;
 
         /** Gets a point cloud for sonar readings from body
          * \param cloud Data structure into which the sonar readings are saved */
@@ -75,7 +75,7 @@ class B21 : public RFLEX {
          * \param tvel Translational velocity (in m/s)
          * \param rvel Rotational velocity (in radian/s)
          * \param acceleration Translational acceleration (in m/s/s) */
-        void setMovement(float tvel, float rvel, float acceleration);
+        void setMovement(double tvel, double rvel, double acceleration);
 
         /** Processes the DIO packets - called from RFflex Driver
          * \param address origin
@@ -92,7 +92,7 @@ class B21 : public RFLEX {
     private:
         /**\param ringi BODY_INDEX or BASE_INDEX
          * \param readings Data structure into which the sonar readings are saved */
-        void getSonarReadings(const int ringi, float* readings) const;
+        void getSonarReadings(const int ringi, double* readings) const;
         /**\param ringi BODY_INDEX or BASE_INDEX
          * \param cloud Data structure into which the sonar readings are saved */
         void getSonarPoints(const int ringi, sensor_msgs::PointCloud* cloud) const;

@@ -44,10 +44,10 @@ const int SONAR_RING_BANK_BOUND[] = {0, 4};
 #define SONAR_MAX_PER_BANK 16
 
 const int SONARS_PER_RING[] = {64};
-const float SONAR_RING_START_ANGLE[] = {180};
-const float SONAR_RING_ANGLE_INC[] = {-2};
-const float SONAR_RING_DIAMETER[] = {.25};
-const float SONAR_RING_HEIGHT[] = {0.4};
+const double SONAR_RING_START_ANGLE[] = {180};
+const double SONAR_RING_ANGLE_INC[] = {-2};
+const double SONAR_RING_DIAMETER[] = {.25};
+const double SONAR_RING_HEIGHT[] = {0.4};
 
 // Digital IO constants
 // ====================
