@@ -214,6 +214,17 @@ void RFLEX::setOdometryPeriod( const long period ) {
 void RFLEX::setVelocity( const double tvel, const double rvel) {
     long utvel =labs(config.realTrans2driver(tvel));
     long urvel =labs(config.realAngle2driver(rvel));
+
+    // Fixes hardware? bug:
+    //   If we send the zero translational velocity, the motors just
+    //   keep spinning with the last non-zero velocity. Only affects translational
+    //   axis. Setting it to one works, as one is too small to make the motors
+    //   turn.
+    //   The bug manifested itself as apparent lag in robot braking.
+    if (utvel == 0) {
+        utvel = 1;
+    }
+
     unsigned char data[MAX_COMMAND_LENGTH];
     // ** workaround for stupid hardware bug, cause unknown, but this works
     // ** with minimal detriment to control
