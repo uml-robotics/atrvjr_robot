@@ -3,7 +3,6 @@
 
 #include <rflex/rflex_driver.h>
 #include <sensor_msgs/PointCloud.h>
-#include <boost/thread.hpp>
 
 /**
  * \brief ATRVJR Driver class
