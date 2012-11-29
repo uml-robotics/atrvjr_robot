@@ -52,6 +52,7 @@ class ATRVJRNode {
         ros::Publisher joint_pub; ///< Joint State Publisher (state)
 //        ros::Publisher bump_pub; ///< Bump Publisher (bumps)
         tf::TransformBroadcaster broadcaster; ///< Transform Broadcaster (for odom)
+        std::string odometry_frame_id;        ///< Frame name to use for odometry
 
         bool isSonarOn;
         double last_distance, last_bearing;
@@ -104,6 +105,7 @@ ATRVJRNode::ATRVJRNode() : n ("~") {
     driver.config.setRotTorque(d_param);
     n.param("power_offset", driver.config.power_offset, 1.2);
     n.param("plugged_threshold", driver.config.plugged_threshold, 29.0);
+    n.param("odometry_frame_id", odometry_frame_id, std::string("odom"));
 
     // Setup dynamic reconfigure
     reconfigure_srv_.setCallback(boost::bind(&ATRVJRNode::reconfigureCb, this, _1, _2));
@@ -254,7 +256,7 @@ void ATRVJRNode::publishOdometry() {
     //first, we'll publish the transform over tf
     geometry_msgs::TransformStamped odom_trans;
     odom_trans.header.stamp = ros::Time::now();
-    odom_trans.header.frame_id = "odom";
+    odom_trans.header.frame_id = odometry_frame_id;
     odom_trans.child_frame_id = "base_link";
 
     odom_trans.transform.translation.x = x_odo;
@@ -267,7 +269,7 @@ void ATRVJRNode::publishOdometry() {
     //next, we'll publish the odometry message over ROS
     nav_msgs::Odometry odom;
     odom.header.stamp = ros::Time::now();
-    odom.header.frame_id = "odom";
+    odom.header.frame_id = odometry_frame_id;
 
     //set the position
     odom.pose.pose.position.x = x_odo;
