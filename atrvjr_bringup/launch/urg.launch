@@ -6,7 +6,7 @@
     <param name="frame_id" value="base_laser_link1"/>
     <remap from="scan" to="scan_urg"/>
   </node>
-  <!-- Broadcast the transform regarding urg's position on the robot, relative to center of rotation-->
-  <node pkg="tf" type="static_transform_publisher" name="tf_broadcaster_urg" args="-0.3 0 0 0 0 1.0 0 base_link /base_laser_link1 100"/>
+  <!-- Broadcast the transform regarding urg's position on the robot, relative to center of rotation -->
+  <node pkg="tf" type="static_transform_publisher" name="tf_broadcaster_urg" args="-0.3 0 0.7 0 0 1.0 0 base_link /base_laser_link1 100"/>
 
 </launch>
