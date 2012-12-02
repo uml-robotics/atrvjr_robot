@@ -276,6 +276,12 @@ void ATRVJRNode::publishOdometry() {
     odom.pose.pose.position.y = y_odo;
     odom.pose.pose.orientation = odom_quat;
 
+   // Need non-zero covariance for robot_pose_ekf
+    for (int i = 0; i < 6; i++)
+    {
+      odom.pose.covariance[i * 7] = 1;
+    }
+
     //set the velocity
     odom.child_frame_id = "base_link";
     double tvel = driver.getTransVelocity();
