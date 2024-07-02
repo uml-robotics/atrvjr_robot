@@ -2,7 +2,7 @@
 #define ATRVJR_DRIVER_H
 
 #include <rflex/rflex_driver.h>
-#include <sensor_msgs/PointCloud.h>
+#include "sensor_msgs/point_cloud.hpp"
 
 /**
  * \brief ATRVJR Driver class
