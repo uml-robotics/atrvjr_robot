@@ -2,7 +2,7 @@
 #define ATRVJR_DRIVER_H
 
 #include <rflex/rflex_driver.h>
-#include "sensor_msgs/point_cloud.hpp"
+//#include "sensor_msgs/point_cloud.hpp"
 
 /**
  * \brief ATRVJR Driver class
@@ -77,7 +77,7 @@ class ATRVJR : public RFLEX {
         void getSonarReadings(const int ringi, double* readings) const;
         /**\param ringi BODY_INDEX or BASE_INDEX
          * \param cloud Data structure into which the sonar readings are saved */
-        void getSonarPoints(const int ringi, sensor_msgs::PointCloud* cloud) const;
+        //void getSonarPoints(const int ringi, sensor_msgs::PointCloud* cloud) const;
 
         /**\param index BODY_INDEX or BASE_INDEX
            \param cloud Data structure into which the bump sensors are saved

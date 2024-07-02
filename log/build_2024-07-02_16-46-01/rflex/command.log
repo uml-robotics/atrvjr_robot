@@ -1,0 +1,2 @@
+Invoking command in '/home/jbreen/porting_ws/src/atrvjr_robot/build/rflex': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /home/jbreen/cmake-install/bin/cmake --build /home/jbreen/porting_ws/src/atrvjr_robot/build/rflex -- -j12 -l12
+Invoked command in '/home/jbreen/porting_ws/src/atrvjr_robot/build/rflex' returned '2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /home/jbreen/cmake-install/bin/cmake --build /home/jbreen/porting_ws/src/atrvjr_robot/build/rflex -- -j12 -l12

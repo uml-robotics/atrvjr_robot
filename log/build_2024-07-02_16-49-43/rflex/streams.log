@@ -1,0 +1,240 @@
+[0.010s] Invoking command in '/home/jbreen/porting_ws/src/atrvjr_robot/build/rflex': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /home/jbreen/cmake-install/bin/cmake --build /home/jbreen/porting_ws/src/atrvjr_robot/build/rflex -- -j12 -l12
+[0.036s] [ 50%] [32mBuilding CXX object CMakeFiles/rflex_ros2.dir/src/atvrjr_node.cc.o[0m
+[0.638s] In file included from [01m[K/usr/include/boost/bind.hpp:30[m[K,
+[0.638s]                  from [01m[K/home/jbreen/porting_ws/src/atrvjr_robot/atrvjr_drivers/rflex/src/atvrjr_node.cc:2[m[K:
+[0.639s] [01m[K/usr/include/boost/bind.hpp:36:1:[m[K [01;36m[Knote: [m[K‘[01m[K#pragma message: The practice of declaring the Bind placeholders (_1, _2, ...) in the global namespace is deprecated. Please use <boost/bind/bind.hpp> + using namespace boost::placeholders, or define BOOST_BIND_GLOBAL_PLACEHOLDERS to retain the current behavior.[m[K’
+[0.639s]    36 | [01;36m[KBOOST_PRAGMA_MESSAGE[m[K(
+[0.639s]       | [01;36m[K^~~~~~~~~~~~~~~~~~~~[m[K
+[0.750s] In file included from [01m[K/home/jbreen/porting_ws/src/atrvjr_robot/atrvjr_drivers/rflex/src/atvrjr_node.cc:5[m[K:
+[0.750s] [01m[K/home/jbreen/porting_ws/src/atrvjr_robot/atrvjr_drivers/rflex/include/rflex/atrvjr_driver.h:48:33:[m[K [01;31m[Kerror: [m[K‘[01m[Ksensor_msgs[m[K’ has not been declared
+[0.750s]    48 |         void getBaseSonarPoints([01;31m[Ksensor_msgs[m[K::PointCloud* cloud) const;
+[0.750s]       |                                 [01;31m[K^~~~~~~~~~~[m[K
+[0.750s] [01m[K/home/jbreen/porting_ws/src/atrvjr_robot/atrvjr_drivers/rflex/include/rflex/atrvjr_driver.h:48:56:[m[K [01;31m[Kerror: [m[Kexpected ‘[01m[K,[m[K’ or ‘[01m[K...[m[K’ before ‘[01m[K*[m[K’ token
+[0.750s]    48 |         void getBaseSonarPoints(sensor_msgs::PointCloud[01;31m[K*[m[K cloud) const;
+[0.751s]       |                                                        [01;31m[K^[m[K
+[0.751s] [01m[K/home/jbreen/porting_ws/src/atrvjr_robot/atrvjr_drivers/rflex/include/rflex/atrvjr_driver.h:92:9:[m[K [01;31m[Kerror: [m[K‘[01m[Kros[m[K’ does not name a type
+[0.751s]    92 |         [01;31m[Kros[m[K::Time last_velocity_time;
+[0.751s]       |         [01;31m[K^~~[m[K
+[1.999s] [01m[K/home/jbreen/porting_ws/src/atrvjr_robot/atrvjr_drivers/rflex/src/atvrjr_node.cc:16:9:[m[K [01;31m[Kerror: [m[K‘[01m[KATVRJR[m[K’ does not name a type; did you mean ‘[01m[KATRVJR[m[K’?
+[2.000s]    16 |         [01;31m[KATVRJR[m[K driver;
+[2.000s]       |         [01;31m[K^~~~~~[m[K
+[2.000s]       |         [32m[KATRVJR[m[K
+[2.000s] [01m[K/home/jbreen/porting_ws/src/atrvjr_robot/atrvjr_drivers/rflex/src/atvrjr_node.cc:24:9:[m[K [01;31m[Kerror: [m[K‘[01m[Ktf[m[K’ does not name a type; did you mean ‘[01m[Ktm[m[K’?
+[2.000s]    24 |         [01;31m[Ktf[m[K::TransformBroadcaster broadcaster = std::make_unique<tf2_ros::TransformBroadcaster>(*this);
+[2.000s]       |         [01;31m[K^~[m[K
+[2.000s]       |         [32m[Ktm[m[K
+[2.004s] [01m[K/home/jbreen/porting_ws/src/atrvjr_robot/atrvjr_drivers/rflex/src/atvrjr_node.cc:26:9:[m[K [01;31m[Kerror: [m[K‘[01m[Kdynamic_reconfigure[m[K’ does not name a type
+[2.004s]    26 |         [01;31m[Kdynamic_reconfigure[m[K::Server<rflex::AtrvjrParamsConfig> reconfigure_srv_;
+[2.005s]       |         [01;31m[K^~~~~~~~~~~~~~~~~~~[m[K
+[2.010s] [01m[K/home/jbreen/porting_ws/src/atrvjr_robot/atrvjr_drivers/rflex/src/atvrjr_node.cc:[m[K In member function ‘[01m[Kvoid atvr_jr_node::cmd_vel_callback(geometry_msgs::msg::Twist_<std::allocator<void> >::SharedPtr)[m[K’:
+[2.010s] [01m[K/home/jbreen/porting_ws/src/atrvjr_robot/atrvjr_drivers/rflex/src/atvrjr_node.cc:31:13:[m[K [01;31m[Kerror: [m[K‘[01m[Kdriver[m[K’ was not declared in this scope
+[2.011s]    31 |             [01;31m[Kdriver[m[K->setVelocity(msg->linear.x, msg->angular.z);
+[2.011s]       |             [01;31m[K^~~~~~[m[K
+[2.015s] [01m[K/home/jbreen/porting_ws/src/atrvjr_robot/atrvjr_drivers/rflex/src/atvrjr_node.cc:[m[K In member function ‘[01m[Kvoid atvr_jr_node::cmd_accel_callback(std_msgs::msg::Float32_<std::allocator<void> >::SharedPtr)[m[K’:
+[2.015s] [01m[K/home/jbreen/porting_ws/src/atrvjr_robot/atrvjr_drivers/rflex/src/atvrjr_node.cc:37:13:[m[K [01;31m[Kerror: [m[K‘[01m[Kdriver[m[K’ was not declared in this scope
+[2.015s]    37 |             [01;31m[Kdriver[m[K->setTransAcc(msg->data);
+[2.016s]       |             [01;31m[K^~~~~~[m[K
+[2.020s] [01m[K/home/jbreen/porting_ws/src/atrvjr_robot/atrvjr_drivers/rflex/src/atvrjr_node.cc:[m[K In member function ‘[01m[Kvoid atvr_jr_node::cmd_sonar_power_callback(std_msgs::msg::Bool_<std::allocator<void> >::SharedPtr)[m[K’:
+[2.020s] [01m[K/home/jbreen/porting_ws/src/atrvjr_robot/atrvjr_drivers/rflex/src/atvrjr_node.cc:43:13:[m[K [01;31m[Kerror: [m[K‘[01m[Kdriver[m[K’ was not declared in this scope
+[2.021s]    43 |             [01;31m[Kdriver[m[K->setSonarPower(msg->data);
+[2.021s]       |             [01;31m[K^~~~~~[m[K
+[2.024s] [01m[K/home/jbreen/porting_ws/src/atrvjr_robot/atrvjr_drivers/rflex/src/atvrjr_node.cc:[m[K In member function ‘[01m[Kvoid atvr_jr_node::cmd_brake_power_callback(std_msgs::msg::Bool_<std::allocator<void> >::SharedPtr)[m[K’:
+[2.024s] [01m[K/home/jbreen/porting_ws/src/atrvjr_robot/atrvjr_drivers/rflex/src/atvrjr_node.cc:50:13:[m[K [01;31m[Kerror: [m[K‘[01m[Kdriver[m[K’ was not declared in this scope
+[2.024s]    50 |             [01;31m[Kdriver[m[K->setBrakePower(msg->data);
+[2.024s]       |             [01;31m[K^~~~~~[m[K
+[2.027s] [01m[K/home/jbreen/porting_ws/src/atrvjr_robot/atrvjr_drivers/rflex/src/atvrjr_node.cc:[m[K In member function ‘[01m[Kint atvr_jr_node::initialize_driver(int)[m[K’:
+[2.027s] [01m[K/home/jbreen/porting_ws/src/atrvjr_robot/atrvjr_drivers/rflex/src/atvrjr_node.cc:54:23:[m[K [01;31m[Kerror: [m[K‘[01m[Kdriver[m[K’ was not declared in this scope
+[2.027s]    54 |             int ret = [01;31m[Kdriver[m[K.initialize(port);
+[2.028s]       |                       [01;31m[K^~~~~~[m[K
+[2.031s] [01m[K/home/jbreen/porting_ws/src/atrvjr_robot/atrvjr_drivers/rflex/src/atvrjr_node.cc:[m[K In member function ‘[01m[Kvoid atvr_jr_node::system_status_callback()[m[K’:
+[2.031s] [01m[K/home/jbreen/porting_ws/src/atrvjr_robot/atrvjr_drivers/rflex/src/atvrjr_node.cc:72:32:[m[K [01;31m[Kerror: [m[K‘[01m[Kdriver[m[K’ was not declared in this scope
+[2.031s]    72 |             sonar_power.data = [01;31m[Kdriver[m[K->getSonarPower();
+[2.031s]       |                                [01;31m[K^~~~~~[m[K
+[2.031s] [01m[K/home/jbreen/porting_ws/src/atrvjr_robot/atrvjr_drivers/rflex/src/atvrjr_node.cc:73:19:[m[K [01;31m[Kerror: [m[K‘[01m[Kclass atvr_jr_node[m[K’ has no member named ‘[01m[Kpublish[m[K’
+[2.031s]    73 |             this->[01;31m[Kpublish[m[K("sonar_power", sonar_power);
+[2.032s]       |                   [01;31m[K^~~~~~~[m[K
+[2.032s] [01m[K/home/jbreen/porting_ws/src/atrvjr_robot/atrvjr_drivers/rflex/src/atvrjr_node.cc:78:19:[m[K [01;31m[Kerror: [m[K‘[01m[Kclass atvr_jr_node[m[K’ has no member named ‘[01m[Kpublish[m[K’
+[2.032s]    78 |             this->[01;31m[Kpublish[m[K("brake_power", brake_power);
+[2.032s]       |                   [01;31m[K^~~~~~~[m[K
+[2.032s] [01m[K/home/jbreen/porting_ws/src/atrvjr_robot/atrvjr_drivers/rflex/src/atvrjr_node.cc:83:19:[m[K [01;31m[Kerror: [m[K‘[01m[Kclass atvr_jr_node[m[K’ has no member named ‘[01m[Kpublish[m[K’
+[2.032s]    83 |             this->[01;31m[Kpublish[m[K("voltage", voltage);
+[2.032s]       |                   [01;31m[K^~~~~~~[m[K
+[2.032s] [01m[K/home/jbreen/porting_ws/src/atrvjr_robot/atrvjr_drivers/rflex/src/atvrjr_node.cc:88:19:[m[K [01;31m[Kerror: [m[K‘[01m[Kclass atvr_jr_node[m[K’ has no member named ‘[01m[Kpublish[m[K’
+[2.032s]    88 |             this->[01;31m[Kpublish[m[K("plugged_in", plugged_in);
+[2.033s]       |                   [01;31m[K^~~~~~~[m[K
+[2.035s] [01m[K/home/jbreen/porting_ws/src/atrvjr_robot/atrvjr_drivers/rflex/src/atvrjr_node.cc:[m[K In member function ‘[01m[Kvoid atvr_jr_node::motor_update_callback()[m[K’:
+[2.035s] [01m[K/home/jbreen/porting_ws/src/atrvjr_robot/atrvjr_drivers/rflex/src/atvrjr_node.cc:92:17:[m[K [01;31m[Kerror: [m[K‘[01m[Kdriver[m[K’ was not declared in this scope
+[2.035s]    92 |             if ([01;31m[Kdriver[m[K->isOdomReady()) {
+[2.035s]       |                 [01;31m[K^~~~~~[m[K
+[2.035s] [01m[K/home/jbreen/porting_ws/src/atrvjr_robot/atrvjr_drivers/rflex/src/atvrjr_node.cc:95:39:[m[K [01;31m[Kerror: [m[K‘[01m[Kangles[m[K’ has not been declared
+[2.035s]    95 |                 double true_bearing = [01;31m[Kangles[m[K::normalize_angle(driver->getBearing());
+[2.035s]       |                                       [01;31m[K^~~~~~[m[K
+[2.038s] [01m[K/home/jbreen/porting_ws/src/atrvjr_robot/atrvjr_drivers/rflex/src/atvrjr_node.cc:106:67:[m[K [01;31m[Kerror: [m[K‘[01m[Kdelta_a[m[K’ was not declared in this scope; did you mean ‘[01m[Kdelta_x[m[K’?
+[2.038s]   106 |               double delta_x = delta_distance * cos(a_odo + [01;31m[Kdelta_a[m[K/2);
+[2.038s]       |                                                             [01;31m[K^~~~~~~[m[K
+[2.038s]       |                                                             [32m[Kdelta_x[m[K
+[2.038s] [01m[K/home/jbreen/porting_ws/src/atrvjr_robot/atrvjr_drivers/rflex/src/atvrjr_node.cc:111:29:[m[K [01;31m[Kerror: [m[K‘[01m[Kangles[m[K’ has not been declared
+[2.038s]   111 |                     a_odo = [01;31m[Kangles[m[K::normalize_angle(a_odo);
+[2.039s]       |                             [01;31m[K^~~~~~[m[K
+[2.039s] [01m[K/home/jbreen/porting_ws/src/atrvjr_robot/atrvjr_drivers/rflex/src/atvrjr_node.cc:116:37:[m[K [01;31m[Kerror: [m[K‘[01m[KQuaternion[m[K’ is not a member of ‘[01m[Kgeometry_msgs::msg[m[K’
+[2.039s]   116 |                 geometry_msgs::msg::[01;31m[KQuaternion[m[K odom_quat = tf::createQuaternionMsgFromYaw(last_bearing);
+[2.039s]       |                                     [01;31m[K^~~~~~~~~~[m[K
+[2.039s] [01m[K/home/jbreen/porting_ws/src/atrvjr_robot/atrvjr_drivers/rflex/src/atvrjr_node.cc:118:17:[m[K [01;31m[Kerror: [m[K‘[01m[Kgeomerty_msgs[m[K’ has not been declared
+[2.039s]   118 |                 [01;31m[Kgeomerty_msgs[m[K::msg::TransformStamped odom_trans;
+[2.039s]       |                 [01;31m[K^~~~~~~~~~~~~[m[K
+[2.043s] [01m[K/home/jbreen/porting_ws/src/atrvjr_robot/atrvjr_drivers/rflex/src/atvrjr_node.cc:119:17:[m[K [01;31m[Kerror: [m[K‘[01m[Kodom_trans[m[K’ was not declared in this scope
+[2.043s]   119 |                 [01;31m[Kodom_trans[m[K.header.stamp = this->now();
+[2.043s]       |                 [01;31m[K^~~~~~~~~~[m[K
+[2.047s] [01m[K/home/jbreen/porting_ws/src/atrvjr_robot/atrvjr_drivers/rflex/src/atvrjr_node.cc:125:49:[m[K [01;31m[Kerror: [m[K‘[01m[Kodom_quat[m[K’ was not declared in this scope
+[2.048s]   125 |                 odom_trans.transform.rotation = [01;31m[Kodom_quat[m[K;
+[2.048s]       |                                                 [01;31m[K^~~~~~~~~[m[K
+[2.053s] [01m[K/home/jbreen/porting_ws/src/atrvjr_robot/atrvjr_drivers/rflex/src/atvrjr_node.cc:127:17:[m[K [01;31m[Kerror: [m[K‘[01m[Kbroadcaster[m[K’ was not declared in this scope
+[2.053s]   127 |                 [01;31m[Kbroadcaster[m[K->sendTransform(odom_trans)
+[2.053s]       |                 [01;31m[K^~~~~~~~~~~[m[K
+[2.056s] [01m[K/home/jbreen/porting_ws/src/atrvjr_robot/atrvjr_drivers/rflex/src/atvrjr_node.cc:130:17:[m[K [01;31m[Kerror: [m[K‘[01m[Kodom[m[K’ was not declared in this scope
+[2.056s]   130 |                 [01;31m[Kodom[m[K.header.frame_id = this->get_parameter("odometry_frame_id").as_string();
+[2.056s]       |                 [01;31m[K^~~~[m[K
+[2.059s] [01m[K/home/jbreen/porting_ws/src/atrvjr_robot/atrvjr_drivers/rflex/src/atvrjr_node.cc:131:45:[m[K [01;31m[Kerror: [m[K‘[01m[Kx_odom[m[K’ was not declared in this scope; did you mean ‘[01m[Kx_odo[m[K’?
+[2.059s]   131 |                 odom.pose.pose.position.x = [01;31m[Kx_odom[m[K;
+[2.059s]       |                                             [01;31m[K^~~~~~[m[K
+[2.059s]       |                                             [32m[Kx_odo[m[K
+[2.062s] [01m[K/home/jbreen/porting_ws/src/atrvjr_robot/atrvjr_drivers/rflex/src/atvrjr_node.cc:132:45:[m[K [01;31m[Kerror: [m[K‘[01m[Ky_odom[m[K’ was not declared in this scope; did you mean ‘[01m[Ky_odo[m[K’?
+[2.062s]   132 |                 odom.pose.pose.position.y = [01;31m[Ky_odom[m[K;
+[2.062s]       |                                             [01;31m[K^~~~~~[m[K
+[2.062s]       |                                             [32m[Ky_odo[m[K
+[2.062s] [01m[K/home/jbreen/porting_ws/src/atrvjr_robot/atrvjr_drivers/rflex/src/atvrjr_node.cc:146:23:[m[K [01;31m[Kerror: [m[K‘[01m[Kclass atvr_jr_node[m[K’ has no member named ‘[01m[Kpublish[m[K’
+[2.062s]   146 |                 this->[01;31m[Kpublish[m[K("odom", odom);
+[2.062s]       |                       [01;31m[K^~~~~~~[m[K
+[2.062s] [01m[K/home/jbreen/porting_ws/src/atrvjr_robot/atrvjr_drivers/rflex/src/atvrjr_node.cc:148:17:[m[K [01;31m[Kerror: [m[K‘[01m[Ksensor_msgs[m[K’ has not been declared
+[2.062s]   148 |                 [01;31m[Ksensor_msgs[m[K::msg::JointState joint_state;
+[2.063s]       |                 [01;31m[K^~~~~~~~~~~[m[K
+[2.066s] [01m[K/home/jbreen/porting_ws/src/atrvjr_robot/atrvjr_drivers/rflex/src/atvrjr_node.cc:149:17:[m[K [01;31m[Kerror: [m[K‘[01m[Kjoint_state[m[K’ was not declared in this scope; did you mean ‘[01m[Kinitstate[m[K’?
+[2.066s]   149 |                 [01;31m[Kjoint_state[m[K.header.stamp = this->now();
+[2.067s]       |                 [01;31m[K^~~~~~~~~~~[m[K
+[2.067s]       |                 [32m[Kinitstate[m[K
+[2.067s] [01m[K/home/jbreen/porting_ws/src/atrvjr_robot/atrvjr_drivers/rflex/src/atvrjr_node.cc:155:23:[m[K [01;31m[Kerror: [m[K‘[01m[Kclass atvr_jr_node[m[K’ has no member named ‘[01m[Kpublish[m[K’
+[2.067s]   155 |                 this->[01;31m[Kpublish[m[K("joint_states", joint_state);
+[2.067s]       |                       [01;31m[K^~~~~~~[m[K
+[2.071s] [01m[K/home/jbreen/porting_ws/src/atrvjr_robot/atrvjr_drivers/rflex/src/atvrjr_node.cc:[m[K In constructor ‘[01m[Katvr_jr_node::atvr_jr_node()[m[K’:
+[2.071s] [01m[K/home/jbreen/porting_ws/src/atrvjr_robot/atrvjr_drivers/rflex/src/atvrjr_node.cc:186:73:[m[K [01;31m[Kerror: [m[Kcannot convert ‘[01m[Kconst string[m[K’ {aka ‘[01m[Kconst std::__cxx11::basic_string<char>[m[K’} to ‘[01m[Kint[m[K’
+[2.071s]   186 |  if(this->initialize_driver([01;31m[Kthis->get_parameter("port").as_string()[m[K)) {
+[2.071s]       |                             [01;31m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~[m[K
+[2.072s]       |                                                                  [01;31m[K|[m[K
+[2.072s]       |                                                                  [01;31m[Kconst string {aka const std::__cxx11::basic_string<char>}[m[K
+[2.072s] 
+[2.072s] [01m[K/home/jbreen/porting_ws/src/atrvjr_robot/atrvjr_drivers/rflex/src/atvrjr_node.cc:53:35:[m[K [01;36m[Knote: [m[K  initializing argument 1 of ‘[01m[Kint atvr_jr_node::initialize_driver(int)[m[K’
+[2.072s]    53 |         int initialize_driver([01;36m[Kint port[m[K) {
+[2.072s]       |                               [01;36m[K~~~~^~~~[m[K
+[2.075s] [01m[K/home/jbreen/porting_ws/src/atrvjr_robot/atrvjr_drivers/rflex/src/atvrjr_node.cc:190:9:[m[K [01;31m[Kerror: [m[K‘[01m[Kdriver[m[K’ was not declared in this scope
+[2.075s]   190 |         [01;31m[Kdriver[m[K.config.setOdoDistanceConversion(this->get_parameter("odo_distance_conversion").as_int());
+[2.075s]       |         [01;31m[K^~~~~~[m[K
+[2.076s] [01m[K/home/jbreen/porting_ws/src/atrvjr_robot/atrvjr_drivers/rflex/src/atvrjr_node.cc:200:15:[m[K [01;31m[Kerror: [m[K‘[01m[Kclass atvr_jr_node[m[K’ has no member named ‘[01m[Kcreate_subscriber[m[K’; did you mean ‘[01m[Kcreate_subscription[m[K’?
+[2.076s]   200 |         this->[01;31m[Kcreate_subscriber[m[K<geometry_msgs::msg::Twist>("cmd_vel", this->cmd_vel_callback,10);
+[2.076s]       |               [01;31m[K^~~~~~~~~~~~~~~~~[m[K
+[2.076s]       |               [32m[Kcreate_subscription[m[K
+[2.077s] [01m[K/home/jbreen/porting_ws/src/atrvjr_robot/atrvjr_drivers/rflex/src/atvrjr_node.cc:200:58:[m[K [01;31m[Kerror: [m[Kexpected primary-expression before ‘[01m[K>[m[K’ token
+[2.077s]   200 |         this->create_subscriber<geometry_msgs::msg::Twist[01;31m[K>[m[K("cmd_vel", this->cmd_vel_callback,10);
+[2.077s]       |                                                          [01;31m[K^[m[K
+[2.077s] [01m[K/home/jbreen/porting_ws/src/atrvjr_robot/atrvjr_drivers/rflex/src/atvrjr_node.cc:200:60:[m[K [01;35m[Kwarning: [m[Kleft operand of comma operator has no effect [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-value-Wunused-value]8;;[m[K]
+[2.077s]   200 |         this->create_subscriber<geometry_msgs::msg::Twist>([01;35m[K"cmd_vel"[m[K, this->cmd_vel_callback,10);
+[2.077s]       |                                                            [01;35m[K^~~~~~~~~[m[K
+[2.077s] [01m[K/home/jbreen/porting_ws/src/atrvjr_robot/atrvjr_drivers/rflex/src/atvrjr_node.cc:200:77:[m[K [01;31m[Kerror: [m[Kno context to resolve type of ‘[01m[K((atvr_jr_node*)this)->atvr_jr_node::cmd_vel_callback[m[K’
+[2.077s]   200 | eate_subscriber<geometry_msgs::msg::Twist>("cmd_vel", [01;31m[Kthis->cmd_vel_callback[m[K,10);
+[2.077s]       |                                                       [01;31m[K~~~~~~^~~~~~~~~~~~~~~~[m[K
+[2.078s] 
+[2.078s] [01m[K/home/jbreen/porting_ws/src/atrvjr_robot/atrvjr_drivers/rflex/src/atvrjr_node.cc:201:15:[m[K [01;31m[Kerror: [m[K‘[01m[Kclass atvr_jr_node[m[K’ has no member named ‘[01m[Kcreate_subscriber[m[K’; did you mean ‘[01m[Kcreate_subscription[m[K’?
+[2.078s]   201 |         this->[01;31m[Kcreate_subscriber[m[K<std_msgs::msg::Float32>("cmd_accel", this->cmd_accel_callback, 10);
+[2.078s]       |               [01;31m[K^~~~~~~~~~~~~~~~~[m[K
+[2.078s]       |               [32m[Kcreate_subscription[m[K
+[2.078s] [01m[K/home/jbreen/porting_ws/src/atrvjr_robot/atrvjr_drivers/rflex/src/atvrjr_node.cc:201:55:[m[K [01;31m[Kerror: [m[Kexpected primary-expression before ‘[01m[K>[m[K’ token
+[2.078s]   201 |         this->create_subscriber<std_msgs::msg::Float32[01;31m[K>[m[K("cmd_accel", this->cmd_accel_callback, 10);
+[2.078s]       |                                                       [01;31m[K^[m[K
+[2.078s] [01m[K/home/jbreen/porting_ws/src/atrvjr_robot/atrvjr_drivers/rflex/src/atvrjr_node.cc:201:57:[m[K [01;35m[Kwarning: [m[Kleft operand of comma operator has no effect [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-value-Wunused-value]8;;[m[K]
+[2.078s]   201 |         this->create_subscriber<std_msgs::msg::Float32>([01;35m[K"cmd_accel"[m[K, this->cmd_accel_callback, 10);
+[2.079s]       |                                                         [01;35m[K^~~~~~~~~~~[m[K
+[2.079s] [01m[K/home/jbreen/porting_ws/src/atrvjr_robot/atrvjr_drivers/rflex/src/atvrjr_node.cc:201:76:[m[K [01;31m[Kerror: [m[Kno context to resolve type of ‘[01m[K((atvr_jr_node*)this)->atvr_jr_node::cmd_accel_callback[m[K’
+[2.079s]   201 | reate_subscriber<std_msgs::msg::Float32>("cmd_accel", [01;31m[Kthis->cmd_accel_callback[m[K, 10);
+[2.079s]       |                                                       [01;31m[K~~~~~~^~~~~~~~~~~~~~~~~~[m[K
+[2.079s] 
+[2.079s] [01m[K/home/jbreen/porting_ws/src/atrvjr_robot/atrvjr_drivers/rflex/src/atvrjr_node.cc:202:15:[m[K [01;31m[Kerror: [m[K‘[01m[Kclass atvr_jr_node[m[K’ has no member named ‘[01m[Kcreate_subscriber[m[K’; did you mean ‘[01m[Kcreate_subscription[m[K’?
+[2.079s]   202 |         this->[01;31m[Kcreate_subscriber[m[K<std_msgs::msg::Bool>("cmd_sonar_power", this->cmd_sonar_power_callback, 10);
+[2.079s]       |               [01;31m[K^~~~~~~~~~~~~~~~~[m[K
+[2.079s]       |               [32m[Kcreate_subscription[m[K
+[2.079s] [01m[K/home/jbreen/porting_ws/src/atrvjr_robot/atrvjr_drivers/rflex/src/atvrjr_node.cc:202:52:[m[K [01;31m[Kerror: [m[Kexpected primary-expression before ‘[01m[K>[m[K’ token
+[2.080s]   202 |         this->create_subscriber<std_msgs::msg::Bool[01;31m[K>[m[K("cmd_sonar_power", this->cmd_sonar_power_callback, 10);
+[2.080s]       |                                                    [01;31m[K^[m[K
+[2.080s] [01m[K/home/jbreen/porting_ws/src/atrvjr_robot/atrvjr_drivers/rflex/src/atvrjr_node.cc:202:54:[m[K [01;35m[Kwarning: [m[Kleft operand of comma operator has no effect [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-value-Wunused-value]8;;[m[K]
+[2.080s]   202 |         this->create_subscriber<std_msgs::msg::Bool>([01;35m[K"cmd_sonar_power"[m[K, this->cmd_sonar_power_callback, 10);
+[2.080s]       |                                                      [01;35m[K^~~~~~~~~~~~~~~~~[m[K
+[2.080s] [01m[K/home/jbreen/porting_ws/src/atrvjr_robot/atrvjr_drivers/rflex/src/atvrjr_node.cc:202:79:[m[K [01;31m[Kerror: [m[Kno context to resolve type of ‘[01m[K((atvr_jr_node*)this)->atvr_jr_node::cmd_sonar_power_callback[m[K’
+[2.080s]   202 | te_subscriber<std_msgs::msg::Bool>("cmd_sonar_power", [01;31m[Kthis->cmd_sonar_power_callback[m[K, 10);
+[2.080s]       |                                                       [01;31m[K~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[2.080s] 
+[2.081s] [01m[K/home/jbreen/porting_ws/src/atrvjr_robot/atrvjr_drivers/rflex/src/atvrjr_node.cc:203:15:[m[K [01;31m[Kerror: [m[K‘[01m[Kclass atvr_jr_node[m[K’ has no member named ‘[01m[Kcreate_subscriber[m[K’; did you mean ‘[01m[Kcreate_subscription[m[K’?
+[2.081s]   203 |         this->[01;31m[Kcreate_subscriber[m[K<std_msgs::msg::Bool>("cmd_brake_power", this->cmd_brake_power_callback, 10);
+[2.081s]       |               [01;31m[K^~~~~~~~~~~~~~~~~[m[K
+[2.081s]       |               [32m[Kcreate_subscription[m[K
+[2.081s] [01m[K/home/jbreen/porting_ws/src/atrvjr_robot/atrvjr_drivers/rflex/src/atvrjr_node.cc:203:52:[m[K [01;31m[Kerror: [m[Kexpected primary-expression before ‘[01m[K>[m[K’ token
+[2.081s]   203 |         this->create_subscriber<std_msgs::msg::Bool[01;31m[K>[m[K("cmd_brake_power", this->cmd_brake_power_callback, 10);
+[2.081s]       |                                                    [01;31m[K^[m[K
+[2.081s] [01m[K/home/jbreen/porting_ws/src/atrvjr_robot/atrvjr_drivers/rflex/src/atvrjr_node.cc:203:54:[m[K [01;35m[Kwarning: [m[Kleft operand of comma operator has no effect [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-value-Wunused-value]8;;[m[K]
+[2.081s]   203 |         this->create_subscriber<std_msgs::msg::Bool>([01;35m[K"cmd_brake_power"[m[K, this->cmd_brake_power_callback, 10);
+[2.081s]       |                                                      [01;35m[K^~~~~~~~~~~~~~~~~[m[K
+[2.082s] [01m[K/home/jbreen/porting_ws/src/atrvjr_robot/atrvjr_drivers/rflex/src/atvrjr_node.cc:203:79:[m[K [01;31m[Kerror: [m[Kno context to resolve type of ‘[01m[K((atvr_jr_node*)this)->atvr_jr_node::cmd_brake_power_callback[m[K’
+[2.082s]   203 | te_subscriber<std_msgs::msg::Bool>("cmd_brake_power", [01;31m[Kthis->cmd_brake_power_callback[m[K, 10);
+[2.082s]       |                                                       [01;31m[K~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[2.082s] 
+[2.085s] [01m[K/home/jbreen/porting_ws/src/atrvjr_robot/atrvjr_drivers/rflex/src/atvrjr_node.cc:210:32:[m[K [01;31m[Kerror: [m[K‘[01m[Knav_msgs[m[K’ was not declared in this scope
+[2.085s]   210 |         this->create_publisher<[01;31m[Knav_msgs[m[K::msg::Odometry>("odom", 50);
+[2.085s]       |                                [01;31m[K^~~~~~~~[m[K
+[2.086s] [01m[K/home/jbreen/porting_ws/src/atrvjr_robot/atrvjr_drivers/rflex/src/atvrjr_node.cc:210:15:[m[K [01;31m[Kerror: [m[Kparse error in template argument list
+[2.086s]   210 |         this->[01;31m[Kcreate_publisher<nav_msgs::msg::Odometry>[m[K("odom", 50);
+[2.086s]       |               [01;31m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[2.086s] [01m[K/home/jbreen/porting_ws/src/atrvjr_robot/atrvjr_drivers/rflex/src/atvrjr_node.cc:210:56:[m[K [01;31m[Kerror: [m[Kno matching function for call to ‘[01m[Katvr_jr_node::create_publisher<<expression error> >(const char [5], int)[m[K’
+[2.086s]   210 |         [01;31m[Kthis->create_publisher<nav_msgs::msg::Odometry>("odom", 50)[m[K;
+[2.086s]       |         [01;31m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~[m[K
+[2.086s] In file included from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/node.hpp:1321[m[K,
+[2.087s]                  from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executors/single_threaded_executor.hpp:28[m[K,
+[2.087s]                  from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executors.hpp:22[m[K,
+[2.087s]                  from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/rclcpp.hpp:155[m[K,
+[2.087s]                  from [01m[K/home/jbreen/porting_ws/src/atrvjr_robot/atrvjr_drivers/rflex/src/atvrjr_node.cc:7[m[K:
+[2.087s] [01m[K/opt/ros/humble/include/rclcpp/rclcpp/node_impl.hpp:73:1:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Ktemplate<class MessageT, class AllocatorT, class PublisherT> std::shared_ptr<PublisherT> rclcpp::Node::create_publisher(const string&, const rclcpp::QoS&, const rclcpp::PublisherOptionsWithAllocator<AllocatorT>&)[m[K’
+[2.087s]    73 | [01;36m[KNode[m[K::create_publisher(
+[2.087s]       | [01;36m[K^~~~[m[K
+[2.087s] [01m[K/opt/ros/humble/include/rclcpp/rclcpp/node_impl.hpp:73:1:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[2.087s] [01m[K/home/jbreen/porting_ws/src/atrvjr_robot/atrvjr_drivers/rflex/src/atvrjr_node.cc:210:56:[m[K [01;31m[Kerror: [m[Ktemplate argument 1 is invalid
+[2.087s]   210 |         [01;31m[Kthis->create_publisher<nav_msgs::msg::Odometry>("odom", 50)[m[K;
+[2.088s]       |         [01;31m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~[m[K
+[2.091s] [01m[K/home/jbreen/porting_ws/src/atrvjr_robot/atrvjr_drivers/rflex/src/atvrjr_node.cc:212:32:[m[K [01;31m[Kerror: [m[K‘[01m[Ksensor_msgs[m[K’ was not declared in this scope
+[2.092s]   212 |         this->create_publisher<[01;31m[Ksensor_msgs[m[K::msg::JointState>("state",1);
+[2.092s]       |                                [01;31m[K^~~~~~~~~~~[m[K
+[2.092s] [01m[K/home/jbreen/porting_ws/src/atrvjr_robot/atrvjr_drivers/rflex/src/atvrjr_node.cc:212:15:[m[K [01;31m[Kerror: [m[Kparse error in template argument list
+[2.092s]   212 |         this->[01;31m[Kcreate_publisher<sensor_msgs::msg::JointState>[m[K("state",1);
+[2.092s]       |               [01;31m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[2.092s] [01m[K/home/jbreen/porting_ws/src/atrvjr_robot/atrvjr_drivers/rflex/src/atvrjr_node.cc:212:61:[m[K [01;31m[Kerror: [m[Kno matching function for call to ‘[01m[Katvr_jr_node::create_publisher<<expression error> >(const char [6], int)[m[K’
+[2.092s]   212 |         [01;31m[Kthis->create_publisher<sensor_msgs::msg::JointState>("state",1)[m[K;
+[2.092s]       |         [01;31m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~[m[K
+[2.093s] In file included from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/node.hpp:1321[m[K,
+[2.093s]                  from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executors/single_threaded_executor.hpp:28[m[K,
+[2.093s]                  from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executors.hpp:22[m[K,
+[2.093s]                  from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/rclcpp.hpp:155[m[K,
+[2.093s]                  from [01m[K/home/jbreen/porting_ws/src/atrvjr_robot/atrvjr_drivers/rflex/src/atvrjr_node.cc:7[m[K:
+[2.093s] [01m[K/opt/ros/humble/include/rclcpp/rclcpp/node_impl.hpp:73:1:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Ktemplate<class MessageT, class AllocatorT, class PublisherT> std::shared_ptr<PublisherT> rclcpp::Node::create_publisher(const string&, const rclcpp::QoS&, const rclcpp::PublisherOptionsWithAllocator<AllocatorT>&)[m[K’
+[2.093s]    73 | [01;36m[KNode[m[K::create_publisher(
+[2.093s]       | [01;36m[K^~~~[m[K
+[2.093s] [01m[K/opt/ros/humble/include/rclcpp/rclcpp/node_impl.hpp:73:1:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[2.093s] [01m[K/home/jbreen/porting_ws/src/atrvjr_robot/atrvjr_drivers/rflex/src/atvrjr_node.cc:212:61:[m[K [01;31m[Kerror: [m[Ktemplate argument 1 is invalid
+[2.094s]   212 |         [01;31m[Kthis->create_publisher<sensor_msgs::msg::JointState>("state",1)[m[K;
+[2.094s]       |         [01;31m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~[m[K
+[2.094s] [01m[K/home/jbreen/porting_ws/src/atrvjr_robot/atrvjr_drivers/rflex/src/atvrjr_node.cc:215:9:[m[K [01;31m[Kerror: [m[K‘[01m[Ktimer_[m[K’ was not declared in this scope; did you mean ‘[01m[Ktimer_t[m[K’?
+[2.094s]   215 |         [01;31m[Ktimer_[m[K = this->create_wall_timer(
+[2.094s]       |         [01;31m[K^~~~~~[m[K
+[2.095s]       |         [32m[Ktimer_t[m[K
+[2.095s] [01m[K/home/jbreen/porting_ws/src/atrvjr_robot/atrvjr_drivers/rflex/src/atvrjr_node.cc:216:66:[m[K [01;31m[Kerror: [m[K‘[01m[Ktimer_callback[m[K’ is not a member of ‘[01m[Katvr_jr_node[m[K’
+[2.095s]   216 |    std::chrono::milliseconds(500), std::bind(&atvr_jr_node::[01;31m[Ktimer_callback[m[K, this));
+[2.095s]       |                                                             [01;31m[K^~~~~~~~~~~~~~[m[K
+[2.095s] 
+[2.625s] gmake[2]: *** [CMakeFiles/rflex_ros2.dir/build.make:76: CMakeFiles/rflex_ros2.dir/src/atvrjr_node.cc.o] Error 1
+[2.626s] gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/rflex_ros2.dir/all] Error 2
+[2.626s] gmake: *** [Makefile:146: all] Error 2
+[2.628s] Invoked command in '/home/jbreen/porting_ws/src/atrvjr_robot/build/rflex' returned '2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /home/jbreen/cmake-install/bin/cmake --build /home/jbreen/porting_ws/src/atrvjr_robot/build/rflex -- -j12 -l12

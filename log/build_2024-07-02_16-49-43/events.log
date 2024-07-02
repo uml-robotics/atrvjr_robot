@@ -1,0 +1,273 @@
+[0.000000] (-) TimerEvent: {}
+[0.000416] (rflex) JobQueued: {'identifier': 'rflex', 'dependencies': OrderedDict()}
+[0.000464] (rflex) JobStarted: {'identifier': 'rflex'}
+[0.007257] (rflex) JobProgress: {'identifier': 'rflex', 'progress': 'cmake'}
+[0.007669] (rflex) JobProgress: {'identifier': 'rflex', 'progress': 'build'}
+[0.008244] (rflex) Command: {'cmd': ['/home/jbreen/cmake-install/bin/cmake', '--build', '/home/jbreen/porting_ws/src/atrvjr_robot/build/rflex', '--', '-j12', '-l12'], 'cwd': '/home/jbreen/porting_ws/src/atrvjr_robot/build/rflex', 'env': OrderedDict([('GJS_DEBUG_TOPICS', 'JS ERROR;JS LOG'), ('LESSOPEN', '| /usr/bin/lesspipe %s'), ('USER', 'jbreen'), ('SSH_AGENT_PID', '216143'), ('XDG_SESSION_TYPE', 'x11'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib'), ('HOME', '/home/jbreen'), ('OLDPWD', '/home/jbreen/porting_ws'), ('DESKTOP_SESSION', 'ubuntu'), ('GIO_LAUNCHED_DESKTOP_FILE', '/usr/share/applications/terminator.desktop'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('MANAGERPID', '2279'), ('SYSTEMD_EXEC_PID', '2524'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1001/bus'), ('COLORTERM', 'truecolor'), ('TERMINATOR_DBUS_NAME', 'net.tenshu.Terminator23558193cd9818af7fe4d2c2f5bd9d00f'), ('GIO_LAUNCHED_DESKTOP_FILE_PID', '7499'), ('IM_CONFIG_PHASE', '1'), ('ROS_DISTRO', 'humble'), ('GTK_IM_MODULE', 'ibus'), ('LOGNAME', 'jbreen'), ('JOURNAL_STREAM', '8:39477'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'jbreen'), ('TERM', 'xterm-256color'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('ROS_LOCALHOST_ONLY', '0'), ('WINDOWPATH', '2'), ('PATH', '/home/jbreen/cmake-install/bin:/opt/ros/humble/bin:/home/jbreen/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin'), ('SESSION_MANAGER', 'local/robot-lab33:@/tmp/.ICE-unix/2501,unix/robot-lab33:/tmp/.ICE-unix/2501'), ('INVOCATION_ID', 'e72a2e68838147d39d8f68f0c5582a08'), ('XDG_MENU_PREFIX', 'gnome-'), ('XDG_RUNTIME_DIR', '/run/user/1001'), ('DISPLAY', ':1'), ('TERMINATOR_DBUS_PATH', '/net/tenshu/Terminator2'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('IBUS_DISABLE_SNOOPER', '1'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1001/gdm/Xauthority'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('SSH_AGENT_LAUNCHER', 'gnome-keyring'), ('SSH_AUTH_SOCK', '/tmp/ssh-XXXXXX1l0dag/agent.216142'), ('AMENT_PREFIX_PATH', '/opt/ros/humble'), ('SHELL', '/bin/bash'), ('TERMINATOR_UUID', 'urn:uuid:d8b78505-dfa5-4e9c-aeeb-c898af7f708a'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('GPG_AGENT_INFO', '/run/user/1001/gnupg/S.gpg-agent:0:1'), ('GJS_DEBUG_OUTPUT', 'stderr'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/jbreen/porting_ws/src/atrvjr_robot/build/rflex'), ('LC_ALL', 'en_US.UTF-8'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/share/gnome:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('PYTHONPATH', '/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('COLCON', '1'), ('VTE_VERSION', '6800'), ('CMAKE_PREFIX_PATH', '/home/jbreen/cmake-install::/opt/ros/humble')]), 'shell': False}
+[0.036737] (rflex) StdoutLine: {'line': b'[ 50%] \x1b[32mBuilding CXX object CMakeFiles/rflex_ros2.dir/src/atvrjr_node.cc.o\x1b[0m\n'}
+[0.099405] (-) TimerEvent: {}
+[0.199594] (-) TimerEvent: {}
+[0.299854] (-) TimerEvent: {}
+[0.400138] (-) TimerEvent: {}
+[0.500404] (-) TimerEvent: {}
+[0.600661] (-) TimerEvent: {}
+[0.638646] (rflex) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/include/boost/bind.hpp:30\x1b[m\x1b[K,\n'}
+[0.638885] (rflex) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/jbreen/porting_ws/src/atrvjr_robot/atrvjr_drivers/rflex/src/atvrjr_node.cc:2\x1b[m\x1b[K:\n'}
+[0.638993] (rflex) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/boost/bind.hpp:36:1:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[K#pragma message: The practice of declaring the Bind placeholders (_1, _2, ...) in the global namespace is deprecated. Please use <boost/bind/bind.hpp> + using namespace boost::placeholders, or define BOOST_BIND_GLOBAL_PLACEHOLDERS to retain the current behavior.\x1b[m\x1b[K\xe2\x80\x99\n'}
+[0.639097] (rflex) StderrLine: {'line': b'   36 | \x1b[01;36m\x1b[KBOOST_PRAGMA_MESSAGE\x1b[m\x1b[K(\n'}
+[0.639192] (rflex) StderrLine: {'line': b'      | \x1b[01;36m\x1b[K^~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[0.700764] (-) TimerEvent: {}
+[0.750262] (rflex) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/home/jbreen/porting_ws/src/atrvjr_robot/atrvjr_drivers/rflex/src/atvrjr_node.cc:5\x1b[m\x1b[K:\n'}
+[0.750477] (rflex) StderrLine: {'line': b'\x1b[01m\x1b[K/home/jbreen/porting_ws/src/atrvjr_robot/atrvjr_drivers/rflex/include/rflex/atrvjr_driver.h:48:33:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Ksensor_msgs\x1b[m\x1b[K\xe2\x80\x99 has not been declared\n'}
+[0.750583] (rflex) StderrLine: {'line': b'   48 |         void getBaseSonarPoints(\x1b[01;31m\x1b[Ksensor_msgs\x1b[m\x1b[K::PointCloud* cloud) const;\n'}
+[0.750680] (rflex) StderrLine: {'line': b'      |                                 \x1b[01;31m\x1b[K^~~~~~~~~~~\x1b[m\x1b[K\n'}
+[0.750774] (rflex) StderrLine: {'line': b'\x1b[01m\x1b[K/home/jbreen/porting_ws/src/atrvjr_robot/atrvjr_drivers/rflex/include/rflex/atrvjr_driver.h:48:56:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kexpected \xe2\x80\x98\x1b[01m\x1b[K,\x1b[m\x1b[K\xe2\x80\x99 or \xe2\x80\x98\x1b[01m\x1b[K...\x1b[m\x1b[K\xe2\x80\x99 before \xe2\x80\x98\x1b[01m\x1b[K*\x1b[m\x1b[K\xe2\x80\x99 token\n'}
+[0.750871] (rflex) StderrLine: {'line': b'   48 |         void getBaseSonarPoints(sensor_msgs::PointCloud\x1b[01;31m\x1b[K*\x1b[m\x1b[K cloud) const;\n'}
+[0.750966] (rflex) StderrLine: {'line': b'      |                                                        \x1b[01;31m\x1b[K^\x1b[m\x1b[K\n'}
+[0.751200] (rflex) StderrLine: {'line': b'\x1b[01m\x1b[K/home/jbreen/porting_ws/src/atrvjr_robot/atrvjr_drivers/rflex/include/rflex/atrvjr_driver.h:92:9:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kros\x1b[m\x1b[K\xe2\x80\x99 does not name a type\n'}
+[0.751302] (rflex) StderrLine: {'line': b'   92 |         \x1b[01;31m\x1b[Kros\x1b[m\x1b[K::Time last_velocity_time;\n'}
+[0.751397] (rflex) StderrLine: {'line': b'      |         \x1b[01;31m\x1b[K^~~\x1b[m\x1b[K\n'}
+[0.800851] (-) TimerEvent: {}
+[0.901089] (-) TimerEvent: {}
+[1.001374] (-) TimerEvent: {}
+[1.101663] (-) TimerEvent: {}
+[1.201956] (-) TimerEvent: {}
+[1.302245] (-) TimerEvent: {}
+[1.402542] (-) TimerEvent: {}
+[1.502839] (-) TimerEvent: {}
+[1.603134] (-) TimerEvent: {}
+[1.703430] (-) TimerEvent: {}
+[1.803724] (-) TimerEvent: {}
+[1.904017] (-) TimerEvent: {}
+[1.999741] (rflex) StderrLine: {'line': b'\x1b[01m\x1b[K/home/jbreen/porting_ws/src/atrvjr_robot/atrvjr_drivers/rflex/src/atvrjr_node.cc:16:9:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KATVRJR\x1b[m\x1b[K\xe2\x80\x99 does not name a type; did you mean \xe2\x80\x98\x1b[01m\x1b[KATRVJR\x1b[m\x1b[K\xe2\x80\x99?\n'}
+[1.999953] (rflex) StderrLine: {'line': b'   16 |         \x1b[01;31m\x1b[KATVRJR\x1b[m\x1b[K driver;\n'}
+[2.000056] (rflex) StderrLine: {'line': b'      |         \x1b[01;31m\x1b[K^~~~~~\x1b[m\x1b[K\n'}
+[2.000151] (rflex) StderrLine: {'line': b'      |         \x1b[32m\x1b[KATRVJR\x1b[m\x1b[K\n'}
+[2.000380] (rflex) StderrLine: {'line': b'\x1b[01m\x1b[K/home/jbreen/porting_ws/src/atrvjr_robot/atrvjr_drivers/rflex/src/atvrjr_node.cc:24:9:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Ktf\x1b[m\x1b[K\xe2\x80\x99 does not name a type; did you mean \xe2\x80\x98\x1b[01m\x1b[Ktm\x1b[m\x1b[K\xe2\x80\x99?\n'}
+[2.000489] (rflex) StderrLine: {'line': b'   24 |         \x1b[01;31m\x1b[Ktf\x1b[m\x1b[K::TransformBroadcaster broadcaster = std::make_unique<tf2_ros::TransformBroadcaster>(*this);\n'}
+[2.000586] (rflex) StderrLine: {'line': b'      |         \x1b[01;31m\x1b[K^~\x1b[m\x1b[K\n'}
+[2.000680] (rflex) StderrLine: {'line': b'      |         \x1b[32m\x1b[Ktm\x1b[m\x1b[K\n'}
+[2.004089] (-) TimerEvent: {}
+[2.004752] (rflex) StderrLine: {'line': b'\x1b[01m\x1b[K/home/jbreen/porting_ws/src/atrvjr_robot/atrvjr_drivers/rflex/src/atvrjr_node.cc:26:9:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kdynamic_reconfigure\x1b[m\x1b[K\xe2\x80\x99 does not name a type\n'}
+[2.004882] (rflex) StderrLine: {'line': b'   26 |         \x1b[01;31m\x1b[Kdynamic_reconfigure\x1b[m\x1b[K::Server<rflex::AtrvjrParamsConfig> reconfigure_srv_;\n'}
+[2.004983] (rflex) StderrLine: {'line': b'      |         \x1b[01;31m\x1b[K^~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[2.010705] (rflex) StderrLine: {'line': b'\x1b[01m\x1b[K/home/jbreen/porting_ws/src/atrvjr_robot/atrvjr_drivers/rflex/src/atvrjr_node.cc:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvoid atvr_jr_node::cmd_vel_callback(geometry_msgs::msg::Twist_<std::allocator<void> >::SharedPtr)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[2.010832] (rflex) StderrLine: {'line': b'\x1b[01m\x1b[K/home/jbreen/porting_ws/src/atrvjr_robot/atrvjr_drivers/rflex/src/atvrjr_node.cc:31:13:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kdriver\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope\n'}
+[2.010930] (rflex) StderrLine: {'line': b'   31 |             \x1b[01;31m\x1b[Kdriver\x1b[m\x1b[K->setVelocity(msg->linear.x, msg->angular.z);\n'}
+[2.011024] (rflex) StderrLine: {'line': b'      |             \x1b[01;31m\x1b[K^~~~~~\x1b[m\x1b[K\n'}
+[2.015666] (rflex) StderrLine: {'line': b'\x1b[01m\x1b[K/home/jbreen/porting_ws/src/atrvjr_robot/atrvjr_drivers/rflex/src/atvrjr_node.cc:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvoid atvr_jr_node::cmd_accel_callback(std_msgs::msg::Float32_<std::allocator<void> >::SharedPtr)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[2.015814] (rflex) StderrLine: {'line': b'\x1b[01m\x1b[K/home/jbreen/porting_ws/src/atrvjr_robot/atrvjr_drivers/rflex/src/atvrjr_node.cc:37:13:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kdriver\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope\n'}
+[2.015912] (rflex) StderrLine: {'line': b'   37 |             \x1b[01;31m\x1b[Kdriver\x1b[m\x1b[K->setTransAcc(msg->data);\n'}
+[2.016005] (rflex) StderrLine: {'line': b'      |             \x1b[01;31m\x1b[K^~~~~~\x1b[m\x1b[K\n'}
+[2.020675] (rflex) StderrLine: {'line': b'\x1b[01m\x1b[K/home/jbreen/porting_ws/src/atrvjr_robot/atrvjr_drivers/rflex/src/atvrjr_node.cc:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvoid atvr_jr_node::cmd_sonar_power_callback(std_msgs::msg::Bool_<std::allocator<void> >::SharedPtr)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[2.020863] (rflex) StderrLine: {'line': b'\x1b[01m\x1b[K/home/jbreen/porting_ws/src/atrvjr_robot/atrvjr_drivers/rflex/src/atvrjr_node.cc:43:13:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kdriver\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope\n'}
+[2.020963] (rflex) StderrLine: {'line': b'   43 |             \x1b[01;31m\x1b[Kdriver\x1b[m\x1b[K->setSonarPower(msg->data);\n'}
+[2.021058] (rflex) StderrLine: {'line': b'      |             \x1b[01;31m\x1b[K^~~~~~\x1b[m\x1b[K\n'}
+[2.024326] (rflex) StderrLine: {'line': b'\x1b[01m\x1b[K/home/jbreen/porting_ws/src/atrvjr_robot/atrvjr_drivers/rflex/src/atvrjr_node.cc:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvoid atvr_jr_node::cmd_brake_power_callback(std_msgs::msg::Bool_<std::allocator<void> >::SharedPtr)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[2.024447] (rflex) StderrLine: {'line': b'\x1b[01m\x1b[K/home/jbreen/porting_ws/src/atrvjr_robot/atrvjr_drivers/rflex/src/atvrjr_node.cc:50:13:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kdriver\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope\n'}
+[2.024542] (rflex) StderrLine: {'line': b'   50 |             \x1b[01;31m\x1b[Kdriver\x1b[m\x1b[K->setBrakePower(msg->data);\n'}
+[2.024636] (rflex) StderrLine: {'line': b'      |             \x1b[01;31m\x1b[K^~~~~~\x1b[m\x1b[K\n'}
+[2.027681] (rflex) StderrLine: {'line': b'\x1b[01m\x1b[K/home/jbreen/porting_ws/src/atrvjr_robot/atrvjr_drivers/rflex/src/atvrjr_node.cc:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kint atvr_jr_node::initialize_driver(int)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[2.027794] (rflex) StderrLine: {'line': b'\x1b[01m\x1b[K/home/jbreen/porting_ws/src/atrvjr_robot/atrvjr_drivers/rflex/src/atvrjr_node.cc:54:23:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kdriver\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope\n'}
+[2.027894] (rflex) StderrLine: {'line': b'   54 |             int ret = \x1b[01;31m\x1b[Kdriver\x1b[m\x1b[K.initialize(port);\n'}
+[2.027991] (rflex) StderrLine: {'line': b'      |                       \x1b[01;31m\x1b[K^~~~~~\x1b[m\x1b[K\n'}
+[2.031262] (rflex) StderrLine: {'line': b'\x1b[01m\x1b[K/home/jbreen/porting_ws/src/atrvjr_robot/atrvjr_drivers/rflex/src/atvrjr_node.cc:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvoid atvr_jr_node::system_status_callback()\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[2.031475] (rflex) StderrLine: {'line': b'\x1b[01m\x1b[K/home/jbreen/porting_ws/src/atrvjr_robot/atrvjr_drivers/rflex/src/atvrjr_node.cc:72:32:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kdriver\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope\n'}
+[2.031580] (rflex) StderrLine: {'line': b'   72 |             sonar_power.data = \x1b[01;31m\x1b[Kdriver\x1b[m\x1b[K->getSonarPower();\n'}
+[2.031685] (rflex) StderrLine: {'line': b'      |                                \x1b[01;31m\x1b[K^~~~~~\x1b[m\x1b[K\n'}
+[2.031781] (rflex) StderrLine: {'line': b'\x1b[01m\x1b[K/home/jbreen/porting_ws/src/atrvjr_robot/atrvjr_drivers/rflex/src/atvrjr_node.cc:73:19:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kclass atvr_jr_node\x1b[m\x1b[K\xe2\x80\x99 has no member named \xe2\x80\x98\x1b[01m\x1b[Kpublish\x1b[m\x1b[K\xe2\x80\x99\n'}
+[2.031884] (rflex) StderrLine: {'line': b'   73 |             this->\x1b[01;31m\x1b[Kpublish\x1b[m\x1b[K("sonar_power", sonar_power);\n'}
+[2.031983] (rflex) StderrLine: {'line': b'      |                   \x1b[01;31m\x1b[K^~~~~~~\x1b[m\x1b[K\n'}
+[2.032081] (rflex) StderrLine: {'line': b'\x1b[01m\x1b[K/home/jbreen/porting_ws/src/atrvjr_robot/atrvjr_drivers/rflex/src/atvrjr_node.cc:78:19:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kclass atvr_jr_node\x1b[m\x1b[K\xe2\x80\x99 has no member named \xe2\x80\x98\x1b[01m\x1b[Kpublish\x1b[m\x1b[K\xe2\x80\x99\n'}
+[2.032214] (rflex) StderrLine: {'line': b'   78 |             this->\x1b[01;31m\x1b[Kpublish\x1b[m\x1b[K("brake_power", brake_power);\n'}
+[2.032321] (rflex) StderrLine: {'line': b'      |                   \x1b[01;31m\x1b[K^~~~~~~\x1b[m\x1b[K\n'}
+[2.032420] (rflex) StderrLine: {'line': b'\x1b[01m\x1b[K/home/jbreen/porting_ws/src/atrvjr_robot/atrvjr_drivers/rflex/src/atvrjr_node.cc:83:19:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kclass atvr_jr_node\x1b[m\x1b[K\xe2\x80\x99 has no member named \xe2\x80\x98\x1b[01m\x1b[Kpublish\x1b[m\x1b[K\xe2\x80\x99\n'}
+[2.032521] (rflex) StderrLine: {'line': b'   83 |             this->\x1b[01;31m\x1b[Kpublish\x1b[m\x1b[K("voltage", voltage);\n'}
+[2.032618] (rflex) StderrLine: {'line': b'      |                   \x1b[01;31m\x1b[K^~~~~~~\x1b[m\x1b[K\n'}
+[2.032715] (rflex) StderrLine: {'line': b'\x1b[01m\x1b[K/home/jbreen/porting_ws/src/atrvjr_robot/atrvjr_drivers/rflex/src/atvrjr_node.cc:88:19:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kclass atvr_jr_node\x1b[m\x1b[K\xe2\x80\x99 has no member named \xe2\x80\x98\x1b[01m\x1b[Kpublish\x1b[m\x1b[K\xe2\x80\x99\n'}
+[2.032814] (rflex) StderrLine: {'line': b'   88 |             this->\x1b[01;31m\x1b[Kpublish\x1b[m\x1b[K("plugged_in", plugged_in);\n'}
+[2.032924] (rflex) StderrLine: {'line': b'      |                   \x1b[01;31m\x1b[K^~~~~~~\x1b[m\x1b[K\n'}
+[2.034899] (rflex) StderrLine: {'line': b'\x1b[01m\x1b[K/home/jbreen/porting_ws/src/atrvjr_robot/atrvjr_drivers/rflex/src/atvrjr_node.cc:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvoid atvr_jr_node::motor_update_callback()\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[2.035041] (rflex) StderrLine: {'line': b'\x1b[01m\x1b[K/home/jbreen/porting_ws/src/atrvjr_robot/atrvjr_drivers/rflex/src/atvrjr_node.cc:92:17:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kdriver\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope\n'}
+[2.035141] (rflex) StderrLine: {'line': b'   92 |             if (\x1b[01;31m\x1b[Kdriver\x1b[m\x1b[K->isOdomReady()) {\n'}
+[2.035238] (rflex) StderrLine: {'line': b'      |                 \x1b[01;31m\x1b[K^~~~~~\x1b[m\x1b[K\n'}
+[2.035335] (rflex) StderrLine: {'line': b'\x1b[01m\x1b[K/home/jbreen/porting_ws/src/atrvjr_robot/atrvjr_drivers/rflex/src/atvrjr_node.cc:95:39:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kangles\x1b[m\x1b[K\xe2\x80\x99 has not been declared\n'}
+[2.035434] (rflex) StderrLine: {'line': b'   95 |                 double true_bearing = \x1b[01;31m\x1b[Kangles\x1b[m\x1b[K::normalize_angle(driver->getBearing());\n'}
+[2.035548] (rflex) StderrLine: {'line': b'      |                                       \x1b[01;31m\x1b[K^~~~~~\x1b[m\x1b[K\n'}
+[2.038238] (rflex) StderrLine: {'line': b'\x1b[01m\x1b[K/home/jbreen/porting_ws/src/atrvjr_robot/atrvjr_drivers/rflex/src/atvrjr_node.cc:106:67:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kdelta_a\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope; did you mean \xe2\x80\x98\x1b[01m\x1b[Kdelta_x\x1b[m\x1b[K\xe2\x80\x99?\n'}
+[2.038408] (rflex) StderrLine: {'line': b'  106 |               double delta_x = delta_distance * cos(a_odo + \x1b[01;31m\x1b[Kdelta_a\x1b[m\x1b[K/2);\n'}
+[2.038554] (rflex) StderrLine: {'line': b'      |                                                             \x1b[01;31m\x1b[K^~~~~~~\x1b[m\x1b[K\n'}
+[2.038655] (rflex) StderrLine: {'line': b'      |                                                             \x1b[32m\x1b[Kdelta_x\x1b[m\x1b[K\n'}
+[2.038752] (rflex) StderrLine: {'line': b'\x1b[01m\x1b[K/home/jbreen/porting_ws/src/atrvjr_robot/atrvjr_drivers/rflex/src/atvrjr_node.cc:111:29:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kangles\x1b[m\x1b[K\xe2\x80\x99 has not been declared\n'}
+[2.038851] (rflex) StderrLine: {'line': b'  111 |                     a_odo = \x1b[01;31m\x1b[Kangles\x1b[m\x1b[K::normalize_angle(a_odo);\n'}
+[2.038949] (rflex) StderrLine: {'line': b'      |                             \x1b[01;31m\x1b[K^~~~~~\x1b[m\x1b[K\n'}
+[2.039066] (rflex) StderrLine: {'line': b'\x1b[01m\x1b[K/home/jbreen/porting_ws/src/atrvjr_robot/atrvjr_drivers/rflex/src/atvrjr_node.cc:116:37:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KQuaternion\x1b[m\x1b[K\xe2\x80\x99 is not a member of \xe2\x80\x98\x1b[01m\x1b[Kgeometry_msgs::msg\x1b[m\x1b[K\xe2\x80\x99\n'}
+[2.039168] (rflex) StderrLine: {'line': b'  116 |                 geometry_msgs::msg::\x1b[01;31m\x1b[KQuaternion\x1b[m\x1b[K odom_quat = tf::createQuaternionMsgFromYaw(last_bearing);\n'}
+[2.039270] (rflex) StderrLine: {'line': b'      |                                     \x1b[01;31m\x1b[K^~~~~~~~~~\x1b[m\x1b[K\n'}
+[2.039368] (rflex) StderrLine: {'line': b'\x1b[01m\x1b[K/home/jbreen/porting_ws/src/atrvjr_robot/atrvjr_drivers/rflex/src/atvrjr_node.cc:118:17:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kgeomerty_msgs\x1b[m\x1b[K\xe2\x80\x99 has not been declared\n'}
+[2.039467] (rflex) StderrLine: {'line': b'  118 |                 \x1b[01;31m\x1b[Kgeomerty_msgs\x1b[m\x1b[K::msg::TransformStamped odom_trans;\n'}
+[2.039564] (rflex) StderrLine: {'line': b'      |                 \x1b[01;31m\x1b[K^~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[2.042897] (rflex) StderrLine: {'line': b'\x1b[01m\x1b[K/home/jbreen/porting_ws/src/atrvjr_robot/atrvjr_drivers/rflex/src/atvrjr_node.cc:119:17:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kodom_trans\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope\n'}
+[2.043017] (rflex) StderrLine: {'line': b'  119 |                 \x1b[01;31m\x1b[Kodom_trans\x1b[m\x1b[K.header.stamp = this->now();\n'}
+[2.043117] (rflex) StderrLine: {'line': b'      |                 \x1b[01;31m\x1b[K^~~~~~~~~~\x1b[m\x1b[K\n'}
+[2.047829] (rflex) StderrLine: {'line': b'\x1b[01m\x1b[K/home/jbreen/porting_ws/src/atrvjr_robot/atrvjr_drivers/rflex/src/atvrjr_node.cc:125:49:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kodom_quat\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope\n'}
+[2.047951] (rflex) StderrLine: {'line': b'  125 |                 odom_trans.transform.rotation = \x1b[01;31m\x1b[Kodom_quat\x1b[m\x1b[K;\n'}
+[2.048050] (rflex) StderrLine: {'line': b'      |                                                 \x1b[01;31m\x1b[K^~~~~~~~~\x1b[m\x1b[K\n'}
+[2.053247] (rflex) StderrLine: {'line': b'\x1b[01m\x1b[K/home/jbreen/porting_ws/src/atrvjr_robot/atrvjr_drivers/rflex/src/atvrjr_node.cc:127:17:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kbroadcaster\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope\n'}
+[2.053388] (rflex) StderrLine: {'line': b'  127 |                 \x1b[01;31m\x1b[Kbroadcaster\x1b[m\x1b[K->sendTransform(odom_trans)\n'}
+[2.053487] (rflex) StderrLine: {'line': b'      |                 \x1b[01;31m\x1b[K^~~~~~~~~~~\x1b[m\x1b[K\n'}
+[2.056199] (rflex) StderrLine: {'line': b'\x1b[01m\x1b[K/home/jbreen/porting_ws/src/atrvjr_robot/atrvjr_drivers/rflex/src/atvrjr_node.cc:130:17:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kodom\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope\n'}
+[2.056338] (rflex) StderrLine: {'line': b'  130 |                 \x1b[01;31m\x1b[Kodom\x1b[m\x1b[K.header.frame_id = this->get_parameter("odometry_frame_id").as_string();\n'}
+[2.056454] (rflex) StderrLine: {'line': b'      |                 \x1b[01;31m\x1b[K^~~~\x1b[m\x1b[K\n'}
+[2.059133] (rflex) StderrLine: {'line': b'\x1b[01m\x1b[K/home/jbreen/porting_ws/src/atrvjr_robot/atrvjr_drivers/rflex/src/atvrjr_node.cc:131:45:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kx_odom\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope; did you mean \xe2\x80\x98\x1b[01m\x1b[Kx_odo\x1b[m\x1b[K\xe2\x80\x99?\n'}
+[2.059241] (rflex) StderrLine: {'line': b'  131 |                 odom.pose.pose.position.x = \x1b[01;31m\x1b[Kx_odom\x1b[m\x1b[K;\n'}
+[2.059335] (rflex) StderrLine: {'line': b'      |                                             \x1b[01;31m\x1b[K^~~~~~\x1b[m\x1b[K\n'}
+[2.059442] (rflex) StderrLine: {'line': b'      |                                             \x1b[32m\x1b[Kx_odo\x1b[m\x1b[K\n'}
+[2.061966] (rflex) StderrLine: {'line': b'\x1b[01m\x1b[K/home/jbreen/porting_ws/src/atrvjr_robot/atrvjr_drivers/rflex/src/atvrjr_node.cc:132:45:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Ky_odom\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope; did you mean \xe2\x80\x98\x1b[01m\x1b[Ky_odo\x1b[m\x1b[K\xe2\x80\x99?\n'}
+[2.062140] (rflex) StderrLine: {'line': b'  132 |                 odom.pose.pose.position.y = \x1b[01;31m\x1b[Ky_odom\x1b[m\x1b[K;\n'}
+[2.062241] (rflex) StderrLine: {'line': b'      |                                             \x1b[01;31m\x1b[K^~~~~~\x1b[m\x1b[K\n'}
+[2.062340] (rflex) StderrLine: {'line': b'      |                                             \x1b[32m\x1b[Ky_odo\x1b[m\x1b[K\n'}
+[2.062438] (rflex) StderrLine: {'line': b'\x1b[01m\x1b[K/home/jbreen/porting_ws/src/atrvjr_robot/atrvjr_drivers/rflex/src/atvrjr_node.cc:146:23:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kclass atvr_jr_node\x1b[m\x1b[K\xe2\x80\x99 has no member named \xe2\x80\x98\x1b[01m\x1b[Kpublish\x1b[m\x1b[K\xe2\x80\x99\n'}
+[2.062552] (rflex) StderrLine: {'line': b'  146 |                 this->\x1b[01;31m\x1b[Kpublish\x1b[m\x1b[K("odom", odom);\n'}
+[2.062662] (rflex) StderrLine: {'line': b'      |                       \x1b[01;31m\x1b[K^~~~~~~\x1b[m\x1b[K\n'}
+[2.062761] (rflex) StderrLine: {'line': b'\x1b[01m\x1b[K/home/jbreen/porting_ws/src/atrvjr_robot/atrvjr_drivers/rflex/src/atvrjr_node.cc:148:17:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Ksensor_msgs\x1b[m\x1b[K\xe2\x80\x99 has not been declared\n'}
+[2.062860] (rflex) StderrLine: {'line': b'  148 |                 \x1b[01;31m\x1b[Ksensor_msgs\x1b[m\x1b[K::msg::JointState joint_state;\n'}
+[2.062956] (rflex) StderrLine: {'line': b'      |                 \x1b[01;31m\x1b[K^~~~~~~~~~~\x1b[m\x1b[K\n'}
+[2.066695] (rflex) StderrLine: {'line': b'\x1b[01m\x1b[K/home/jbreen/porting_ws/src/atrvjr_robot/atrvjr_drivers/rflex/src/atvrjr_node.cc:149:17:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kjoint_state\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope; did you mean \xe2\x80\x98\x1b[01m\x1b[Kinitstate\x1b[m\x1b[K\xe2\x80\x99?\n'}
+[2.066851] (rflex) StderrLine: {'line': b'  149 |                 \x1b[01;31m\x1b[Kjoint_state\x1b[m\x1b[K.header.stamp = this->now();\n'}
+[2.066954] (rflex) StderrLine: {'line': b'      |                 \x1b[01;31m\x1b[K^~~~~~~~~~~\x1b[m\x1b[K\n'}
+[2.067052] (rflex) StderrLine: {'line': b'      |                 \x1b[32m\x1b[Kinitstate\x1b[m\x1b[K\n'}
+[2.067148] (rflex) StderrLine: {'line': b'\x1b[01m\x1b[K/home/jbreen/porting_ws/src/atrvjr_robot/atrvjr_drivers/rflex/src/atvrjr_node.cc:155:23:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kclass atvr_jr_node\x1b[m\x1b[K\xe2\x80\x99 has no member named \xe2\x80\x98\x1b[01m\x1b[Kpublish\x1b[m\x1b[K\xe2\x80\x99\n'}
+[2.067247] (rflex) StderrLine: {'line': b'  155 |                 this->\x1b[01;31m\x1b[Kpublish\x1b[m\x1b[K("joint_states", joint_state);\n'}
+[2.067344] (rflex) StderrLine: {'line': b'      |                       \x1b[01;31m\x1b[K^~~~~~~\x1b[m\x1b[K\n'}
+[2.071475] (rflex) StderrLine: {'line': b'\x1b[01m\x1b[K/home/jbreen/porting_ws/src/atrvjr_robot/atrvjr_drivers/rflex/src/atvrjr_node.cc:\x1b[m\x1b[K In constructor \xe2\x80\x98\x1b[01m\x1b[Katvr_jr_node::atvr_jr_node()\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[2.071599] (rflex) StderrLine: {'line': b'\x1b[01m\x1b[K/home/jbreen/porting_ws/src/atrvjr_robot/atrvjr_drivers/rflex/src/atvrjr_node.cc:186:73:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kcannot convert \xe2\x80\x98\x1b[01m\x1b[Kconst string\x1b[m\x1b[K\xe2\x80\x99 {aka \xe2\x80\x98\x1b[01m\x1b[Kconst std::__cxx11::basic_string<char>\x1b[m\x1b[K\xe2\x80\x99} to \xe2\x80\x98\x1b[01m\x1b[Kint\x1b[m\x1b[K\xe2\x80\x99\n'}
+[2.071704] (rflex) StderrLine: {'line': b'  186 |  if(this->initialize_driver(\x1b[01;31m\x1b[Kthis->get_parameter("port").as_string()\x1b[m\x1b[K)) {\n'}
+[2.071821] (rflex) StderrLine: {'line': b'      |                             \x1b[01;31m\x1b[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~\x1b[m\x1b[K\n'}
+[2.071921] (rflex) StderrLine: {'line': b'      |                                                                  \x1b[01;31m\x1b[K|\x1b[m\x1b[K\n'}
+[2.072019] (rflex) StderrLine: {'line': b'      |                                                                  \x1b[01;31m\x1b[Kconst string {aka const std::__cxx11::basic_string<char>}\x1b[m\x1b[K\n'}
+[2.072118] (rflex) StderrLine: {'line': b'\n'}
+[2.072233] (rflex) StderrLine: {'line': b'\x1b[01m\x1b[K/home/jbreen/porting_ws/src/atrvjr_robot/atrvjr_drivers/rflex/src/atvrjr_node.cc:53:35:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  initializing argument 1 of \xe2\x80\x98\x1b[01m\x1b[Kint atvr_jr_node::initialize_driver(int)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[2.072340] (rflex) StderrLine: {'line': b'   53 |         int initialize_driver(\x1b[01;36m\x1b[Kint port\x1b[m\x1b[K) {\n'}
+[2.072437] (rflex) StderrLine: {'line': b'      |                               \x1b[01;36m\x1b[K~~~~^~~~\x1b[m\x1b[K\n'}
+[2.075156] (rflex) StderrLine: {'line': b'\x1b[01m\x1b[K/home/jbreen/porting_ws/src/atrvjr_robot/atrvjr_drivers/rflex/src/atvrjr_node.cc:190:9:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kdriver\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope\n'}
+[2.075297] (rflex) StderrLine: {'line': b'  190 |         \x1b[01;31m\x1b[Kdriver\x1b[m\x1b[K.config.setOdoDistanceConversion(this->get_parameter("odo_distance_conversion").as_int());\n'}
+[2.075423] (rflex) StderrLine: {'line': b'      |         \x1b[01;31m\x1b[K^~~~~~\x1b[m\x1b[K\n'}
+[2.076371] (rflex) StderrLine: {'line': b'\x1b[01m\x1b[K/home/jbreen/porting_ws/src/atrvjr_robot/atrvjr_drivers/rflex/src/atvrjr_node.cc:200:15:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kclass atvr_jr_node\x1b[m\x1b[K\xe2\x80\x99 has no member named \xe2\x80\x98\x1b[01m\x1b[Kcreate_subscriber\x1b[m\x1b[K\xe2\x80\x99; did you mean \xe2\x80\x98\x1b[01m\x1b[Kcreate_subscription\x1b[m\x1b[K\xe2\x80\x99?\n'}
+[2.076493] (rflex) StderrLine: {'line': b'  200 |         this->\x1b[01;31m\x1b[Kcreate_subscriber\x1b[m\x1b[K<geometry_msgs::msg::Twist>("cmd_vel", this->cmd_vel_callback,10);\n'}
+[2.076593] (rflex) StderrLine: {'line': b'      |               \x1b[01;31m\x1b[K^~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[2.076690] (rflex) StderrLine: {'line': b'      |               \x1b[32m\x1b[Kcreate_subscription\x1b[m\x1b[K\n'}
+[2.076840] (rflex) StderrLine: {'line': b'\x1b[01m\x1b[K/home/jbreen/porting_ws/src/atrvjr_robot/atrvjr_drivers/rflex/src/atvrjr_node.cc:200:58:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kexpected primary-expression before \xe2\x80\x98\x1b[01m\x1b[K>\x1b[m\x1b[K\xe2\x80\x99 token\n'}
+[2.077062] (rflex) StderrLine: {'line': b'  200 |         this->create_subscriber<geometry_msgs::msg::Twist\x1b[01;31m\x1b[K>\x1b[m\x1b[K("cmd_vel", this->cmd_vel_callback,10);\n'}
+[2.077251] (rflex) StderrLine: {'line': b'      |                                                          \x1b[01;31m\x1b[K^\x1b[m\x1b[K\n'}
+[2.077359] (rflex) StderrLine: {'line': b'\x1b[01m\x1b[K/home/jbreen/porting_ws/src/atrvjr_robot/atrvjr_drivers/rflex/src/atvrjr_node.cc:200:60:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kleft operand of comma operator has no effect [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-value\x07-Wunused-value\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[2.077471] (rflex) StderrLine: {'line': b'  200 |         this->create_subscriber<geometry_msgs::msg::Twist>(\x1b[01;35m\x1b[K"cmd_vel"\x1b[m\x1b[K, this->cmd_vel_callback,10);\n'}
+[2.077586] (rflex) StderrLine: {'line': b'      |                                                            \x1b[01;35m\x1b[K^~~~~~~~~\x1b[m\x1b[K\n'}
+[2.077696] (rflex) StderrLine: {'line': b'\x1b[01m\x1b[K/home/jbreen/porting_ws/src/atrvjr_robot/atrvjr_drivers/rflex/src/atvrjr_node.cc:200:77:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kno context to resolve type of \xe2\x80\x98\x1b[01m\x1b[K((atvr_jr_node*)this)->atvr_jr_node::cmd_vel_callback\x1b[m\x1b[K\xe2\x80\x99\n'}
+[2.077808] (rflex) StderrLine: {'line': b'  200 | eate_subscriber<geometry_msgs::msg::Twist>("cmd_vel", \x1b[01;31m\x1b[Kthis->cmd_vel_callback\x1b[m\x1b[K,10);\n'}
+[2.077908] (rflex) StderrLine: {'line': b'      |                                                       \x1b[01;31m\x1b[K~~~~~~^~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[2.078005] (rflex) StderrLine: {'line': b'\n'}
+[2.078101] (rflex) StderrLine: {'line': b'\x1b[01m\x1b[K/home/jbreen/porting_ws/src/atrvjr_robot/atrvjr_drivers/rflex/src/atvrjr_node.cc:201:15:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kclass atvr_jr_node\x1b[m\x1b[K\xe2\x80\x99 has no member named \xe2\x80\x98\x1b[01m\x1b[Kcreate_subscriber\x1b[m\x1b[K\xe2\x80\x99; did you mean \xe2\x80\x98\x1b[01m\x1b[Kcreate_subscription\x1b[m\x1b[K\xe2\x80\x99?\n'}
+[2.078203] (rflex) StderrLine: {'line': b'  201 |         this->\x1b[01;31m\x1b[Kcreate_subscriber\x1b[m\x1b[K<std_msgs::msg::Float32>("cmd_accel", this->cmd_accel_callback, 10);\n'}
+[2.078300] (rflex) StderrLine: {'line': b'      |               \x1b[01;31m\x1b[K^~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[2.078399] (rflex) StderrLine: {'line': b'      |               \x1b[32m\x1b[Kcreate_subscription\x1b[m\x1b[K\n'}
+[2.078496] (rflex) StderrLine: {'line': b'\x1b[01m\x1b[K/home/jbreen/porting_ws/src/atrvjr_robot/atrvjr_drivers/rflex/src/atvrjr_node.cc:201:55:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kexpected primary-expression before \xe2\x80\x98\x1b[01m\x1b[K>\x1b[m\x1b[K\xe2\x80\x99 token\n'}
+[2.078595] (rflex) StderrLine: {'line': b'  201 |         this->create_subscriber<std_msgs::msg::Float32\x1b[01;31m\x1b[K>\x1b[m\x1b[K("cmd_accel", this->cmd_accel_callback, 10);\n'}
+[2.078692] (rflex) StderrLine: {'line': b'      |                                                       \x1b[01;31m\x1b[K^\x1b[m\x1b[K\n'}
+[2.078794] (rflex) StderrLine: {'line': b'\x1b[01m\x1b[K/home/jbreen/porting_ws/src/atrvjr_robot/atrvjr_drivers/rflex/src/atvrjr_node.cc:201:57:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kleft operand of comma operator has no effect [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-value\x07-Wunused-value\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[2.078894] (rflex) StderrLine: {'line': b'  201 |         this->create_subscriber<std_msgs::msg::Float32>(\x1b[01;35m\x1b[K"cmd_accel"\x1b[m\x1b[K, this->cmd_accel_callback, 10);\n'}
+[2.078993] (rflex) StderrLine: {'line': b'      |                                                         \x1b[01;35m\x1b[K^~~~~~~~~~~\x1b[m\x1b[K\n'}
+[2.079092] (rflex) StderrLine: {'line': b'\x1b[01m\x1b[K/home/jbreen/porting_ws/src/atrvjr_robot/atrvjr_drivers/rflex/src/atvrjr_node.cc:201:76:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kno context to resolve type of \xe2\x80\x98\x1b[01m\x1b[K((atvr_jr_node*)this)->atvr_jr_node::cmd_accel_callback\x1b[m\x1b[K\xe2\x80\x99\n'}
+[2.079190] (rflex) StderrLine: {'line': b'  201 | reate_subscriber<std_msgs::msg::Float32>("cmd_accel", \x1b[01;31m\x1b[Kthis->cmd_accel_callback\x1b[m\x1b[K, 10);\n'}
+[2.079288] (rflex) StderrLine: {'line': b'      |                                                       \x1b[01;31m\x1b[K~~~~~~^~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[2.079399] (rflex) StderrLine: {'line': b'\n'}
+[2.079498] (rflex) StderrLine: {'line': b'\x1b[01m\x1b[K/home/jbreen/porting_ws/src/atrvjr_robot/atrvjr_drivers/rflex/src/atvrjr_node.cc:202:15:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kclass atvr_jr_node\x1b[m\x1b[K\xe2\x80\x99 has no member named \xe2\x80\x98\x1b[01m\x1b[Kcreate_subscriber\x1b[m\x1b[K\xe2\x80\x99; did you mean \xe2\x80\x98\x1b[01m\x1b[Kcreate_subscription\x1b[m\x1b[K\xe2\x80\x99?\n'}
+[2.079602] (rflex) StderrLine: {'line': b'  202 |         this->\x1b[01;31m\x1b[Kcreate_subscriber\x1b[m\x1b[K<std_msgs::msg::Bool>("cmd_sonar_power", this->cmd_sonar_power_callback, 10);\n'}
+[2.079713] (rflex) StderrLine: {'line': b'      |               \x1b[01;31m\x1b[K^~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[2.079811] (rflex) StderrLine: {'line': b'      |               \x1b[32m\x1b[Kcreate_subscription\x1b[m\x1b[K\n'}
+[2.079909] (rflex) StderrLine: {'line': b'\x1b[01m\x1b[K/home/jbreen/porting_ws/src/atrvjr_robot/atrvjr_drivers/rflex/src/atvrjr_node.cc:202:52:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kexpected primary-expression before \xe2\x80\x98\x1b[01m\x1b[K>\x1b[m\x1b[K\xe2\x80\x99 token\n'}
+[2.080009] (rflex) StderrLine: {'line': b'  202 |         this->create_subscriber<std_msgs::msg::Bool\x1b[01;31m\x1b[K>\x1b[m\x1b[K("cmd_sonar_power", this->cmd_sonar_power_callback, 10);\n'}
+[2.080106] (rflex) StderrLine: {'line': b'      |                                                    \x1b[01;31m\x1b[K^\x1b[m\x1b[K\n'}
+[2.080221] (rflex) StderrLine: {'line': b'\x1b[01m\x1b[K/home/jbreen/porting_ws/src/atrvjr_robot/atrvjr_drivers/rflex/src/atvrjr_node.cc:202:54:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kleft operand of comma operator has no effect [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-value\x07-Wunused-value\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[2.080329] (rflex) StderrLine: {'line': b'  202 |         this->create_subscriber<std_msgs::msg::Bool>(\x1b[01;35m\x1b[K"cmd_sonar_power"\x1b[m\x1b[K, this->cmd_sonar_power_callback, 10);\n'}
+[2.080428] (rflex) StderrLine: {'line': b'      |                                                      \x1b[01;35m\x1b[K^~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[2.080526] (rflex) StderrLine: {'line': b'\x1b[01m\x1b[K/home/jbreen/porting_ws/src/atrvjr_robot/atrvjr_drivers/rflex/src/atvrjr_node.cc:202:79:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kno context to resolve type of \xe2\x80\x98\x1b[01m\x1b[K((atvr_jr_node*)this)->atvr_jr_node::cmd_sonar_power_callback\x1b[m\x1b[K\xe2\x80\x99\n'}
+[2.080642] (rflex) StderrLine: {'line': b'  202 | te_subscriber<std_msgs::msg::Bool>("cmd_sonar_power", \x1b[01;31m\x1b[Kthis->cmd_sonar_power_callback\x1b[m\x1b[K, 10);\n'}
+[2.080753] (rflex) StderrLine: {'line': b'      |                                                       \x1b[01;31m\x1b[K~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[2.080852] (rflex) StderrLine: {'line': b'\n'}
+[2.080950] (rflex) StderrLine: {'line': b'\x1b[01m\x1b[K/home/jbreen/porting_ws/src/atrvjr_robot/atrvjr_drivers/rflex/src/atvrjr_node.cc:203:15:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kclass atvr_jr_node\x1b[m\x1b[K\xe2\x80\x99 has no member named \xe2\x80\x98\x1b[01m\x1b[Kcreate_subscriber\x1b[m\x1b[K\xe2\x80\x99; did you mean \xe2\x80\x98\x1b[01m\x1b[Kcreate_subscription\x1b[m\x1b[K\xe2\x80\x99?\n'}
+[2.081061] (rflex) StderrLine: {'line': b'  203 |         this->\x1b[01;31m\x1b[Kcreate_subscriber\x1b[m\x1b[K<std_msgs::msg::Bool>("cmd_brake_power", this->cmd_brake_power_callback, 10);\n'}
+[2.081161] (rflex) StderrLine: {'line': b'      |               \x1b[01;31m\x1b[K^~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[2.081258] (rflex) StderrLine: {'line': b'      |               \x1b[32m\x1b[Kcreate_subscription\x1b[m\x1b[K\n'}
+[2.081354] (rflex) StderrLine: {'line': b'\x1b[01m\x1b[K/home/jbreen/porting_ws/src/atrvjr_robot/atrvjr_drivers/rflex/src/atvrjr_node.cc:203:52:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kexpected primary-expression before \xe2\x80\x98\x1b[01m\x1b[K>\x1b[m\x1b[K\xe2\x80\x99 token\n'}
+[2.081453] (rflex) StderrLine: {'line': b'  203 |         this->create_subscriber<std_msgs::msg::Bool\x1b[01;31m\x1b[K>\x1b[m\x1b[K("cmd_brake_power", this->cmd_brake_power_callback, 10);\n'}
+[2.081551] (rflex) StderrLine: {'line': b'      |                                                    \x1b[01;31m\x1b[K^\x1b[m\x1b[K\n'}
+[2.081648] (rflex) StderrLine: {'line': b'\x1b[01m\x1b[K/home/jbreen/porting_ws/src/atrvjr_robot/atrvjr_drivers/rflex/src/atvrjr_node.cc:203:54:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kleft operand of comma operator has no effect [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-value\x07-Wunused-value\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[2.081767] (rflex) StderrLine: {'line': b'  203 |         this->create_subscriber<std_msgs::msg::Bool>(\x1b[01;35m\x1b[K"cmd_brake_power"\x1b[m\x1b[K, this->cmd_brake_power_callback, 10);\n'}
+[2.081867] (rflex) StderrLine: {'line': b'      |                                                      \x1b[01;35m\x1b[K^~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[2.081964] (rflex) StderrLine: {'line': b'\x1b[01m\x1b[K/home/jbreen/porting_ws/src/atrvjr_robot/atrvjr_drivers/rflex/src/atvrjr_node.cc:203:79:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kno context to resolve type of \xe2\x80\x98\x1b[01m\x1b[K((atvr_jr_node*)this)->atvr_jr_node::cmd_brake_power_callback\x1b[m\x1b[K\xe2\x80\x99\n'}
+[2.082061] (rflex) StderrLine: {'line': b'  203 | te_subscriber<std_msgs::msg::Bool>("cmd_brake_power", \x1b[01;31m\x1b[Kthis->cmd_brake_power_callback\x1b[m\x1b[K, 10);\n'}
+[2.082159] (rflex) StderrLine: {'line': b'      |                                                       \x1b[01;31m\x1b[K~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[2.082411] (rflex) StderrLine: {'line': b'\n'}
+[2.085643] (rflex) StderrLine: {'line': b'\x1b[01m\x1b[K/home/jbreen/porting_ws/src/atrvjr_robot/atrvjr_drivers/rflex/src/atvrjr_node.cc:210:32:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Knav_msgs\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope\n'}
+[2.085801] (rflex) StderrLine: {'line': b'  210 |         this->create_publisher<\x1b[01;31m\x1b[Knav_msgs\x1b[m\x1b[K::msg::Odometry>("odom", 50);\n'}
+[2.085900] (rflex) StderrLine: {'line': b'      |                                \x1b[01;31m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[2.085998] (rflex) StderrLine: {'line': b'\x1b[01m\x1b[K/home/jbreen/porting_ws/src/atrvjr_robot/atrvjr_drivers/rflex/src/atvrjr_node.cc:210:15:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kparse error in template argument list\n'}
+[2.086097] (rflex) StderrLine: {'line': b'  210 |         this->\x1b[01;31m\x1b[Kcreate_publisher<nav_msgs::msg::Odometry>\x1b[m\x1b[K("odom", 50);\n'}
+[2.086195] (rflex) StderrLine: {'line': b'      |               \x1b[01;31m\x1b[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[2.086442] (rflex) StderrLine: {'line': b'\x1b[01m\x1b[K/home/jbreen/porting_ws/src/atrvjr_robot/atrvjr_drivers/rflex/src/atvrjr_node.cc:210:56:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kno matching function for call to \xe2\x80\x98\x1b[01m\x1b[Katvr_jr_node::create_publisher<<expression error> >(const char [5], int)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[2.086596] (rflex) StderrLine: {'line': b'  210 |         \x1b[01;31m\x1b[Kthis->create_publisher<nav_msgs::msg::Odometry>("odom", 50)\x1b[m\x1b[K;\n'}
+[2.086743] (rflex) StderrLine: {'line': b'      |         \x1b[01;31m\x1b[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[2.086866] (rflex) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/node.hpp:1321\x1b[m\x1b[K,\n'}
+[2.086967] (rflex) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executors/single_threaded_executor.hpp:28\x1b[m\x1b[K,\n'}
+[2.087064] (rflex) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executors.hpp:22\x1b[m\x1b[K,\n'}
+[2.087161] (rflex) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/rclcpp.hpp:155\x1b[m\x1b[K,\n'}
+[2.087259] (rflex) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/jbreen/porting_ws/src/atrvjr_robot/atrvjr_drivers/rflex/src/atvrjr_node.cc:7\x1b[m\x1b[K:\n'}
+[2.087358] (rflex) StderrLine: {'line': b'\x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/node_impl.hpp:73:1:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[Ktemplate<class MessageT, class AllocatorT, class PublisherT> std::shared_ptr<PublisherT> rclcpp::Node::create_publisher(const string&, const rclcpp::QoS&, const rclcpp::PublisherOptionsWithAllocator<AllocatorT>&)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[2.087501] (rflex) StderrLine: {'line': b'   73 | \x1b[01;36m\x1b[KNode\x1b[m\x1b[K::create_publisher(\n'}
+[2.087601] (rflex) StderrLine: {'line': b'      | \x1b[01;36m\x1b[K^~~~\x1b[m\x1b[K\n'}
+[2.087712] (rflex) StderrLine: {'line': b'\x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/node_impl.hpp:73:1:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  template argument deduction/substitution failed:\n'}
+[2.087813] (rflex) StderrLine: {'line': b'\x1b[01m\x1b[K/home/jbreen/porting_ws/src/atrvjr_robot/atrvjr_drivers/rflex/src/atvrjr_node.cc:210:56:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Ktemplate argument 1 is invalid\n'}
+[2.087911] (rflex) StderrLine: {'line': b'  210 |         \x1b[01;31m\x1b[Kthis->create_publisher<nav_msgs::msg::Odometry>("odom", 50)\x1b[m\x1b[K;\n'}
+[2.088010] (rflex) StderrLine: {'line': b'      |         \x1b[01;31m\x1b[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[2.091713] (rflex) StderrLine: {'line': b'\x1b[01m\x1b[K/home/jbreen/porting_ws/src/atrvjr_robot/atrvjr_drivers/rflex/src/atvrjr_node.cc:212:32:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Ksensor_msgs\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope\n'}
+[2.091918] (rflex) StderrLine: {'line': b'  212 |         this->create_publisher<\x1b[01;31m\x1b[Ksensor_msgs\x1b[m\x1b[K::msg::JointState>("state",1);\n'}
+[2.092063] (rflex) StderrLine: {'line': b'      |                                \x1b[01;31m\x1b[K^~~~~~~~~~~\x1b[m\x1b[K\n'}
+[2.092211] (rflex) StderrLine: {'line': b'\x1b[01m\x1b[K/home/jbreen/porting_ws/src/atrvjr_robot/atrvjr_drivers/rflex/src/atvrjr_node.cc:212:15:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kparse error in template argument list\n'}
+[2.092360] (rflex) StderrLine: {'line': b'  212 |         this->\x1b[01;31m\x1b[Kcreate_publisher<sensor_msgs::msg::JointState>\x1b[m\x1b[K("state",1);\n'}
+[2.092492] (rflex) StderrLine: {'line': b'      |               \x1b[01;31m\x1b[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[2.092624] (rflex) StderrLine: {'line': b'\x1b[01m\x1b[K/home/jbreen/porting_ws/src/atrvjr_robot/atrvjr_drivers/rflex/src/atvrjr_node.cc:212:61:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kno matching function for call to \xe2\x80\x98\x1b[01m\x1b[Katvr_jr_node::create_publisher<<expression error> >(const char [6], int)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[2.092761] (rflex) StderrLine: {'line': b'  212 |         \x1b[01;31m\x1b[Kthis->create_publisher<sensor_msgs::msg::JointState>("state",1)\x1b[m\x1b[K;\n'}
+[2.092863] (rflex) StderrLine: {'line': b'      |         \x1b[01;31m\x1b[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~\x1b[m\x1b[K\n'}
+[2.092962] (rflex) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/node.hpp:1321\x1b[m\x1b[K,\n'}
+[2.093077] (rflex) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executors/single_threaded_executor.hpp:28\x1b[m\x1b[K,\n'}
+[2.093177] (rflex) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executors.hpp:22\x1b[m\x1b[K,\n'}
+[2.093275] (rflex) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/rclcpp.hpp:155\x1b[m\x1b[K,\n'}
+[2.093373] (rflex) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/jbreen/porting_ws/src/atrvjr_robot/atrvjr_drivers/rflex/src/atvrjr_node.cc:7\x1b[m\x1b[K:\n'}
+[2.093473] (rflex) StderrLine: {'line': b'\x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/node_impl.hpp:73:1:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[Ktemplate<class MessageT, class AllocatorT, class PublisherT> std::shared_ptr<PublisherT> rclcpp::Node::create_publisher(const string&, const rclcpp::QoS&, const rclcpp::PublisherOptionsWithAllocator<AllocatorT>&)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[2.093577] (rflex) StderrLine: {'line': b'   73 | \x1b[01;36m\x1b[KNode\x1b[m\x1b[K::create_publisher(\n'}
+[2.093690] (rflex) StderrLine: {'line': b'      | \x1b[01;36m\x1b[K^~~~\x1b[m\x1b[K\n'}
+[2.093790] (rflex) StderrLine: {'line': b'\x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/node_impl.hpp:73:1:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  template argument deduction/substitution failed:\n'}
+[2.093890] (rflex) StderrLine: {'line': b'\x1b[01m\x1b[K/home/jbreen/porting_ws/src/atrvjr_robot/atrvjr_drivers/rflex/src/atvrjr_node.cc:212:61:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Ktemplate argument 1 is invalid\n'}
+[2.093990] (rflex) StderrLine: {'line': b'  212 |         \x1b[01;31m\x1b[Kthis->create_publisher<sensor_msgs::msg::JointState>("state",1)\x1b[m\x1b[K;\n'}
+[2.094090] (rflex) StderrLine: {'line': b'      |         \x1b[01;31m\x1b[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~\x1b[m\x1b[K\n'}
+[2.094622] (rflex) StderrLine: {'line': b'\x1b[01m\x1b[K/home/jbreen/porting_ws/src/atrvjr_robot/atrvjr_drivers/rflex/src/atvrjr_node.cc:215:9:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Ktimer_\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope; did you mean \xe2\x80\x98\x1b[01m\x1b[Ktimer_t\x1b[m\x1b[K\xe2\x80\x99?\n'}
+[2.094768] (rflex) StderrLine: {'line': b'  215 |         \x1b[01;31m\x1b[Ktimer_\x1b[m\x1b[K = this->create_wall_timer(\n'}
+[2.094869] (rflex) StderrLine: {'line': b'      |         \x1b[01;31m\x1b[K^~~~~~\x1b[m\x1b[K\n'}
+[2.094967] (rflex) StderrLine: {'line': b'      |         \x1b[32m\x1b[Ktimer_t\x1b[m\x1b[K\n'}
+[2.095066] (rflex) StderrLine: {'line': b'\x1b[01m\x1b[K/home/jbreen/porting_ws/src/atrvjr_robot/atrvjr_drivers/rflex/src/atvrjr_node.cc:216:66:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Ktimer_callback\x1b[m\x1b[K\xe2\x80\x99 is not a member of \xe2\x80\x98\x1b[01m\x1b[Katvr_jr_node\x1b[m\x1b[K\xe2\x80\x99\n'}
+[2.095165] (rflex) StderrLine: {'line': b'  216 |    std::chrono::milliseconds(500), std::bind(&atvr_jr_node::\x1b[01;31m\x1b[Ktimer_callback\x1b[m\x1b[K, this));\n'}
+[2.095265] (rflex) StderrLine: {'line': b'      |                                                             \x1b[01;31m\x1b[K^~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[2.095365] (rflex) StderrLine: {'line': b'\n'}
+[2.104176] (-) TimerEvent: {}
+[2.204454] (-) TimerEvent: {}
+[2.304777] (-) TimerEvent: {}
+[2.405095] (-) TimerEvent: {}
+[2.505419] (-) TimerEvent: {}
+[2.605713] (-) TimerEvent: {}
+[2.625541] (rflex) StderrLine: {'line': b'gmake[2]: *** [CMakeFiles/rflex_ros2.dir/build.make:76: CMakeFiles/rflex_ros2.dir/src/atvrjr_node.cc.o] Error 1\n'}
+[2.625908] (rflex) StderrLine: {'line': b'gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/rflex_ros2.dir/all] Error 2\n'}
+[2.626190] (rflex) StderrLine: {'line': b'gmake: *** [Makefile:146: all] Error 2\n'}
+[2.628268] (rflex) CommandEnded: {'returncode': 2}
+[2.661490] (rflex) JobEnded: {'identifier': 'rflex', 'rc': 2}
+[2.671816] (-) EventReactorShutdown: {}

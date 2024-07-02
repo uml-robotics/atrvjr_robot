@@ -1,0 +1,5 @@
+source;share/rflex/local_setup.bash
+source;share/rflex/local_setup.dsv
+source;share/rflex/local_setup.ps1
+source;share/rflex/local_setup.sh
+source;share/rflex/local_setup.zsh

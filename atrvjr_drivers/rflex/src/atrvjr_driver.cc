@@ -61,9 +61,9 @@ void ATRVJR::getBaseSonarReadings(double* readings) const {
     getSonarReadings(BASE_INDEX, readings);
 }
 
-void ATRVJR::getBaseSonarPoints(sensor_msgs::PointCloud* cloud) const {
-    getSonarPoints(BASE_INDEX, cloud);
-}
+//void ATRVJR::getBaseSonarPoints(sensor_msgs::PointCloud* cloud) const {
+//    getSonarPoints(BASE_INDEX, cloud);
+//}
 
 //int ATRVJR::getBaseBumps(sensor_msgs::PointCloud* cloud) const {
 //    return getBumps(BASE_INDEX, cloud);

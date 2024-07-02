@@ -5,10 +5,10 @@
 #include "rflex/atrvjr_driver.h"
 
 #include <rclcpp/rclcpp.hpp>
-#include <geometry_msg/msg/twist.hpp>
+#include <geometry_msgs/msg/twist.hpp>
 #include <std_msgs/msg/float32.hpp>
 #include <std_msgs/msg/bool.hpp>
-#include <sensor_msgs/msg/point_cloud.hpp>
+//#include <sensor_msgs/msg/point_cloud.hpp>
 
 class atvr_jr_node : public rclcpp::Node
 {
@@ -62,9 +62,9 @@ class atvr_jr_node : public rclcpp::Node
             return 0;
         }
 
-        void timer_callback() {
+        /*void timer_callback() {
 
-        }
+        }*/
 
         void system_status_callback() {
             // Publish the sonar power status
@@ -158,20 +158,11 @@ class atvr_jr_node : public rclcpp::Node
 
         void sonar_update_callback() {
             // Publish the sonar data
-            sensor_msgs::msg::PointCloud sonar_cloud;
-            sonar_cloud.header.stamp = this->now();
-            sonar_cloud.header.frame_id = "base_link";
-            driver->getBaseSonarPoints(&sonar_cloud);
-            this->publish("sonar_cloud_base", sonar_cloud);
-        }
-
-        void reconfigure_callback(rflex::AtrvjrParamsConfig &config, uint32_t level) {
-            driver.config.setOdoDistanceConversion(config.odo_distance_conversion);
-            driver.config.setOdoAngleConversion(config.odo_angle_conversion);
-            driver.config.setTransAcc(config.trans_acceleration);
-            driver.config.setTransTorque(config.trans_torque);
-            driver.config.setRotAcc(config.rot_acceleration);
-            driver.config.setRotTorque(config.rot_torque);
+            //sensor_msgs::msg::PointCloud sonar_cloud;
+            //sonar_cloud.header.stamp = this->now();
+            //sonar_cloud.header.frame_id = "base_link";
+            //driver->getBaseSonarPoints(&sonar_cloud);
+            //this->publish("sonar_cloud_base", sonar_cloud);
         }
 
     public:
@@ -212,7 +203,7 @@ class atvr_jr_node : public rclcpp::Node
         this->create_subscriber<std_msgs::msg::Bool>("cmd_brake_power", this->cmd_brake_power_callback, 10);
 
         //Node Publishers
-        this->create_publisher<sensor_msgs::msg::PointCloud>("sonar_cloud_base", 50);
+        //this->create_publisher<sensor_msgs::msg::PointCloud>("sonar_cloud_base", 50);
         this->create_publisher<std_msgs::msg::Bool>("sonar_power", 1);
         this->create_publisher<std_msgs::msg::Bool>("brake_power", 1);
         this->create_publisher<std_msgs::msg::Float32>("voltage", 1);
@@ -226,7 +217,7 @@ class atvr_jr_node : public rclcpp::Node
 
         driver.systemStatusUpdateSignal.set(boost::bind(&atvr_jr_node::system_status_callback, this));
         driver.motorUpdateSignal.set(boost::bind(&atvr_jr_node::motor_update_callback, this));
-        driver.sonarUpdateSignal.set(boost::bind(&atvr_jr_node::sonar_update_callback, this));
+        //driver.sonarUpdateSignal.set(boost::bind(&atvr_jr_node::sonar_update_callback, this));
 
     }
 

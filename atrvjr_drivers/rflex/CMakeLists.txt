@@ -2,6 +2,18 @@ cmake_minimum_required(VERSION 3.8)
 project(rflex)
 
 set(PROJECTED_NAME rflex_ros2)
+set(THIS_PACKAGE_INCLUDE_DEPENDS
+  rclcpp
+  rclcpp_lifecycle
+  std_msgs
+  sensor_msgs
+  geometry_msgs
+  nav_msgs
+  tf2
+  tf2_ros
+  tf2_geometry_msgs
+  tf2_sensor_msgs
+)
 
 if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
   add_compile_options(-Wall -Wextra -Wpedantic)
@@ -10,6 +22,7 @@ endif()
 # find dependencies
 find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
+find_package(rclcpp_lifecycle REQUIRED)
 find_package(std_msgs REQUIRED)
 find_package(sensor_msgs REQUIRED)
 find_package(geometry_msgs REQUIRED)

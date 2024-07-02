@@ -1,0 +1,62 @@
+[0.000000] (-) TimerEvent: {}
+[0.000270] (rflex) JobQueued: {'identifier': 'rflex', 'dependencies': OrderedDict()}
+[0.000377] (rflex) JobStarted: {'identifier': 'rflex'}
+[0.006725] (rflex) JobProgress: {'identifier': 'rflex', 'progress': 'cmake'}
+[0.007157] (rflex) JobProgress: {'identifier': 'rflex', 'progress': 'build'}
+[0.007806] (rflex) Command: {'cmd': ['/home/jbreen/cmake-install/bin/cmake', '--build', '/home/jbreen/porting_ws/src/atrvjr_robot/build/rflex', '--', '-j12', '-l12'], 'cwd': '/home/jbreen/porting_ws/src/atrvjr_robot/build/rflex', 'env': OrderedDict([('GJS_DEBUG_TOPICS', 'JS ERROR;JS LOG'), ('LESSOPEN', '| /usr/bin/lesspipe %s'), ('USER', 'jbreen'), ('SSH_AGENT_PID', '216143'), ('XDG_SESSION_TYPE', 'x11'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib'), ('HOME', '/home/jbreen'), ('OLDPWD', '/home/jbreen/porting_ws'), ('DESKTOP_SESSION', 'ubuntu'), ('GIO_LAUNCHED_DESKTOP_FILE', '/usr/share/applications/terminator.desktop'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('MANAGERPID', '2279'), ('SYSTEMD_EXEC_PID', '2524'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1001/bus'), ('COLORTERM', 'truecolor'), ('TERMINATOR_DBUS_NAME', 'net.tenshu.Terminator23558193cd9818af7fe4d2c2f5bd9d00f'), ('GIO_LAUNCHED_DESKTOP_FILE_PID', '7499'), ('IM_CONFIG_PHASE', '1'), ('ROS_DISTRO', 'humble'), ('GTK_IM_MODULE', 'ibus'), ('LOGNAME', 'jbreen'), ('JOURNAL_STREAM', '8:39477'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'jbreen'), ('TERM', 'xterm-256color'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('ROS_LOCALHOST_ONLY', '0'), ('WINDOWPATH', '2'), ('PATH', '/home/jbreen/cmake-install/bin:/opt/ros/humble/bin:/home/jbreen/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin'), ('SESSION_MANAGER', 'local/robot-lab33:@/tmp/.ICE-unix/2501,unix/robot-lab33:/tmp/.ICE-unix/2501'), ('INVOCATION_ID', 'e72a2e68838147d39d8f68f0c5582a08'), ('XDG_MENU_PREFIX', 'gnome-'), ('XDG_RUNTIME_DIR', '/run/user/1001'), ('DISPLAY', ':1'), ('TERMINATOR_DBUS_PATH', '/net/tenshu/Terminator2'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('IBUS_DISABLE_SNOOPER', '1'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1001/gdm/Xauthority'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('SSH_AGENT_LAUNCHER', 'gnome-keyring'), ('SSH_AUTH_SOCK', '/tmp/ssh-XXXXXX1l0dag/agent.216142'), ('AMENT_PREFIX_PATH', '/opt/ros/humble'), ('SHELL', '/bin/bash'), ('TERMINATOR_UUID', 'urn:uuid:d8b78505-dfa5-4e9c-aeeb-c898af7f708a'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('GPG_AGENT_INFO', '/run/user/1001/gnupg/S.gpg-agent:0:1'), ('GJS_DEBUG_OUTPUT', 'stderr'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/jbreen/porting_ws/src/atrvjr_robot/build/rflex'), ('LC_ALL', 'en_US.UTF-8'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/share/gnome:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('PYTHONPATH', '/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('COLCON', '1'), ('VTE_VERSION', '6800'), ('CMAKE_PREFIX_PATH', '/home/jbreen/cmake-install::/opt/ros/humble')]), 'shell': False}
+[0.026348] (rflex) StdoutLine: {'line': b'-- Found ament_cmake: 1.3.9 (/opt/ros/humble/share/ament_cmake/cmake)\n'}
+[0.099595] (-) TimerEvent: {}
+[0.194037] (rflex) StdoutLine: {'line': b'-- Found rclcpp: 16.0.9 (/opt/ros/humble/share/rclcpp/cmake)\n'}
+[0.199663] (-) TimerEvent: {}
+[0.236405] (rflex) StdoutLine: {'line': b'-- Found rosidl_generator_c: 3.1.5 (/opt/ros/humble/share/rosidl_generator_c/cmake)\n'}
+[0.239010] (rflex) StdoutLine: {'line': b'-- Found rosidl_adapter: 3.1.5 (/opt/ros/humble/share/rosidl_adapter/cmake)\n'}
+[0.244892] (rflex) StdoutLine: {'line': b'-- Found rosidl_generator_cpp: 3.1.5 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)\n'}
+[0.255917] (rflex) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[0.271479] (rflex) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[0.299742] (-) TimerEvent: {}
+[0.329182] (rflex) StdoutLine: {'line': b'-- Found rmw_implementation_cmake: 6.1.2 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)\n'}
+[0.330466] (rflex) StdoutLine: {'line': b'-- Found rmw_fastrtps_cpp: 6.2.6 (/opt/ros/humble/share/rmw_fastrtps_cpp/cmake)\n'}
+[0.399871] (-) TimerEvent: {}
+[0.466626] (rflex) StdoutLine: {'line': b"-- Using RMW implementation 'rmw_fastrtps_cpp' as default\n"}
+[0.499955] (-) TimerEvent: {}
+[0.600222] (-) TimerEvent: {}
+[0.636324] (rflex) StdoutLine: {'line': b'-- Found rclcpp_lifecycle: 16.0.9 (/opt/ros/humble/share/rclcpp_lifecycle/cmake)\n'}
+[0.684680] (rflex) StdoutLine: {'line': b'-- Found sensor_msgs: 4.2.4 (/opt/ros/humble/share/sensor_msgs/cmake)\n'}
+[0.700283] (-) TimerEvent: {}
+[0.800476] (-) TimerEvent: {}
+[0.805527] (rflex) StdoutLine: {'line': b'-- Found nav_msgs: 4.2.4 (/opt/ros/humble/share/nav_msgs/cmake)\n'}
+[0.884787] (rflex) StdoutLine: {'line': b'-- Found tf2: 0.25.7 (/opt/ros/humble/share/tf2/cmake)\n'}
+[0.892290] (rflex) StdoutLine: {'line': b'-- Found tf2_ros: 0.25.7 (/opt/ros/humble/share/tf2_ros/cmake)\n'}
+[0.900545] (-) TimerEvent: {}
+[1.000752] (-) TimerEvent: {}
+[1.100984] (-) TimerEvent: {}
+[1.200449] (rflex) StdoutLine: {'line': b'-- Found tf2_geometry_msgs: 0.25.7 (/opt/ros/humble/share/tf2_geometry_msgs/cmake)\n'}
+[1.201052] (-) TimerEvent: {}
+[1.204207] (rflex) StdoutLine: {'line': b'-- Found eigen3_cmake_module: 0.1.1 (/opt/ros/humble/share/eigen3_cmake_module/cmake)\n'}
+[1.205319] (rflex) StdoutLine: {'line': b'-- Ensuring Eigen3 include directory is part of orocos-kdl CMake target\n'}
+[1.213882] (rflex) StdoutLine: {'line': b'-- Found tf2_sensor_msgs: 0.25.7 (/opt/ros/humble/share/tf2_sensor_msgs/cmake)\n'}
+[1.232615] (rflex) StdoutLine: {'line': b'-- Found ament_lint_auto: 0.12.11 (/opt/ros/humble/share/ament_lint_auto/cmake)\n'}
+[1.287255] (rflex) StdoutLine: {'line': b"-- Added test 'cppcheck' to perform static code analysis on C / C++ code\n"}
+[1.287507] (rflex) StdoutLine: {'line': b'-- Configured cppcheck include dirs: $<BUILD_INTERFACE:/home/jbreen/porting_ws/src/atrvjr_robot/atrvjr_drivers/rflex/include>;/home/jbreen/porting_ws/src/atrvjr_robot/atrvjr_drivers/rflex/include\n'}
+[1.287636] (rflex) StdoutLine: {'line': b'-- Configured cppcheck exclude dirs and/or files: \n'}
+[1.288000] (rflex) StdoutLine: {'line': b"-- Added test 'lint_cmake' to check CMake code style\n"}
+[1.289153] (rflex) StdoutLine: {'line': b"-- Added test 'uncrustify' to check C / C++ code style\n"}
+[1.289308] (rflex) StdoutLine: {'line': b'-- Configured uncrustify additional arguments: \n'}
+[1.289465] (rflex) StdoutLine: {'line': b"-- Added test 'xmllint' to check XML markup files\n"}
+[1.290152] (rflex) StdoutLine: {'line': b'-- Configuring done (1.3s)\n'}
+[1.296680] (rflex) StdoutLine: {'line': b'-- Generating done (0.0s)\n'}
+[1.298703] (rflex) StdoutLine: {'line': b'-- Build files have been written to: /home/jbreen/porting_ws/src/atrvjr_robot/build/rflex\n'}
+[1.301138] (-) TimerEvent: {}
+[1.320304] (rflex) StdoutLine: {'line': b'[ 50%] \x1b[32mBuilding CXX object CMakeFiles/rflex_ros2.dir/src/atvrjr_node.cc.o\x1b[0m\n'}
+[1.401239] (-) TimerEvent: {}
+[1.467138] (rflex) StderrLine: {'line': b'\x1b[01m\x1b[K/home/jbreen/porting_ws/src/atrvjr_robot/atrvjr_drivers/rflex/src/atvrjr_node.cc:7:10:\x1b[m\x1b[K \x1b[01;31m\x1b[Kfatal error: \x1b[m\x1b[Krclcpp/rclcpp.hpp: No such file or directory\n'}
+[1.467358] (rflex) StderrLine: {'line': b'    7 | #include \x1b[01;31m\x1b[K"rclcpp/rclcpp.hpp"\x1b[m\x1b[K\n'}
+[1.467465] (rflex) StderrLine: {'line': b'      |          \x1b[01;31m\x1b[K^~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[1.467561] (rflex) StderrLine: {'line': b'compilation terminated.\n'}
+[1.471656] (rflex) StderrLine: {'line': b'gmake[2]: *** [CMakeFiles/rflex_ros2.dir/build.make:76: CMakeFiles/rflex_ros2.dir/src/atvrjr_node.cc.o] Error 1\n'}
+[1.472017] (rflex) StderrLine: {'line': b'gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/rflex_ros2.dir/all] Error 2\n'}
+[1.472312] (rflex) StderrLine: {'line': b'gmake: *** [Makefile:146: all] Error 2\n'}
+[1.475168] (rflex) CommandEnded: {'returncode': 2}
+[1.502758] (-) TimerEvent: {}
+[1.506161] (rflex) JobEnded: {'identifier': 'rflex', 'rc': 2}
+[1.516506] (-) EventReactorShutdown: {}

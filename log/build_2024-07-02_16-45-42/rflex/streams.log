@@ -1,0 +1,10 @@
+[0.010s] Invoking command in '/home/jbreen/porting_ws/src/atrvjr_robot/build/rflex': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /home/jbreen/cmake-install/bin/cmake --build /home/jbreen/porting_ws/src/atrvjr_robot/build/rflex -- -j12 -l12
+[0.035s] [ 50%] [32mBuilding CXX object CMakeFiles/rflex_ros2.dir/src/atvrjr_node.cc.o[0m
+[0.493s] [01m[K/home/jbreen/porting_ws/src/atrvjr_robot/atrvjr_drivers/rflex/src/atvrjr_node.cc:8:10:[m[K [01;31m[Kfatal error: [m[Kgeometry_msg/twist.hpp: No such file or directory
+[0.493s]     8 | #include [01;31m[K<geometry_msg/twist.hpp>[m[K
+[0.494s]       |          [01;31m[K^~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[0.494s] compilation terminated.
+[0.504s] gmake[2]: *** [CMakeFiles/rflex_ros2.dir/build.make:76: CMakeFiles/rflex_ros2.dir/src/atvrjr_node.cc.o] Error 1
+[0.504s] gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/rflex_ros2.dir/all] Error 2
+[0.505s] gmake: *** [Makefile:146: all] Error 2
+[0.507s] Invoked command in '/home/jbreen/porting_ws/src/atrvjr_robot/build/rflex' returned '2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /home/jbreen/cmake-install/bin/cmake --build /home/jbreen/porting_ws/src/atrvjr_robot/build/rflex -- -j12 -l12
