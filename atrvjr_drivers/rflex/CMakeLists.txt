@@ -14,6 +14,15 @@ find_package(geometry_msgs REQUIRED)
 find_package(nav_msgs REQUIRED)
 find_package(tf2 REQUIRED)
 find_package(tf2_ros REQUIRED)
+find_package(tf2_geometry_msgs REQUIRED)
+
+install(DIRECTORY include/${PROJECT_NAME}/
+  DESTINATION include/${PROJECT_NAME}
+  )
+add_library(rflex src/rflex_driver.cc) 
+add_library(atrvjr_ros2 src/atrvjr_driver.cc)
+target_link_libraries(atrvjr_ros2 ${PROJECT_NAME})
+add_executable(atrvjr_ros2 src/atvrjr_node.cc)
 
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
