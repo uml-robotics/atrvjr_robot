@@ -24,14 +24,15 @@
  *
  */
 
-#include <rflex/atrvjr_driver.h>
-#include <rflex/atrvjr_config.h>
+#include "rflex/atrvjr_driver.h"
+#include "rflex/atrvjr_config.h"
+#include <rclcpp/rclcpp.hpp>
 #include <math.h>
 #include <cstdio>
 #include <boost/thread.hpp>
 
 ATRVJR::ATRVJR():
-   last_velocity_time(ros::Time::now())
+   last_velocity_time(rclcpp::Time::now())
 {
     // Start watchdog thread
     boost::thread(boost::bind(&ATRVJR::watchdogThread, this));
@@ -96,7 +97,7 @@ void ATRVJR::getSonarReadings(const int ringi, double* adjusted_ranges) const {
         }
     }
 }
-
+/*
 void ATRVJR::getSonarPoints(const int ringi, sensor_msgs::PointCloud* cloud) const {
     int numSonar = SONARS_PER_RING[ringi];
     double* readings = new double[numSonar];
@@ -116,7 +117,7 @@ void ATRVJR::getSonarPoints(const int ringi, sensor_msgs::PointCloud* cloud) con
         }
     }
 }
-
+*/
 //int ATRVJR::getBumps(const int index, sensor_msgs::PointCloud* cloud) const {
 //    int c = 0;
 //    double wedge = 2 * M_PI / BUMPERS_PER[index];
@@ -173,13 +174,13 @@ void ATRVJR::processDioEvent(unsigned char address, unsigned short data) {
 }
 
 void ATRVJR::setVelocity(const double tvel, const double rvel) {
-    last_velocity_time = ros::Time::now();
+    last_velocity_time = rclcpp::Time::now();
     RFLEX::setVelocity(tvel, rvel);
 }
 
 void ATRVJR::watchdogThread() {
     while (true) {
-        if (ros::Time::now() - last_velocity_time > ros::Duration(0.5)) {
+        if (rclcpp::Time(0) - last_velocity_time > rclcpp::Duration(0.5, 0)) {
             RFLEX::setVelocity(0, 0);
         }
         usleep(100000);

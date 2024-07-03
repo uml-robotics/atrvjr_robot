@@ -1,7 +1,8 @@
 #ifndef ATRVJR_DRIVER_H
 #define ATRVJR_DRIVER_H
 
-#include <rflex/rflex_driver.h>
+#include "rflex/rflex_driver.h"
+#include <rclcpp/rclcpp.hpp>
 //#include "sensor_msgs/point_cloud.hpp"
 
 /**
@@ -45,7 +46,7 @@ class ATRVJR : public RFLEX {
 
         /** Gets a point cloud for sonar readings from base
          * \param cloud Data structure into which the sonar readings are saved */
-        void getBaseSonarPoints(sensor_msgs::PointCloud* cloud) const;
+        // void getBaseSonarPoints(sensor_msgs::PointCloud* cloud) const;
 
         /** Gets a point cloud for the bump sensors on the base
          * \param cloud Data structure into which the bump readings are saved
@@ -89,7 +90,7 @@ class ATRVJR : public RFLEX {
 
 //        int** bumps;
 
-        ros::Time last_velocity_time;
+        rclcpp::Time last_velocity_time;
         void watchdogThread();///< Thread that stops robot if no vel command received
 
         // Not allowed to use these

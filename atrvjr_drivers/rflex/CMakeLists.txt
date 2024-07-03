@@ -13,6 +13,9 @@ set(THIS_PACKAGE_INCLUDE_DEPENDS
   tf2_ros
   tf2_geometry_msgs
   tf2_sensor_msgs
+  angles
+  #rflex
+  #atrvjr
 )
 
 if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
@@ -31,12 +34,15 @@ find_package(tf2 REQUIRED)
 find_package(tf2_ros REQUIRED)
 find_package(tf2_geometry_msgs REQUIRED)
 find_package(tf2_sensor_msgs REQUIRED)
+find_package(angles REQUIRED)
 
 install(DIRECTORY include/${PROJECT_NAME}/
-  DESTINATION include/${PROJECT_NAME}
+  DESTINATION include/
   )
 
-add_executable(${PROJECTED_NAME} src/atvrjr_node.cc)
+
+add_executable(${PROJECTED_NAME} src/atvrjr_node.cc src/atrvjr_driver.cc src/rflex_driver.cc)
+
 
 target_include_directories(${PROJECTED_NAME}
   PUBLIC
