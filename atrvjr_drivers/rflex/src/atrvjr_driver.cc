@@ -27,15 +27,17 @@
 #include "rflex/atrvjr_driver.h"
 #include "rflex/atrvjr_config.h"
 #include <rclcpp/rclcpp.hpp>
+#include <rclcpp/time.hpp>
+#include <chrono>
 #include <math.h>
 #include <cstdio>
 #include <boost/thread.hpp>
 
 ATRVJR::ATRVJR():
-   last_velocity_time(rclcpp::Time::now())
+   last_velocity_time(rclcpp::Clock(RCL_ROS_TIME).now())
 {
     // Start watchdog thread
-    boost::thread(boost::bind(&ATRVJR::watchdogThread, this));
+    std::thread(std::bind(&ATRVJR::watchdogThread, this));
 //    bumps = new int*[2];
 //
 //    for (int index=0;index<2;index++) {
@@ -174,13 +176,13 @@ void ATRVJR::processDioEvent(unsigned char address, unsigned short data) {
 }
 
 void ATRVJR::setVelocity(const double tvel, const double rvel) {
-    last_velocity_time = rclcpp::Time::now();
+    last_velocity_time = rclcpp::Clock(RCL_ROS_TIME).now();
     RFLEX::setVelocity(tvel, rvel);
 }
 
 void ATRVJR::watchdogThread() {
     while (true) {
-        if (rclcpp::Time(0) - last_velocity_time > rclcpp::Duration(0.5, 0)) {
+        if (rclcpp::Clock(RCL_ROS_TIME).now() - last_velocity_time > rclcpp::Duration(0.5, 0)) {
             RFLEX::setVelocity(0, 0);
         }
         usleep(100000);
