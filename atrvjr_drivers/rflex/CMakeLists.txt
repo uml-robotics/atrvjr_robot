@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.8)
 project(rflex)
 
-set(PROJECTED_NAME rflex_ros2)
+set(PROJECTED_NAME atrvjr)
 set(THIS_PACKAGE_INCLUDE_DEPENDS
   rclcpp
   rclcpp_lifecycle
@@ -14,8 +14,6 @@ set(THIS_PACKAGE_INCLUDE_DEPENDS
   tf2_geometry_msgs
   tf2_sensor_msgs
   angles
-  #rflex
-  #atrvjr
 )
 
 if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
