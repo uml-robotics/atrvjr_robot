@@ -43,7 +43,7 @@ def generate_launch_description():
                 'rot_torque' : 0.7
             }],
 
-            remappings=[('/atrvjr/odom', '/odom'), ('/atrvjr/cmd_vel', '/cmd_vel')],
+           # remappings=[('/atrvjr/odom', '/odom'), ('/atrvjr/cmd_vel', '/cmd_vel'),],
 
         ),
     ])

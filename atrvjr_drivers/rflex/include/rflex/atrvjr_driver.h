@@ -3,6 +3,7 @@
 
 #include "rflex/rflex_driver.h"
 #include <rclcpp/rclcpp.hpp>
+#include <rclcpp/clock.hpp>
 //#include "sensor_msgs/point_cloud.hpp"
 
 /**
@@ -33,7 +34,7 @@
  */
 class ATRVJR : public RFLEX {
     public:
-        ATRVJR();
+        ATRVJR(rclcpp::Clock::SharedPtr cl);
         virtual ~ATRVJR();
         void setSonarPower(bool);
         int getNumBodySonars() const;
@@ -90,6 +91,7 @@ class ATRVJR : public RFLEX {
 
 //        int** bumps;
 
+        rclcpp::Clock::SharedPtr clock;
         rclcpp::Time last_velocity_time;
         void watchdogThread();///< Thread that stops robot if no vel command received
 

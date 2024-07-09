@@ -33,11 +33,14 @@ find_package(tf2_ros REQUIRED)
 find_package(tf2_geometry_msgs REQUIRED)
 find_package(tf2_sensor_msgs REQUIRED)
 find_package(angles REQUIRED)
+find_package(Boost REQUIRED COMPONENTS thread)
 
 
 
 add_executable(${PROJECTED_NAME} src/atvrjr_node.cc src/atrvjr_driver.cc src/rflex_driver.cc)
-
+target_link_libraries(${PROJECTED_NAME} PUBLIC
+  ${Boost_LIBRARIES}
+)
 
 target_include_directories(${PROJECTED_NAME}
   PUBLIC

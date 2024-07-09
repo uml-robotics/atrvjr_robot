@@ -25,7 +25,7 @@ using std::placeholders::_1;
 class atrv_jr_node : public rclcpp::Node
 {
     protected:
-        ATRVJR driver;
+        ATRVJR* driver;
         bool initialized = false;
         double first_bearing;
         bool isSonarOn;
@@ -55,76 +55,72 @@ class atrv_jr_node : public rclcpp::Node
         void cmd_vel_callback(const geometry_msgs::msg::Twist &msg) 
         {
             RCLCPP_INFO(this->get_logger(), "I heard: \n\t'Linear Velocity: %f\n\tAngular Velocity: %f'", msg.linear.x, msg.angular.z);
-            driver.setVelocity(msg.linear.x, msg.angular.z);
+            driver->setVelocity(msg.linear.x, msg.angular.z);
         }
 
         void cmd_accel_callback(const std_msgs::msg::Float32 &msg) 
         {
             RCLCPP_INFO(this->get_logger(), "I heard: '%f'", msg.data);
-            this->driver.config.setTransAcc(msg.data);
+            this->driver->config.setTransAcc(msg.data);
         }
 
         void cmd_sonar_power_callback(const std_msgs::msg::Bool &msg) 
         {
             RCLCPP_INFO(this->get_logger(), "I heard: '%d'", msg.data);
             isSonarOn=msg.data;
-            this->driver.setSonarPower(msg.data);
+            this->driver->setSonarPower(msg.data);
             
-            this->driver.sendSystemStatusCommand();
+            this->driver->sendSystemStatusCommand();
         }
 
         void cmd_brake_power_callback(const std_msgs::msg::Bool &msg) 
         {
             RCLCPP_INFO(this->get_logger(), "I heard: '%d'", msg.data);
-            driver.setBrakePower(msg.data);
+            driver->setBrakePower(msg.data);
         }
 
         int initialize_driver(const std::string port) 
         {
-            int ret = driver.initialize(port.c_str());
+            int ret = driver->initialize(port.c_str());
             if (ret < 0) {
                 RCLCPP_ERROR(this->get_logger(), "Failed to initialize driver");
                 return ret;
             }
-            driver.setOdometryPeriod(100000);
-            driver.setDigitalIoPeriod(100000);
-            driver.motionSetDefaults();
+            driver->setOdometryPeriod(100000);
+            driver->setDigitalIoPeriod(100000);
+            driver->motionSetDefaults();
             return 0;
         }
-
-        /*void timer_callback() {
-
-        }*/
 
 
 
         void system_status_callback() {
             // Publish the sonar power status
             std_msgs::msg::Bool sonar_power;
-            sonar_power.data = false;//driver.getSonarPower();
+            sonar_power.data = false;//driver->getSonarPower();
             sonar_power_pub->publish(sonar_power);
 
             // Publish the brake power status
             std_msgs::msg::Bool brake_power;
-            brake_power.data = driver.getBrakePower();
+            brake_power.data = driver->getBrakePower();
             brake_power_pub->publish(brake_power);
 
             // Publish the voltage
             std_msgs::msg::Float32 voltage;
-            voltage.data = driver.getVoltage();
+            voltage.data = driver->getVoltage();
             voltage_pub->publish(voltage);
 
             // Publish the plugged in status
             std_msgs::msg::Bool plugged_in;
-            plugged_in.data = driver.isPluggedIn();
+            plugged_in.data = driver->isPluggedIn();
             plugged_in_pub->publish(plugged_in);
         }
 
         void motor_update_callback() {
-            if (driver.isOdomReady()) {
+            if (driver->isOdomReady()) {
                 // get all of the odom data 
-                double distance = driver.getDistance();
-                double true_bearing = angles::normalize_angle(driver.getBearing());
+                double distance = driver->getDistance();
+                double true_bearing = angles::normalize_angle(driver->getBearing());
 
                 if(!this->initialized) {
                     this->initialized = true;
@@ -172,10 +168,10 @@ class atrv_jr_node : public rclcpp::Node
                 }
 
                 odometry.child_frame_id = "base_link";
-                double tvel = driver.getTransVelocity();
+                double tvel = driver->getTransVelocity();
                 odometry.twist.twist.linear.x = tvel*cos(a_odo);
                 odometry.twist.twist.linear.y = tvel*sin(a_odo);
-                odometry.twist.twist.angular.z = driver.getRotVelocity();
+                odometry.twist.twist.angular.z = driver->getRotVelocity();
 
                 odom_pub->publish(odometry);
 
@@ -195,7 +191,7 @@ class atrv_jr_node : public rclcpp::Node
             //sensor_msgs::msg::PointCloud sonar_cloud;
             //sonar_cloud.header.stamp = this->now();
             //sonar_cloud.header.frame_id = "base_link";
-            //driver.getBaseSonarPoints(&sonar_cloud);
+            //driver->getBaseSonarPoints(&sonar_cloud);
             //this->publish("sonar_cloud_base", sonar_cloud);
         }
 
@@ -204,6 +200,7 @@ class atrv_jr_node : public rclcpp::Node
         : Node("atrv_jr_node")
         {
             // Declare parameters
+            RCLCPP_INFO(this->get_logger(), "initializing params");
             this->declare_parameter("odo_distance_conversion",93810);
             this->declare_parameter("odo_angle_conversion", 38500);
             this->declare_parameter("trans_acceleration", 0.7);
@@ -215,27 +212,29 @@ class atrv_jr_node : public rclcpp::Node
             this->declare_parameter("odometry_frame_id", "odom");
             this->declare_parameter("port", "/dev/ttyUSB0");
 
-            // Get parameters
+            driver = new ATRVJR(this->get_clock());
 
+            // Get parameters
+            RCLCPP_INFO(this->get_logger(), "getting params");
             if(this->initialize_driver(this->get_parameter("port").as_string())) {
                 throw std::runtime_error("Failed to initialize driver");
             }
 
-            driver.config.setOdoDistanceConversion(this->get_parameter("odo_distance_conversion").as_int());
-            driver.config.setOdoAngleConversion(this->get_parameter("odo_angle_conversion").as_int());
-            driver.config.setTransAcc(this->get_parameter("trans_acceleration").as_double());
-            driver.config.setTransTorque(this->get_parameter("trans_torque").as_double());
-            driver.config.setRotAcc(this->get_parameter("rot_acceleration").as_double());
-            driver.config.setRotTorque(this->get_parameter("rot_torque").as_double());
+            driver->config.setOdoDistanceConversion(this->get_parameter("odo_distance_conversion").as_int());
+            driver->config.setOdoAngleConversion(this->get_parameter("odo_angle_conversion").as_int());
+            driver->config.setTransAcc(this->get_parameter("trans_acceleration").as_double());
+            driver->config.setTransTorque(this->get_parameter("trans_torque").as_double());
+            driver->config.setRotAcc(this->get_parameter("rot_acceleration").as_double());
+            driver->config.setRotTorque(this->get_parameter("rot_torque").as_double());
 
-
+            RCLCPP_INFO(this->get_logger(), "Got params; Creating subs");
 
             // Node Subscribers
             cmd_vel_sub = this->create_subscription<geometry_msgs::msg::Twist>("cmd_vel", 10, std::bind(&atrv_jr_node::cmd_vel_callback, this, _1));
             cmd_accel_sub = this->create_subscription<std_msgs::msg::Float32>("cmd_accel", 10, std::bind(&atrv_jr_node::cmd_accel_callback, this, _1));
             cmd_sonar_power_sub = this->create_subscription<std_msgs::msg::Bool>("cmd_sonar_power", 10, std::bind(&atrv_jr_node::cmd_sonar_power_callback, this, _1));
             cmd_brake_power_sub = this->create_subscription<std_msgs::msg::Bool>("cmd_brake_power", 10, std::bind(&atrv_jr_node::cmd_brake_power_callback, this, _1));
-
+            RCLCPP_INFO(this->get_logger(), "Created subs; creating pubs");
             //Node Publishers
             //this->create_publisher<sensor_msgs::msg::PointCloud>("sonar_cloud_base", 50);
             sonar_power_pub = this->create_publisher<std_msgs::msg::Bool>("sonar_power", 1);
@@ -248,12 +247,15 @@ class atrv_jr_node : public rclcpp::Node
 
             broadcaster = std::make_unique<tf2_ros::TransformBroadcaster>(rclcpp::Node::SharedPtr(this));
 
+            //RCLCPP_INFO(this->get_logger(), "Created pubs; initializing driver");
             //timer_ = this->create_wall_timer(
             //std::chrono::milliseconds(500), std::bind(&atrv_jr_node::timer_callback, this));
 
-            driver.systemStatusUpdateSignal.set(boost::bind(&atrv_jr_node::system_status_callback, this));
-            driver.motorUpdateSignal.set(boost::bind(&atrv_jr_node::motor_update_callback, this));
-            //driver.sonarUpdateSignal.set(boost::bind(&atrv_jr_node::sonar_update_callback, this));
+            //driver->systemStatusUpdateSignal.set(boost::bind(&atrv_jr_node::system_status_callback, this));
+            //driver->motorUpdateSignal.set(boost::bind(&atrv_jr_node::motor_update_callback, this));
+
+            //RCLCPP_INFO(this->get_logger(), "Driver initialized; Ready for use");
+            //driver->sonarUpdateSignal.set(boost::bind(&atrv_jr_node::sonar_update_callback, this));
 
         }
 

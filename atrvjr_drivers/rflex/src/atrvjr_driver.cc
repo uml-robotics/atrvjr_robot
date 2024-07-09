@@ -26,18 +26,20 @@
 
 #include "rflex/atrvjr_driver.h"
 #include "rflex/atrvjr_config.h"
-#include <rclcpp/rclcpp.hpp>
+//#include <rclcpp/rclcpp.hpp>
 #include <rclcpp/time.hpp>
+#include <rclcpp/clock.hpp>
+
 #include <chrono>
 #include <math.h>
 #include <cstdio>
 #include <boost/thread.hpp>
 
-ATRVJR::ATRVJR():
-   last_velocity_time(rclcpp::Clock(RCL_ROS_TIME).now())
+ATRVJR::ATRVJR(rclcpp::Clock::SharedPtr cl):
+   last_velocity_time(cl->now()), clock(cl)
 {
     // Start watchdog thread
-    std::thread(std::bind(&ATRVJR::watchdogThread, this));
+    boost::thread(boost::bind(&ATRVJR::watchdogThread, this));
 //    bumps = new int*[2];
 //
 //    for (int index=0;index<2;index++) {
@@ -176,13 +178,14 @@ void ATRVJR::processDioEvent(unsigned char address, unsigned short data) {
 }
 
 void ATRVJR::setVelocity(const double tvel, const double rvel) {
-    last_velocity_time = rclcpp::Clock(RCL_ROS_TIME).now();
+    //last_velocity_time = rclcpp::Clock(RCL_ROS_TIME).now();
+    last_velocity_time = clock->now();
     RFLEX::setVelocity(tvel, rvel);
 }
 
 void ATRVJR::watchdogThread() {
     while (true) {
-        if (rclcpp::Clock(RCL_ROS_TIME).now() - last_velocity_time > rclcpp::Duration(0.5, 0)) {
+        if (clock->now() - last_velocity_time > rclcpp::Duration(0.5, 0)) {
             RFLEX::setVelocity(0, 0);
         }
         usleep(100000);
