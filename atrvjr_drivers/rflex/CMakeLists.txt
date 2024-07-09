@@ -34,9 +34,6 @@ find_package(tf2_geometry_msgs REQUIRED)
 find_package(tf2_sensor_msgs REQUIRED)
 find_package(angles REQUIRED)
 
-install(DIRECTORY include/${PROJECT_NAME}/
-  DESTINATION include/
-  )
 
 
 add_executable(${PROJECTED_NAME} src/atvrjr_node.cc src/atrvjr_driver.cc src/rflex_driver.cc)
@@ -49,6 +46,10 @@ target_include_directories(${PROJECTED_NAME}
   PRIVATE
   include
   
+)
+
+install (TARGETS ${PROJECTED_NAME}
+  DESTINATION lib/${PROJECT_NAME}
 )
 
 ament_target_dependencies(${PROJECTED_NAME} PUBLIC
