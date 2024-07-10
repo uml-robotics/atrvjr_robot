@@ -246,7 +246,7 @@ class atrv_jr_node : public rclcpp::Node
 
             RCLCPP_INFO(this->get_logger(), "Creating tf broadcaster\n");
 
-            broadcaster = std::make_unique<tf2_ros::TransformBroadcaster>(rclcpp::Node::SharedPtr(this));
+            broadcaster = std::make_unique<tf2_ros::TransformBroadcaster>(*this);
 
             RCLCPP_INFO(this->get_logger(), "Created pubs\n Initializing Driver\n");
             //timer_ = this->create_wall_timer(
