@@ -244,6 +244,7 @@ class atrv_jr_node : public rclcpp::Node
             plugged_in_pub = this->create_publisher<std_msgs::msg::Bool>("plugged_in", 1);
             state_pub = this->create_publisher<sensor_msgs::msg::JointState>("joint_state",1);
 
+            RCLCPP_INFO(this->get_logger(), "Creating tf broadcaster\n");
 
             broadcaster = std::make_unique<tf2_ros::TransformBroadcaster>(rclcpp::Node::SharedPtr(this));
 
