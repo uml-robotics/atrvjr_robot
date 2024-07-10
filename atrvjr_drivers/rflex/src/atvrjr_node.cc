@@ -200,7 +200,7 @@ class atrv_jr_node : public rclcpp::Node
         : Node("atrv_jr_node")
         {
             // Declare parameters
-            RCLCPP_INFO(this->get_logger(), "initializing params");
+            RCLCPP_INFO(this->get_logger(), "Initializing params\n");
             this->declare_parameter("odo_distance_conversion",93810);
             this->declare_parameter("odo_angle_conversion", 38500);
             this->declare_parameter("trans_acceleration", 0.7);
@@ -215,7 +215,7 @@ class atrv_jr_node : public rclcpp::Node
             driver = new ATRVJR(this->get_clock());
 
             // Get parameters
-            RCLCPP_INFO(this->get_logger(), "getting params");
+            RCLCPP_INFO(this->get_logger(), "Getting params\n");
             if(this->initialize_driver(this->get_parameter("port").as_string())) {
                 throw std::runtime_error("Failed to initialize driver");
             }
@@ -227,14 +227,14 @@ class atrv_jr_node : public rclcpp::Node
             driver->config.setRotAcc(this->get_parameter("rot_acceleration").as_double());
             driver->config.setRotTorque(this->get_parameter("rot_torque").as_double());
 
-            RCLCPP_INFO(this->get_logger(), "Got params; Creating subs");
+            RCLCPP_INFO(this->get_logger(), "Got params\n Creating subs\n");
 
             // Node Subscribers
             cmd_vel_sub = this->create_subscription<geometry_msgs::msg::Twist>("cmd_vel", 10, std::bind(&atrv_jr_node::cmd_vel_callback, this, _1));
             cmd_accel_sub = this->create_subscription<std_msgs::msg::Float32>("cmd_accel", 10, std::bind(&atrv_jr_node::cmd_accel_callback, this, _1));
             cmd_sonar_power_sub = this->create_subscription<std_msgs::msg::Bool>("cmd_sonar_power", 10, std::bind(&atrv_jr_node::cmd_sonar_power_callback, this, _1));
             cmd_brake_power_sub = this->create_subscription<std_msgs::msg::Bool>("cmd_brake_power", 10, std::bind(&atrv_jr_node::cmd_brake_power_callback, this, _1));
-            RCLCPP_INFO(this->get_logger(), "Created subs; creating pubs");
+            RCLCPP_INFO(this->get_logger(), "Created subs\n Creating pubs\n");
             //Node Publishers
             //this->create_publisher<sensor_msgs::msg::PointCloud>("sonar_cloud_base", 50);
             sonar_power_pub = this->create_publisher<std_msgs::msg::Bool>("sonar_power", 1);
@@ -247,14 +247,14 @@ class atrv_jr_node : public rclcpp::Node
 
             broadcaster = std::make_unique<tf2_ros::TransformBroadcaster>(rclcpp::Node::SharedPtr(this));
 
-            //RCLCPP_INFO(this->get_logger(), "Created pubs; initializing driver");
+            RCLCPP_INFO(this->get_logger(), "Created pubs\n Initializing Driver\n");
             //timer_ = this->create_wall_timer(
             //std::chrono::milliseconds(500), std::bind(&atrv_jr_node::timer_callback, this));
 
-            //driver->systemStatusUpdateSignal.set(boost::bind(&atrv_jr_node::system_status_callback, this));
-            //driver->motorUpdateSignal.set(boost::bind(&atrv_jr_node::motor_update_callback, this));
+            driver->systemStatusUpdateSignal.set(boost::bind(&atrv_jr_node::system_status_callback, this));
+            driver->motorUpdateSignal.set(boost::bind(&atrv_jr_node::motor_update_callback, this));
 
-            //RCLCPP_INFO(this->get_logger(), "Driver initialized; Ready for use");
+            RCLCPP_INFO(this->get_logger(), "Driver Initialized\n Ready for use\n");
             //driver->sonarUpdateSignal.set(boost::bind(&atrv_jr_node::sonar_update_callback, this));
 
         }
