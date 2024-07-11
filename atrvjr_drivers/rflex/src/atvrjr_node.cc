@@ -52,18 +52,54 @@ class atrv_jr_node : public rclcpp::Node
 
         std::shared_ptr<tf2_ros::TransformBroadcaster> broadcaster;
 
+        /******** 
+         * 
+         * @name cmd_vel_callback 
+         * 
+         * @brief Callback for the cmd_vel topic; Takes twist ands sets the velocity of the robot with given data
+         * 
+         * @param msg const geometry_msgs::msg::Twist* - The twist message to be used to set the velocity of the robot
+         * 
+         * @return void
+         * 
+         * 
+         ********/
         void cmd_vel_callback(const geometry_msgs::msg::Twist &msg) 
         {
             RCLCPP_INFO(this->get_logger(), "I heard: \n\t'Linear Velocity: %f\n\tAngular Velocity: %f'", msg.linear.x, msg.angular.z);
             driver->setVelocity(msg.linear.x, msg.angular.z);
         }
 
+        /******** 
+         * 
+         * @name cmd_accel_callback 
+         * 
+         * @brief Callback for the cmd_accel topic; Takes float ands sets the acceleration of the robot with given data
+         * 
+         * @param msg const std_msgs::msg::Float32* - A floating point number to set the acceleration of the robot
+         *
+         * @return void
+         * 
+         * 
+         ********/
         void cmd_accel_callback(const std_msgs::msg::Float32 &msg) 
         {
             RCLCPP_INFO(this->get_logger(), "I heard: '%f'", msg.data);
             this->driver->config.setTransAcc(msg.data);
         }
 
+        /******** 
+         * 
+         * @name  cmd_sonar_power_callback
+         * 
+         * @brief Callback for the cmd_sonar_power topic; Takes bool ands sets the power state of the sonar power
+         * 
+         * @param msg const std_msgs::msg::Bool* - A bool to set the power of the robot sonar array
+         *
+         * @return void
+         * 
+         * 
+         ********/
         void cmd_sonar_power_callback(const std_msgs::msg::Bool &msg) 
         {
             RCLCPP_INFO(this->get_logger(), "I heard: '%d'", msg.data);
@@ -73,12 +109,36 @@ class atrv_jr_node : public rclcpp::Node
             this->driver->sendSystemStatusCommand();
         }
 
+        /******** 
+         * 
+         * @name  cmd_brake_power_callback
+         * 
+         * @brief Callback for the cmd_brake_power topic; Takes bool ands sets the power state of the brake power
+         * 
+         * @param msg const std_msgs::msg::Bool* - A bool to set the power of the robot brakes
+         *
+         * @return void
+         * 
+         * 
+         ********/
         void cmd_brake_power_callback(const std_msgs::msg::Bool &msg) 
         {
             RCLCPP_INFO(this->get_logger(), "I heard: '%d'", msg.data);
             driver->setBrakePower(msg.data);
         }
 
+        /******** 
+         * 
+         * @name  initialize_driver
+         * 
+         * @brief Initializes the rFlex driver with the given port
+         * 
+         * @param port const const std::string - A string to set the port of the rFlex driver as
+         *
+         * @return int - Returns 0 if the driver was initialized successfully, otherwise returns the error code
+         * 
+         * 
+         ********/
         int initialize_driver(const std::string port) 
         {
             int ret = driver->initialize(port.c_str());
@@ -92,8 +152,16 @@ class atrv_jr_node : public rclcpp::Node
             return 0;
         }
 
-
-
+        /******** 
+         * 
+         * @name  system_status_callback
+         * 
+         * @brief Callback for the system status; Publishes the status of the sonar power, brake power, voltage, and plugged in status
+         * 
+         * @return void
+         * 
+         * 
+         ********/
         void system_status_callback() {
             // Publish the sonar power status
             std_msgs::msg::Bool sonar_power;
@@ -116,6 +184,16 @@ class atrv_jr_node : public rclcpp::Node
             plugged_in_pub->publish(plugged_in);
         }
 
+        /******** 
+         * 
+         * @name  motor_update_callback
+         * 
+         * @brief Callback for the motor update; Publishes the odometry, joint state, and sonar cloud data
+         * 
+         * @return void
+         * 
+         * 
+         ********/
         void motor_update_callback() {
             if (driver->isOdomReady()) {
                 // get all of the odom data 
@@ -186,6 +264,17 @@ class atrv_jr_node : public rclcpp::Node
             }
         }
 
+
+        /******** 
+         * 
+         * @name  sonar_update_callback
+         * 
+         * @brief Callback for the sonar update; Publishes the sonar cloud data
+         * 
+         * @return void
+         * 
+         * 
+         ********/
         void sonar_update_callback() {
             // Publish the sonar data
             //sensor_msgs::msg::PointCloud sonar_cloud;
