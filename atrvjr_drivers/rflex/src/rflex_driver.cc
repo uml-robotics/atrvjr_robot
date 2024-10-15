@@ -214,7 +214,7 @@ void RFLEX::setOdometryPeriod( const long period ) {
 void RFLEX::setVelocity( const double tvel, const double rvel) {
     long utvel =labs(config.realTrans2driver(tvel));
     long urvel =labs(config.realAngle2driver(rvel));
-
+    printf("signed: %lf & %lf \t unsigned: %ld & %ld \n", tvel, rvel, utvel, urvel);
     // Fixes hardware? bug:
     //   If we send the zero translational velocity, the motors just
     //   keep spinning with the last non-zero velocity. Only affects translational
@@ -707,7 +707,7 @@ bool RFLEX::writePacket(const int length) const {
             bytes_written += n;
 
         // Put in a short wait to let the rFlex controller catch up
-        usleep(1000);
+        usleep(500);
     }
 
     return true;

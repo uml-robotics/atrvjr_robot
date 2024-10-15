@@ -34,7 +34,7 @@ def generate_launch_description():
             name='atrvjr',
             output='screen',
             parameters=[{
-                'port': '/dev/ttyR1',
+                'port': '/dev/ttyUSB0',
                 'odo_distance_conversion': 90000,
                 'odo_angle_conversion': 36000,
                 'trans_acceleration' : 1.5,

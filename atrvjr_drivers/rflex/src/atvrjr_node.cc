@@ -1,9 +1,11 @@
 #define BOOST_BIND_NO_PLACEHOLDERS
+#include <chrono>
 #include <string>
 #include <memory>
 #include <boost/bind.hpp>
 #include <angles/angles.h>
 
+using namespace std::chrono_literals;
 using std::placeholders::_1;
 
 #include "rflex/atrvjr_driver.h"
@@ -33,7 +35,7 @@ class atrv_jr_node : public rclcpp::Node
         double x_odo, y_odo, a_odo;
         int prev_bumps;
 
-        
+        rclcpp::TimerBase::SharedPtr timer_;
 
         //Subscribers
         rclcpp::Subscription<geometry_msgs::msg::Twist>::SharedPtr cmd_vel_sub;
@@ -67,7 +69,7 @@ class atrv_jr_node : public rclcpp::Node
         void cmd_vel_callback(const geometry_msgs::msg::Twist &msg) 
         {
             RCLCPP_INFO(this->get_logger(), "I heard: \n\t'Linear Velocity: %f\n\tAngular Velocity: %f'", msg.linear.x, msg.angular.z);
-            driver->setVelocity(msg.linear.x, msg.angular.z);
+            driver->setVelocity(static_cast<double>(msg.linear.x), static_cast<double>(msg.angular.z));
         }
 
         /******** 
@@ -106,7 +108,7 @@ class atrv_jr_node : public rclcpp::Node
             isSonarOn=msg.data;
             this->driver->setSonarPower(msg.data);
             
-            this->driver->sendSystemStatusCommand();
+            
         }
 
         /******** 
@@ -163,6 +165,10 @@ class atrv_jr_node : public rclcpp::Node
          * 
          ********/
         void system_status_callback() {
+            //RCLCPP_INFO(this->get_logger(), "Entering system status");
+
+            driver->sendSystemStatusCommand();
+
             // Publish the sonar power status
             std_msgs::msg::Bool sonar_power;
             sonar_power.data = false;//driver->getSonarPower();
@@ -195,6 +201,7 @@ class atrv_jr_node : public rclcpp::Node
          * 
          ********/
         void motor_update_callback() {
+            // RCLCPP_INFO(this->get_logger(), "Entering motor update");
             if (driver->isOdomReady()) {
                 // get all of the odom data 
                 double distance = driver->getDistance();
@@ -284,6 +291,10 @@ class atrv_jr_node : public rclcpp::Node
             //this->publish("sonar_cloud_base", sonar_cloud);
         }
 
+        void requestRFLEXStatus() {
+            driver->sendSystemStatusCommand();
+        }
+
     public:
         atrv_jr_node()
         : Node("atrv_jr_node")
@@ -341,10 +352,15 @@ class atrv_jr_node : public rclcpp::Node
             //timer_ = this->create_wall_timer(
             //std::chrono::milliseconds(500), std::bind(&atrv_jr_node::timer_callback, this));
 
-            driver->systemStatusUpdateSignal.set(boost::bind(&atrv_jr_node::system_status_callback, this));
-            driver->motorUpdateSignal.set(boost::bind(&atrv_jr_node::motor_update_callback, this));
+            driver->motorUpdateSignal.set(std::bind(&atrv_jr_node::motor_update_callback, this));
 
-            RCLCPP_INFO(this->get_logger(), "Driver Initialized\n Ready for use\n");
+            driver->systemStatusUpdateSignal.set(std::bind(&atrv_jr_node::system_status_callback, this));
+            
+            timer_ = this->create_wall_timer(
+                500ms, std::bind(&atrv_jr_node::requestRFLEXStatus, this)
+            );
+
+            RCLCPP_INFO(this->get_logger(), "Driver Initialized\t Ready for use");
             //driver->sonarUpdateSignal.set(boost::bind(&atrv_jr_node::sonar_update_callback, this));
 
         }

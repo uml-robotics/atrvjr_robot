@@ -4,6 +4,7 @@
 #include <rflex/rflex_info.h>
 #include <pthread.h>
 #include <boost/function.hpp>
+#include <cmath>
 
 /**
  * \brief RFLEX Driver to handle input and output to RFlex devices.
@@ -89,7 +90,7 @@ public:
      * @param value
      */
     unsigned long realTrans2driver(double value) const {
-        return value * odo_distance_conversion;
+        return static_cast<unsigned long>(value * odo_distance_conversion);
     }
     double driverTrans2real(int value) const{
         return value / (double) odo_distance_conversion;
@@ -100,7 +101,7 @@ public:
      * @param value
      */
     unsigned long realAngle2driver(double value) const {
-        return value * odo_angle_conversion;
+        return static_cast<unsigned long>(value * odo_angle_conversion);
     }
     double driverAngle2real(int value) const{
         return value / (double) odo_angle_conversion;
