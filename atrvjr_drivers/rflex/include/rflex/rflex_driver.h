@@ -90,7 +90,7 @@ public:
      * @param value
      */
     unsigned long realTrans2driver(double value) const {
-        return static_cast<unsigned long>(value * odo_distance_conversion);
+        return static_cast<unsigned long>(fabs(value * odo_distance_conversion));
     }
     double driverTrans2real(int value) const{
         return value / (double) odo_distance_conversion;
@@ -101,7 +101,7 @@ public:
      * @param value
      */
     unsigned long realAngle2driver(double value) const {
-        return static_cast<unsigned long>(value * odo_angle_conversion);
+        return static_cast<unsigned long>(fabs(value * odo_angle_conversion));
     }
     double driverAngle2real(int value) const{
         return value / (double) odo_angle_conversion;
