@@ -4,6 +4,7 @@
 #include "rflex/rflex_driver.h"
 #include <rclcpp/rclcpp.hpp>
 #include <rclcpp/clock.hpp>
+#include <sensor_msgs/msg/point_cloud.hpp>
 //#include "sensor_msgs/point_cloud.hpp"
 
 /**
@@ -52,7 +53,7 @@ class ATRVJR : public RFLEX {
         /** Gets a point cloud for the bump sensors on the base
          * \param cloud Data structure into which the bump readings are saved
          * \return number of active bump sensors */
-//        int getBaseBumps(sensor_msgs::PointCloud* cloud) const;
+        int getBaseBumps(sensor_msgs::msg::PointCloud* cloud) const;
 
         /**
          * Overriding rflex setVelocity to be able to watch when no
@@ -63,7 +64,7 @@ class ATRVJR : public RFLEX {
         /** Processes the DIO packets - called from RFflex Driver
          * \param address origin
          * \param data values */
-        void processDioEvent(unsigned char address, unsigned short data);
+        void processDioEvent(unsigned char address, unsigned short data) override;
 
         /** Detects whether the robot has all the necessary components
          * to calculate odometry
@@ -72,7 +73,6 @@ class ATRVJR : public RFLEX {
             return odomReady==3;
         }
 
-//        SimpleSignal bumpsUpdateSignal;
     private:
         /**\param ringi BODY_INDEX or BASE_INDEX
          * \param readings Data structure into which the sonar readings are saved */
@@ -85,11 +85,11 @@ class ATRVJR : public RFLEX {
            \param cloud Data structure into which the bump sensors are saved
            \return number of active bump sensors
         */
-//        int getBumps(const int index, sensor_msgs::PointCloud* cloud) const;
+       int getBumps(const int index, sensor_msgs::msg::PointCloud* cloud) const;
 
-//        int home_bearing; ///< Last home bearing (arbitrary units)
+       int home_bearing; ///< Last home bearing (arbitrary units)
 
-//        int** bumps;
+       int** bumps;
 
         rclcpp::Clock::SharedPtr clock;
         rclcpp::Time last_velocity_time;

@@ -51,6 +51,7 @@ class atrv_jr_node : public rclcpp::Node
         rclcpp::Publisher<sensor_msgs::msg::JointState>::SharedPtr state_pub;
         rclcpp::Publisher<nav_msgs::msg::Odometry>::SharedPtr odom_pub;
         // rclcpp::Publisher<> sonar_cloud_pub;
+        rclcpp::Publisher<sensor_msgs::msg::PointCloud>::SharedPtr bumps_pub;
 
         std::shared_ptr<tf2_ros::TransformBroadcaster> broadcaster;
 
@@ -291,6 +292,26 @@ class atrv_jr_node : public rclcpp::Node
             //this->publish("sonar_cloud_base", sonar_cloud);
         }
 
+        void bumps_update_callback() {
+            // Publish the bump data
+            sensor_msgs::msg::PointCloud bump_cloud;
+            bump_cloud.header.stamp = this->now();
+            bump_cloud.header.frame_id = "base_link";
+            driver->getBaseBumps(&bump_cloud);
+            //this->publish("bump", bump_cloud);
+            bumps_pub->publish(bump_cloud);
+        }
+
+        /******** 
+         * 
+         * @name  requestRFLEXStatus
+         * 
+         * @brief Requests the status of the RFLEX system
+         * 
+         * @return void
+         * 
+         * 
+         ********/
         void requestRFLEXStatus() {
             driver->sendSystemStatusCommand();
         }
@@ -343,6 +364,7 @@ class atrv_jr_node : public rclcpp::Node
             odom_pub = this->create_publisher<nav_msgs::msg::Odometry>("odometry", 50);
             plugged_in_pub = this->create_publisher<std_msgs::msg::Bool>("plugged_in", 1);
             state_pub = this->create_publisher<sensor_msgs::msg::JointState>("joint_state",1);
+            bumps_pub = this->create_publisher<sensor_msgs::msg::PointCloud>("bumps", 1);
 
             RCLCPP_INFO(this->get_logger(), "Creating tf broadcaster\n");
 
@@ -356,12 +378,15 @@ class atrv_jr_node : public rclcpp::Node
 
             driver->systemStatusUpdateSignal.set(std::bind(&atrv_jr_node::system_status_callback, this));
             
+            //driver->sonarUpdateSignal.set(std::bind(&atrv_jr_node::sonar_update_callback, this));
+
+            driver->bumpsUpdateSignal.set(std::bind(&atrv_jr_node::bumps_update_callback, this));
+            
             timer_ = this->create_wall_timer(
                 500ms, std::bind(&atrv_jr_node::requestRFLEXStatus, this)
             );
 
             RCLCPP_INFO(this->get_logger(), "Driver Initialized\t Ready for use");
-            //driver->sonarUpdateSignal.set(boost::bind(&atrv_jr_node::sonar_update_callback, this));
 
         }
 

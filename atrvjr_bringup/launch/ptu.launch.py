@@ -26,7 +26,7 @@ def generate_launch_description():
             name='ptu46',
             output='screen',
             parameters=[{
-                'port': '/dev/ttyR2',
+                'port': '/dev/ttyUSB1',
             }],
         ),
     ])

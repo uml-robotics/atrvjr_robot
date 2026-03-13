@@ -52,15 +52,15 @@ const double SONAR_RING_HEIGHT[] = {0.4};
 // Digital IO constants
 // ====================
 
-//#define BUMPER_COUNT 14
-//#define BUMPER_ADDRESS_STYLE 0
-//#define BUMPER_BIT_STYLE 1
-//#define BUMPER_STYLE 0
-//const int BUMPERS_PER[] = {6,8};
-//const double BUMPER_ANGLE_OFFSET[] = {-1,1,-1,1};
-//const double BUMPER_HEIGHT_OFFSET[][4] = {{.5,.5,.05,.05},
-//    {.25,.25,.05,.05}
-//};
+#define BUMPER_COUNT 14
+#define BUMPER_ADDRESS_STYLE 0
+#define BUMPER_BIT_STYLE 1
+#define BUMPER_STYLE 0
+const int BUMPERS_PER[] = {6,8};
+const double BUMPER_ANGLE_OFFSET[] = {-1,1,-1,1};
+const double BUMPER_HEIGHT_OFFSET[][4] = {{.5,.5,.05,.05},
+   {.25,.25,.05,.05}
+};
 
 // IR Constants
 // ============

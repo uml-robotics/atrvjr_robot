@@ -230,6 +230,7 @@ class RFLEX {
         SimpleSignal systemStatusUpdateSignal;
         SimpleSignal motorUpdateSignal;
         SimpleSignal sonarUpdateSignal;
+        SimpleSignal bumpsUpdateSignal;
 
         RFLEXConfig config;
 
@@ -251,7 +252,7 @@ class RFLEX {
         int home_bearing_found;
         int odomReady;
 
-    private:
+    //private:
 
         int distance;			///< Raw translational odometry
         int bearing;			///< Raw rotational odometry
