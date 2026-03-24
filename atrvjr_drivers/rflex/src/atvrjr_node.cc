@@ -234,7 +234,7 @@ class atrv_jr_node : public rclcpp::Node
                 geometry_msgs::msg::TransformStamped odom_trans;
                 odom_trans.header.stamp = this->now();
                 odom_trans.header.frame_id = this->get_parameter("odometry_frame_id").as_string();
-                odom_trans.child_frame_id = "base_link";
+                odom_trans.child_frame_id = "base_footprint";
 
                 odom_trans.transform.translation.x = x_odo;
                 odom_trans.transform.translation.y = y_odo;
@@ -253,7 +253,7 @@ class atrv_jr_node : public rclcpp::Node
                     odometry.pose.covariance[i * 7] = 1;
                 }
 
-                odometry.child_frame_id = "base_link";
+                odometry.child_frame_id = "base_footprint";
                 double tvel = driver->getTransVelocity();
                 odometry.twist.twist.linear.x = tvel*cos(a_odo);
                 odometry.twist.twist.linear.y = tvel*sin(a_odo);
