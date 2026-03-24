@@ -1,0 +1,38 @@
+atrvjr_tf_publisher:
+  ros__parameters:
+    # base_footprint -> base_link: height of base_link above ground (m)
+    base_link_z: 0.30
+
+    # base_link -> pan_link: mount point of the pan-tilt unit
+    pan_mount_x:  0.10
+    pan_mount_y:  0.00
+    pan_mount_z:  0.50
+
+    # pan_link -> tilt_link: tilt axis offset from pan axis
+    tilt_offset_x: 0.00
+    tilt_offset_y: 0.00
+    tilt_offset_z: 0.05
+
+    # tilt_link -> front_camera
+    front_camera_x: 0.05
+    front_camera_y: 0.00
+    front_camera_z: 0.03
+
+    # base_link -> rear_camera (yaw=pi applied in code)
+    rear_camera_x: -0.30
+    rear_camera_y:  0.00
+    rear_camera_z:  0.50
+
+    # base_link -> front_laser (SICK)
+    front_laser_x:  0.40
+    front_laser_y:  0.00
+    front_laser_z:  0.10
+
+    # base_link -> rear_laser (URG, yaw=pi applied in code)
+    rear_laser_x: -0.30
+    rear_laser_y:  0.00
+    rear_laser_z:  0.70
+
+    # Joint names published on /joint_states
+    pan_joint_name:  pan_joint
+    tilt_joint_name: tilt_joint
