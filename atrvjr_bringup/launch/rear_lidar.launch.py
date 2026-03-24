@@ -8,6 +8,7 @@ def generate_launch_description():
             package='urg_node',
             executable='urg_node_driver',
             name='urg_node',
+#            namespace='rear_lidar',
             parameters=[
                 '/home/atrv-jr/ros2_ws/src/atrvjr_robot/atrvjr_bringup/config/urg_node_serial.yaml'
             ],

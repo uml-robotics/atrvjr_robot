@@ -1,4 +1,4 @@
-usb_cam:
+/rear_camera/rear_usb_cam_node:
   ros__parameters:
     video_device: "/dev/video2"
     framerate: 30.0
@@ -7,5 +7,7 @@ usb_cam:
 #    pixel_format: "yuyv"        # or "mjpeg", "yuyv", "uyvy" depending on your camera
     pixel_format: "yuyv2rgb"        # or "mjpeg", "yuyv", "uyvy" depending on your camera
     io_method: "mmap"           # can be "read", "mmap", or "userptr"
-    camera_name: "front_camera"
-    frame_id: "front_camera_frame"
+    camera_name: "rear_camera"
+    frame_id: "rear_camera"
+    namespace: "rear_camera"
+    theora_keyframe_frequency: 1

@@ -1,4 +1,4 @@
-usb_cam:
+/front_camera/front_usb_cam_node:
   ros__parameters:
     video_device: "/dev/video0"
     framerate: 30.0
@@ -7,4 +7,5 @@ usb_cam:
     pixel_format: "yuyv"        # or "mjpeg", "yuyv", "uyvy" depending on your camera
     io_method: "mmap"           # can be "read", "mmap", or "userptr"
     camera_name: "front_camera"
-    frame_id: "front_camera_frame"
+    frame_id: "front_camera"
+    namespace: "front_camera"
