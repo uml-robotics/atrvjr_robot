@@ -34,7 +34,7 @@ def generate_launch_description():
     # ── Launch arguments ─────────────────────────────────────────────────
     map_arg = DeclareLaunchArgument(
         'map',
-        default_value=os.path.join(pkg, 'maps', 'map.yaml'),
+        default_value=os.path.join(pkg, 'maps', 'hallway.yaml'),
         description='Full path to the map YAML file',
     )
 
@@ -107,5 +107,5 @@ def generate_launch_description():
 
         tf_node,
         nav2_localization,
-        nav2_navigation,
+#        nav2_navigation,
     ])
