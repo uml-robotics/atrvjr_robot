@@ -22,25 +22,35 @@ https://github.com/uml-robotics/ATRV_JR_Frontend
 # STARTUP
 You can run 
 
-```ros2 launch atrv-full.launch.py```
+```ros2 launch atrv.launch.py```
 
 to startup every node, or start them up individually below
 
 ## Robot Driver
 
+```ros2 launch atrvjr_bringup rflex.launch.py```
+
 ## Sensors
-```ros2 run usb_cam usb_cam_node_exe --ros-args --params-file /home/atrv-jr/front_camera.yaml```
 
-```ros2 run usb_cam usb_cam_node_exe --ros-args --params-file /home/atrv-jr/rear_camera.yaml```
+Start all sensors with TF frames with
 
-```ros2 run urg_node urg_node_driver --ros-args --params-file urg_node_serial.yaml```
+```ros2 launch atrvjr_bringup sensors.launch.py```
 
-# TF only
+Or start each sensor individually with
+
+```ros2 launch atrvjr_bringup front_camera.launch.py```
+
+```ros2 launch atrvjr_bringup rear_camera.launch.py```
+
+```ros2 launch atrvjr_bringup rear_lidar.launch.py```
+
 ```ros2 launch atrvjr_nav2 tf.launch.py```
 
 # Full navigation (supply your map)
 ```ros2 launch atrvjr_nav2 navigation.launch.py map:=/path/to/your/map.yaml```
 
+# Unity communication
+```ros2 launch ros-tcp-endpoint endpoint.py```
 
 # Dependencies
-python3-transforms3d
+ros-humble-tf-transformations
