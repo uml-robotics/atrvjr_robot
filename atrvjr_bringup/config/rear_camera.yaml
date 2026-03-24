@@ -1,0 +1,11 @@
+usb_cam:
+  ros__parameters:
+    video_device: "/dev/video2"
+    framerate: 30.0
+    image_width: 1280
+    image_height: 720
+#    pixel_format: "yuyv"        # or "mjpeg", "yuyv", "uyvy" depending on your camera
+    pixel_format: "yuyv2rgb"        # or "mjpeg", "yuyv", "uyvy" depending on your camera
+    io_method: "mmap"           # can be "read", "mmap", or "userptr"
+    camera_name: "front_camera"
+    frame_id: "front_camera_frame"
