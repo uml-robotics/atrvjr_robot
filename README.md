@@ -53,4 +53,4 @@ Or start each sensor individually with
 ```ros2 launch ros-tcp-endpoint endpoint.py```
 
 # Dependencies
-ros-humble-tf-transformations
+ros-humble-tf-transformations ros-humble-nav2-bringup
