@@ -54,3 +54,19 @@ Or start each sensor individually with
 
 # Dependencies
 ros-humble-tf-transformations ros-humble-nav2-bringup
+
+# ROS 2 Package Breakdown
+atrvjr_bringup top level package that contains launch files for starting all of the other nodes, as well as configuration for the sensors etc.
+
+atrvjr_drivers contains the rflex driver, which has been ported over to ros2. Driver subscribes to '/cmd_vel', publishes to '/odom' as well as the /odom->/base_footprint tf frame, and other info
+
+ROS2-HAL-Flir-PTU-D46 port of the PTU (Pan tilt Unit) to ros2. Contains launch file for pantilt driver.
+
+sick_scan_xd port of the old SICK Driver
+
+atrvjr_nav2 contains navigation configuration and launch files for the entire ros2 navigation stack, setup for atrvjr
+
+
+
+ROS-TCP-Endpoint allows for communication with the Unity interface. Can be started with it's own launch file, but is included automatically in the full start.
+
