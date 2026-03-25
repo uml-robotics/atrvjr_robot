@@ -1,5 +1,6 @@
 urg_node:
   ros__parameters:
+    publish_frequency: 30.0
     angle_max: 3.14
     angle_min: -3.14
     ip_port: 10940

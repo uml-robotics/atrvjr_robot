@@ -39,7 +39,7 @@ amcl:
     # Initial pose uncertainty
     initial_pose:
       x: 0.0
-      y: 0.0
+      y: 0.18
       yaw: 0.0
     initial_cov_xx: 0.25
     initial_cov_yy: 0.25

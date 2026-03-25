@@ -1,9 +1,9 @@
 # Placeholder map configuration.
 # Replace image, resolution, and origin with your actual map values.
 # Generate a map with: ros2 run nav2_map_server map_saver_cli -f my_map
-image: hallway.png
+image: /home/atrv-jr/ros2_ws/src/atrvjr_robot/atrvjr_nav2/maps/hallway.png
 resolution: 0.05        # metres per pixel
-origin: [-10.0, -10.0, 0.0]   # [x, y, yaw] of the lower-left pixel
+origin: [-6.25, -2.0, 0.0]   # [x, y, yaw] of the lower-left pixel
 negate: 0
 occupied_thresh: 0.65
 free_thresh: 0.25
